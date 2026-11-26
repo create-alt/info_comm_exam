@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d2433">
+<title>情報通信 試験対策（資料14〜20）</title>
+<style>
+:root{
+  --bg:#f5f3ee;--paper:#fffdf8;--ink:#1d2433;--muted:#6b7280;--line:#e2ddd2;--soft:#efebe1;
+  --c-term:#0f766e;--c-term-s:#d7efec;--c-calc:#b45309;--c-calc-s:#f8e7d3;--c-sel:#4f46e5;--c-sel-s:#e3e2fb;
+  --ok:#15803d;--ok-s:#dcf3e3;--ng:#b91c1c;--ng-s:#f9dede;--warn:#c2410c;--warn-s:#fde9d9;
+  --fig-bx:#fbf9f3;--fig-hl:#4f46e5;--wave:#2563eb;--wave2:#dc2626;
+  --r:14px;--shadow:0 1px 0 rgba(0,0,0,.04),0 6px 18px -10px rgba(29,36,51,.25);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#12151c;--paper:#1b2029;--ink:#e7e9ef;--muted:#9aa3b2;--line:#2d3441;--soft:#232a36;
+  --c-term:#2dd4bf;--c-term-s:#11332f;--c-calc:#f59e0b;--c-calc-s:#3a2a12;--c-sel:#a5b4fc;--c-sel-s:#262a4d;
+  --ok:#4ade80;--ok-s:#143322;--ng:#f87171;--ng-s:#3a1717;--warn:#fb923c;--warn-s:#3b2414;
+  --fig-bx:#222834;--fig-hl:#a5b4fc;--wave:#60a5fa;--wave2:#f87171;--shadow:none;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Meiryo",system-ui,sans-serif;line-height:1.7;font-size:16px;-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:760px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.brand{font-weight:800;letter-spacing:.02em;cursor:pointer;display:flex;align-items:baseline;gap:8px}
+.brand small{font-weight:500;color:var(--muted);font-size:12px}
+.hd .sp{flex:1}
+.iconbtn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:6px 10px;font-size:14px;cursor:pointer}
+main{max-width:760px;margin:0 auto;padding:16px 16px 80px}
+h1{font-size:24px;line-height:1.35;margin:8px 0 4px}
+h2{font-size:18px;margin:22px 0 10px}
+.lead{color:var(--muted);margin:0 0 14px;font-size:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:1fr 1fr}
+@media (max-width:520px){.g2{grid-template-columns:1fr}}
+.mode{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;cursor:pointer;border:1px solid var(--line);background:var(--paper);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);transition:transform .12s}
+.mode:active{transform:scale(.99)}
+.mode .ic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:18px}
+.mode b{display:block;font-size:17px}
+.mode span{color:var(--muted);font-size:13px;line-height:1.5;display:block}
+.hero{background:var(--ink);color:var(--paper);border-radius:18px;padding:20px;position:relative;overflow:hidden}
+.hero h1{margin:0 0 6px;color:var(--paper)}
+.hero p{margin:0;opacity:.8;font-size:14px}
+.hero .stats{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
+.hero .stats div{font-size:12px;opacity:.85}
+.hero .stats b{display:block;font-size:22px;opacity:1}
+.hero:after{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;border:22px solid rgba(255,255,255,.07)}
+.t-term{--tc:var(--c-term);--ts:var(--c-term-s)}
+.t-calc{--tc:var(--c-calc);--ts:var(--c-calc-s)}
+.t-sel{--tc:var(--c-sel);--ts:var(--c-sel-s)}
+.t-mix{--tc:var(--ink);--ts:var(--soft)}
+.ic.t-term,.ic.t-calc,.ic.t-sel,.ic.t-mix{background:var(--ts);color:var(--tc)}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--ts,var(--soft));color:var(--tc,var(--ink));white-space:nowrap}
+.badge.gray{background:var(--soft);color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:6px 12px;font-size:13px;cursor:pointer;user-select:none}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.seg{display:flex;background:var(--soft);border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:8px 6px;font-size:14px;cursor:pointer;min-width:60px}
+.seg button.on{background:var(--paper);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--ink);color:var(--paper);font-size:15px}
+.btn.wide{width:100%}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--ok);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row.end{justify-content:flex-end}
+.field label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px;color:var(--muted)}
+/* quiz */
+.qtop{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.qnum{font-weight:800;font-size:15px}
+.timer{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:700;font-size:14px;padding:2px 10px;border-radius:99px;background:var(--soft)}
+.timer.low{background:var(--ng-s);color:var(--ng)}
+.bar{height:6px;background:var(--soft);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:var(--ink);border-radius:99px;transition:width .25s}
+.prompt{font-size:16.5px;font-weight:600;line-height:1.75}
+.prompt .def{font-weight:500;background:var(--soft);border-left:4px solid var(--tc,var(--ink));padding:10px 12px;border-radius:8px;margin-top:8px}
+.fig{margin:12px 0;padding:10px;background:var(--fig-bx);border:1px solid var(--line);border-radius:12px;overflow-x:auto}
+.fig svg{display:block;width:100%;height:auto;max-height:420px;margin:0 auto}
+.choices{display:grid;gap:10px;margin-top:14px}
+.choices.figs{grid-template-columns:1fr 1fr}
+.choice{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:15px;line-height:1.55;width:100%}
+.choice .k{flex:none;width:24px;height:24px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
+.choice.figc{flex-direction:column;align-items:stretch;padding:8px}
+.choice.figc svg{width:100%;height:auto}
+.choice.sel{border-color:var(--ink);background:var(--soft)}
+.choice.sel .k{background:var(--ink);color:var(--paper)}
+.choice.right{border-color:var(--ok);background:var(--ok-s)}
+.choice.right .k{background:var(--ok);color:#fff}
+.choice.wrong{border-color:var(--ng);background:var(--ng-s)}
+.choice.wrong .k{background:var(--ng);color:#fff}
+.choice:disabled{cursor:default;opacity:1}
+.inp{display:flex;gap:8px;margin-top:14px;align-items:center}
+.inp input{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:12px 14px;font-size:17px}
+.inp input:focus{outline:none;border-color:var(--ink)}
+.inp .unit{font-weight:700;color:var(--muted);white-space:nowrap}
+.hint{font-size:13px;color:var(--muted);margin-top:6px}
+.fb{margin-top:16px;border-radius:12px;padding:14px;border:1px solid var(--line);background:var(--paper);animation:pop .2s ease}
+@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.fb .verdict{font-weight:800;font-size:17px;display:flex;align-items:center;gap:8px}
+.fb.okk{border-color:var(--ok);background:var(--ok-s)}
+.fb.okk .verdict{color:var(--ok)}
+.fb.ngg{border-color:var(--ng);background:var(--ng-s)}
+.fb.ngg .verdict{color:var(--ng)}
+.fb .ans{margin-top:6px;font-weight:700}
+.exp{margin-top:10px;padding-top:10px;border-top:1px dashed color-mix(in srgb,var(--ink) 25%,transparent);font-size:14.5px;line-height:1.8}
+.exp .h{font-weight:800;font-size:13px;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
+.mono,.exp code{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.95em}
+.exp code{background:var(--soft);padding:1px 5px;border-radius:5px}
+.calcbox{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--soft);border-radius:8px;padding:8px 10px;white-space:pre-wrap;font-size:13.5px;line-height:1.6;margin:6px 0;overflow-x:auto}
+table.tbl{border-collapse:collapse;font-size:13px;margin:4px auto;background:var(--paper)}
+table.tbl th,table.tbl td{border:1px solid var(--line);padding:5px 8px;text-align:center}
+table.tbl th{background:var(--soft)}
+table.tbl td.blank{background:var(--warn-s);color:var(--warn);font-weight:800}
+.qnav{display:flex;gap:8px;margin-top:18px}
+.qnav .btn{flex:1}
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:14px}
+.palette button{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 0;font-size:13px;cursor:pointer;font-weight:700}
+.palette button.done{background:var(--soft)}
+.palette button.cur{outline:2px solid var(--ink)}
+.palette button.flag{border-color:var(--warn);color:var(--warn)}
+/* result */
+.score{display:flex;align-items:center;gap:18px}
+.ring{width:110px;height:110px;flex:none}
+.ring text{font-weight:800}
+.tbar{display:grid;grid-template-columns:96px 1fr 54px;gap:8px;align-items:center;font-size:13px;margin:6px 0}
+.tbar .tr{height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
+.tbar .tr i{display:block;height:100%;background:var(--tc,var(--ink))}
+details.rv{border:1px solid var(--line);border-radius:12px;background:var(--paper);margin:8px 0;overflow:hidden}
+details.rv summary{cursor:pointer;padding:10px 12px;display:flex;gap:8px;align-items:center;list-style:none;font-size:14px}
+details.rv summary::-webkit-details-marker{display:none}
+details.rv .mk{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;font-size:13px}
+details.rv .mk.o{background:var(--ok)}details.rv .mk.x{background:var(--ng)}
+details.rv .sm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+details.rv .body{padding:0 12px 12px}
+/* flashcards */
+.flash{perspective:1200px;margin:10px 0}
+.flash .inner{position:relative;min-height:240px;transition:transform .45s;transform-style:preserve-3d;cursor:pointer}
+.flash.flip .inner{transform:rotateY(180deg)}
+.flash .side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:var(--shadow)}
+.flash .back{transform:rotateY(180deg);font-size:15.5px;text-align:left;align-items:flex-start}
+.flash .front .term{font-size:24px;font-weight:800;line-height:1.4}
+.flash .tag{position:absolute;top:12px;left:14px}
+.flash .tap{position:absolute;bottom:10px;font-size:12px;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+.small{font-size:13px;color:var(--muted)}
+.hist{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:12px;font-size:14px;z-index:50;animation:pop .2s}
+/* svg figure styling */
+svg.fg{font-family:inherit}
+svg.fg text{fill:var(--ink)}
+svg.fg .ln{stroke:var(--ink);stroke-width:1.5;fill:none}
+svg.fg .dash{stroke-dasharray:4 3}
+svg.fg .ah{fill:var(--ink)}
+svg.fg .bx{fill:var(--paper);stroke:var(--ink);stroke-width:1.3}
+svg.fg .bx2{fill:var(--soft);stroke:var(--ink);stroke-width:1.3}
+svg.fg .hl{fill:var(--c-sel-s);stroke:var(--c-sel);stroke-width:1.6}
+svg.fg .blank{fill:var(--warn-s);stroke:var(--warn);stroke-width:1.8;stroke-dasharray:5 3}
+svg.fg text.bl{fill:var(--warn);font-weight:800}
+svg.fg .ax{stroke:var(--muted);stroke-width:1}
+svg.fg .pt{fill:var(--ink)}
+svg.fg .pth{fill:var(--warn);stroke:var(--warn);stroke-width:2}
+svg.fg .wv{stroke:var(--wave);stroke-width:1.8;fill:none}
+svg.fg .wv2{stroke:var(--wave2);stroke-width:1.6;fill:none}
+svg.fg .fillw{fill:color-mix(in srgb,var(--wave) 25%,transparent);stroke:var(--wave);stroke-width:1.4}
+svg.fg .fillr{fill:color-mix(in srgb,var(--wave2) 22%,transparent);stroke:var(--wave2);stroke-width:1.4}
+svg.fg .mut{fill:var(--muted)}
+svg.fg .zone{fill:color-mix(in srgb,var(--c-term) 10%,transparent);stroke:var(--c-term);stroke-width:1.2;stroke-dasharray:6 4}
+svg.fg .bad{fill:var(--ng-s);stroke:var(--ng);stroke-width:1.3}
+svg.fg .good{fill:var(--ok-s);stroke:var(--ok);stroke-width:1.3}
+</style>
+</head>
+<body>
+<header><div class="hd">
+  <div class="brand" onclick="go('home')">情報通信 試験対策<small>資料14〜20</small></div>
+  <div class="sp"></div>
+  <button class="iconbtn" id="homeBtn" onclick="go('home')" hidden>ホーム</button>
+</div></header>
+<main id="app"></main>
+<script>
+"use strict";
+/* ================= 章 ================= */
+const CH = {
+  14:"セキュリティ・暗号",
+  15:"認証・PKI・VPN",
+  16:"Web攻撃・DoS",
+  17:"アナログ変調・PCM",
+  18:"デジタル変調",
+  19:"多重化・OFDM",
+  20:"OFDM・多元接続"
+};
+const CHS = Object.keys(CH).map(Number);
+
+/* ================= 用語 [章, 用語, 別解(|区切り), 説明, グループ] ================= */
+const TERMS = [
+[14,"ファイアウォール","FW","組織内部と外部（インターネット）の間に設置し，特定のIPアドレスやポート番号が付いたパケットのみを通過させて，外部からの侵入を防ぐ仕組み"],
+[14,"DMZ（非武装地帯）","DeMilitarized Zone","外部からも内部からも隔離されたサブネット。外部向けサーバを置き，万一被害を受けても内部ネットワークに影響が及ばないようにする"],
+[14,"IDS（侵入検知システム）","","通信の中身（データ部分を含む）を監視・分析し，不正侵入を目的とした通信を検知して管理者に通知するシステム"],
+[14,"シグネチャ型","","あらかじめ登録された侵入手口のパターンとマッチングして不正を検出する検知方法。既知の手口のみ検出できる"],
+[14,"アノマリ型","","極端にパケット量が多いなど，通常とは異なる振る舞いを検出する検知方法。未知の手口にも対応できる"],
+[14,"IPS（侵入防止システム）","","監視・異常検知機能に加え，不正アクセスを検知した場合にその通信を遮断できるシステム。誤検知すると正当な通信まで遮断するおそれがある"],
+[14,"WAF（Web Application Firewall）","WAF|ウェブアプリケーションファイアウォール","Webアプリケーションの通信内容を検査し，SQLインジェクションやクロスサイトスクリプティングなどの攻撃を検知・遮断する対策"],
+[14,"パーソナルファイアウォール","","個々のコンピュータ上のソフトウェアで，パケットフィルタリングによる通信規制を行うもの。コンピュータ独自の規制を設定できる"],
+[14,"アンチウイルス","アンチウイルスソフト|ウイルス対策ソフト","ファイル等を監視し，パターンファイルと比較することでマルウェアを検出・防御するソフトウェア"],
+[14,"パターンファイル","","ウイルスプログラムの特徴点を記したファイル。更新することで新しいウイルスにも対応できる"],
+[14,"マルウェア","","悪意のあるプログラムの総称"],
+[14,"ウイルス","コンピュータウイルス","他のプログラムに寄生して感染し，データの改ざんや破壊などを行うマルウェア"],
+[14,"ワーム","","他のプログラムに寄生せず，単独で侵入・感染・活動を行うマルウェア"],
+[14,"ボット","","感染したコンピュータを外部から遠隔操作できるようにするマルウェア"],
+[14,"共通鍵暗号方式","共通鍵暗号","暗号化と復号に同じ鍵を使う方式。処理は高速だが，安全な鍵の受け渡しが課題となる"],
+[14,"公開鍵暗号方式","公開鍵暗号","暗号化と復号に一対の別々の鍵を使う方式。受信者が鍵ペアを作成し，暗号化用の鍵は公開してよい。処理は遅い"],
+[14,"鍵の配送問題","鍵配送問題","共通鍵暗号方式で，同じ鍵を相手に安全に受け渡す方法が課題となること"],
+[14,"ストリーム暗号","","擬似乱数生成器が生成する乱数と平文の排他的論理和をとり，ビット単位で暗号化する共通鍵暗号"],
+[14,"排他的論理和（XOR）","XOR|排他的論理和","2つの入力が異なるとき1，同じとき0となる演算。同じ値を2回適用すると元の値に戻る"],
+[14,"ブロック暗号","","固定長のデータを単位として，換字と転置を複雑に組み合わせて処理する共通鍵暗号。AESやDESなど"],
+[14,"換字","","換字表に基づいて文字（値）を別の値に置き換える操作"],
+[14,"転置","","文字やビットの位置を並べ替える操作"],
+[14,"AES","Advanced Encryption Standard","ブロック長128ビット，鍵長128/192/256ビットに対応したブロック暗号。WPA2の暗号化アルゴリズム"],
+[14,"SubBytes","","AESの処理のうち，1バイトを256値の換字表（Sボックス）で置き換える処理"],
+[14,"ShiftRows","","AESの処理のうち，4×4の状態配列の各行をローテーションする処理"],
+[14,"MixColumns","","AESの処理のうち，各列に対して行列変換を行う処理"],
+[14,"AddRoundKey","","AESの処理のうち，ラウンド鍵との排他的論理和をとる処理"],
+[14,"ECBモード","ECB|Electronic Codebook","平文ブロックをそのまま暗号化するブロック暗号のモード。同じ平文ブロックは同じ暗号ブロックになり，繰り返しを見抜かれる危険がある"],
+[14,"CBCモード","CBC|Cipher Block Chaining","1つ前の暗号ブロックと平文ブロックをXORしてから暗号化するブロック暗号のモード。最初のブロックには初期化ベクトルを用いる"],
+[14,"初期化ベクトル（IV）","IV|初期化ベクトル","CBCモードで，最初の平文ブロックとXORをとるために用いる値"],
+[14,"RSA","RSA暗号","巨大な数の素因数分解が困難であることを安全性の根拠とした公開鍵暗号"],
+[14,"Diffie-Hellman鍵共有","DH|DH鍵共有|DH鍵交換|Diffie-Hellman|Diffie-Hellman鍵交換|ディフィーヘルマン鍵共有|ディフィー・ヘルマン","離散対数問題の困難性を利用して，共通鍵暗号の鍵を安全に共有するためのアルゴリズム"],
+[14,"離散対数問題","","p，g，mが与えられたとき，m＝g<sup>a</sup> mod p を満たすaを求める問題。これが困難であることが鍵共有の安全性の根拠"],
+[14,"原始根","","g<sup>a</sup> mod p を計算したとき，1，2，…，p−1 がすべて現れるような整数g"],
+
+[15,"多要素認証","多段要素認証|多段階認証|二要素認証","知識（パスワード等）・所持（IDカード等）・生体（指紋等）の要素を組み合わせて認証強度を高める方法"],
+[15,"生体認証","バイオメトリクス認証","指紋・虹彩・顔など，個人ごとに異なる特徴による認証"],
+[15,"メッセージ認証","","メッセージが改ざんされていないかを，メッセージ認証コードなどを使って確認する認証"],
+[15,"時刻認証","タイムスタンプ","その日時に電子データが存在したことを，タイムスタンプを用いて証明する認証"],
+[15,"PAP","Password Authentication Protocol","PPPの認証方式の1つ。IDとパスワードを暗号化せずに送るため，盗聴やなりすましの危険がある"],
+[15,"CHAP","Challenge Handshake Authentication Protocol","ランダムなチャレンジに対し，その値とパスワードから計算したレスポンスを返すチャレンジレスポンス方式のPPP認証"],
+[15,"MAC（メッセージ認証コード）","MAC|メッセージ認証コード|Message Authentication Code","送信者と受信者で共有した共通鍵とメッセージから生成し，受信側で再計算・照合して改ざんを検出するためのデータ"],
+[15,"HMAC","Hash-based MAC","SHA-2等のハッシュ関数に基づいて生成するメッセージ認証コード"],
+[15,"電子署名","デジタル署名","送信者が自分の秘密鍵でハッシュ値を暗号化して付け，受信者が送信者の公開鍵で検証することで，改ざん検出と送信者の証明ができる仕組み"],
+[15,"否認防止","","送信者が後から「送っていない」と否定できないようにすること。電子署名では可能だがMACでは不可"],
+[15,"ハッシュ関数","","任意の長さのデータを固定長のデータに変換する関数"],
+[15,"一方向性（原像計算困難性）","一方向性|原像計算困難性","出力値（ハッシュ値）から入力値を復元することが困難であるという性質"],
+[15,"第2原像計算困難性","第二原像計算困難性","ある入力値と同じ出力値になるような別の入力値を求めることが困難であるという性質"],
+[15,"衝突耐性","","異なる入力値から同じ出力値が生成されることが，極めて低い確率でしか起こらないという性質"],
+[15,"MD5","","出力128ビットのハッシュアルゴリズム。現在は安全とはいえない"],
+[15,"SHA-1","SHA1","出力160ビットのハッシュアルゴリズム。現在は安全とはいえない"],
+[15,"SHA-256","SHA256","SHA-2系の出力256ビットのハッシュアルゴリズム。TLS/SSLやビットコインなどで用いられている"],
+[15,"SHA-3","SHA3|Keccak","Keccakを基にしたハッシュアルゴリズム。伸長攻撃に強く，SHAKE128/256では任意長の出力が可能"],
+[15,"伸長攻撃","","あるメッセージのハッシュ値を知っているだけで，そのメッセージに何かを追加した新しいハッシュ値を生成できてしまう攻撃"],
+[15,"PKI（公開鍵基盤）","PKI|公開鍵基盤|Public Key Infrastructure","公開鍵が本物であることを，信頼できる第三者（認証局）に証明してもらう仕組み"],
+[15,"認証局（CA）","認証局|CA","利用者の公開鍵に自らの秘密鍵で電子署名を行い，電子証明書を発行する信頼された第三者機関"],
+[15,"電子証明書","デジタル証明書|証明書","認証局が利用者の公開鍵に電子署名を付けたもの。公開鍵の持ち主が本物であることを証明する"],
+[15,"VPN","Virtual Private Network|仮想私設網","インターネット上に暗号化や認証の技術を用いて構築する仮想的な私的ネットワーク"],
+[15,"IPsec","","ネットワーク層で動作し共通鍵暗号方式を利用する，最も一般的なVPN技術。IPパケットにESPヘッダやESP認証データを付加する"],
+[15,"ESP","Encapsulating Security Payload","IPsecでIPパケットに付加し，暗号化と改ざん検出を行うためのヘッダ・トレーラ・認証データ"],
+[15,"トンネルモード","","IPsecのモードのうち，主にVPNルータ間でIPパケット全体を暗号化し，新しいIPヘッダを付けるモード"],
+[15,"トランスポートモード","","IPsecのモードのうち，IPsecを実装したホスト間でIPペイロード部を保護するモード。IPヘッダは暗号化されない"],
+[15,"IKE","Internet Key Exchange","IPsecで，認証と鍵交換（フェーズ1）および暗号化パラメータの交換（フェーズ2）を行う手順"],
+[15,"SA（Security Association）","SA|Security Association","暗号化通信を行うために必要な設定情報。フェーズ1でISAKMP SA，フェーズ2でIPsec SAが確立される"],
+[15,"事前共有鍵（PSK）","事前共有鍵|PSK|Pre-shared Key","通信を行うVPN装置同士があらかじめ共有しておく秘密の文字列。相手が正当な通信相手かの認証に使う"],
+[15,"TLS/SSL","TLS|SSL","HTTPなどの通信を暗号化する仕組み。通信の暗号化に共通鍵暗号，共通鍵の配送に公開鍵暗号を用いる"],
+[15,"HTTPS","","HTTPにTLS/SSLを組み合わせた，暗号化されたHTTP通信"],
+[15,"IEEE802.1X","802.1X","認められた機器のみが無線LANや有線LANに接続できるように認証する仕組み"],
+[15,"サプリカント","","IEEE802.1Xの構成要素のうち，認証を受けるクライアント端末"],
+[15,"オーセンティケータ","","IEEE802.1Xの構成要素のうち，端末と認証サーバの間に位置する無線LANアクセスポイントやL2スイッチ"],
+[15,"認証サーバ","","IEEE802.1Xの構成要素のうち，IDとパスワードを確認し，利用可能なネットワークの情報を端末とアクセスポイントに送るサーバ"],
+
+[16,"クロスサイトスクリプティング（XSS）","XSS|クロスサイトスクリプティング","Webアプリケーションの脆弱性を悪用して，ユーザのブラウザ上で任意のスクリプトを実行させる攻撃"],
+[16,"格納型XSS","格納型","脆弱性サイトにスクリプトを埋め込み，アクセスした人すべてのブラウザでスクリプトを実行させるタイプ（直接攻撃するタイプ）"],
+[16,"反射型XSS","反射型","誘導サイトの脆弱性リンクを経由して脆弱性サイトにアクセスしたときにスクリプトが実行されるタイプ（間接的に攻撃するタイプ）"],
+[16,"SQLインジェクション","","入力フォームに悪意のあるSQL文を挿入し，データベースに意図しない操作を行わせる攻撃"],
+[16,"エスケープ処理","エスケープ","特殊な意味を持つ文字を通常の文字として扱わせる処理。SQLではシングルクォートを2個連続させて1文字として扱う"],
+[16,"セッションハイジャック","","盗んだセッションIDを使って，Webサービス利用中のユーザになりすまして不正アクセスを行う攻撃"],
+[16,"セッションID","SID","Webサーバがログイン状態などを維持するためにユーザを識別する一意の識別子。Cookieに含まれることが多い"],
+[16,"CSRF（クロスサイトリクエストフォージェリ）","CSRF|クロスサイトリクエストフォージェリ","ログイン中のユーザの正規セッションを踏み台にして，罠サイト経由でユーザの意図しない操作をWebサイトに実行させる攻撃"],
+[16,"DoS攻撃","DoS|Denial of Service","サーバやネットワークに過剰な負荷をかけたり脆弱性を突いたりして，サービスを妨害する攻撃（基本的に1台のコンピュータから行う）"],
+[16,"DDoS攻撃","DDoS|Distributed Denial of Service","マルウェアに感染した多数のコンピュータから一斉に行うサービス妨害攻撃"],
+[16,"ボットネット","","ボットに感染した複数の端末で構成され，攻撃者が遠隔操作するネットワーク"],
+[16,"SYNフラッド攻撃","SYNフラッド","送信元を偽装したSYNを大量に送りつけ，ACKを返さずにサーバを応答待ち状態にしてリソースを枯渇させる攻撃"],
+[16,"DNSリフレクタ攻撃","DNSリフレクション攻撃|DNSアンプ攻撃","送信元IPアドレスを標的のアドレスに偽装して第三者のDNSサーバに問い合わせ，大量の応答を標的に送りつける攻撃"],
+[16,"オープン・リゾルバ","オープンリゾルバ","不特定多数からの再帰問い合わせを許可しているDNSサーバ。リフレクタ攻撃の踏み台にされる"],
+[16,"Mirai","ミライ","主にIoT機器に感染してボットネットを構築し，大規模なDDoS攻撃を行うマルウェア。Telnetへの辞書攻撃で感染を広げる"],
+[16,"C&Cサーバ","C&C|Command & Control|C2サーバ","ボット化した端末に指令を送り，制御の中心となるサーバ"],
+[16,"ブルートフォース攻撃（総当たり攻撃）","ブルートフォース攻撃|総当たり攻撃|ブルートフォース","英数記号のすべての組み合わせを試してパスワードを解読する手法。1つのアカウントに多数のパスワードを試す"],
+[16,"辞書攻撃","","よく使われるパスワードや単語をリスト化したファイルを用いてログインを試みる手法"],
+[16,"パスワードリスト攻撃","","過去に漏洩したIDとパスワードの組み合わせを使って，他のサービスへのログインを試みる手法。使い回しを狙う"],
+[16,"リバースブルートフォース攻撃","逆総当たり攻撃","既知のパスワードを固定し，多数の異なるユーザ名で試行する手法。アカウントロックされにくい"],
+
+[17,"情報源","","通信システムで，送信する情報（音声・画像・データ）の発生源"],
+[17,"伝送路","","同軸ケーブル・光ファイバ・空間（大気）など，情報を伝える媒体"],
+[17,"雑音","ノイズ","信号と無関係なランダムな電気信号が混入するもの"],
+[17,"干渉","","ほかの通信系の信号が混入すること"],
+[17,"送信機","","情報を伝送に適した信号に変換（変調・符号化・多重化）して伝送路に送り出す装置"],
+[17,"受信機","","送信機の逆の処理（復調・復号化）を行い，信号を元に戻す装置"],
+[17,"搬送波","キャリア","伝送したい信号より周波数が高く，その振幅・周波数・位相を信号によって変化させる波"],
+[17,"振幅変調（AM）","AM|振幅変調|Amplitude Modulation","搬送波の振幅を，伝送しようとする信号に応じて変化させる変調方式"],
+[17,"周波数変調（FM）","FM|周波数変調|Frequency Modulation","搬送波の周波数を，伝送しようとする信号に応じて変化させる変調方式。雑音に強いが占有帯域幅が広い"],
+[17,"位相変調（PM）","PM|位相変調|Phase Modulation","搬送波の位相を，伝送しようとする信号に応じて変化させる変調方式。周波数を変える方式と本質的に同じ"],
+[17,"変調度","","AMにおける信号波の振幅と搬送波の振幅の比（m＝A<sub>s</sub>／A<sub>c</sub>）"],
+[17,"側波帯","上側波帯|下側波帯","AM波で搬送波周波数の上下（f<sub>c</sub>±f<sub>s</sub>）に現れる成分。上下どちらも元の信号と同じ情報を持つ"],
+[17,"単側波帯変調（SSB）","SSB|単側波帯変調|Single Side Band","帯域通過フィルタで片方の側波帯のみを取り出して伝送する方式。占有帯域幅を半分にし電力も節減できる"],
+[17,"帯域通過フィルタ（BPF）","BPF|帯域通過フィルタ|バンドパスフィルタ","特定の周波数帯域の信号だけを通過させるフィルタ"],
+[17,"カールソン則","カーソン則","FMの占有周波数帯域幅を B＝2(Δf＋f<sub>m</sub>) で近似する式"],
+[17,"半波長アンテナ","ダイポールアンテナ","電波の波長の半分の長さに設定して，効率良く電波を送受信するアンテナ"],
+[17,"波長","λ","電波の山から次の山までの距離。光速÷周波数で求まる"],
+[17,"周波数分割多重（FDM）","FDM|周波数分割多重","複数の信号を変調でそれぞれ異なる周波数帯に移し，1本の伝送路で同時に伝送する多重化方式"],
+[17,"パルス変調","","搬送波としてパルス列を用い，標本値に応じてパルスの振幅・幅・位置を変える変調方式"],
+[17,"PAM（パルス振幅変調）","PAM|パルス振幅変調","標本値の大きさに比例してパルスの振幅を変えるパルス変調"],
+[17,"PWM（パルス幅変調）","PWM|パルス幅変調","標本値の大きさに比例してパルスの幅を変えるパルス変調"],
+[17,"PPM（パルス位置変調）","PPM|パルス位置変調","標本値の大きさに比例してパルスの位置を変えるパルス変調"],
+[17,"パルス符号変調（PCM）","PCM|パルス符号変調|Pulse Code Modulation","アナログ信号を標本化・量子化・符号化の3ステップでデジタル化する方式"],
+[17,"標本化（サンプリング）","標本化|サンプリング","アナログ信号を一定の時間間隔で測定し，振幅値を取得する処理"],
+[17,"量子化","","測定した振幅値を，あらかじめ決められた有限個の段階（レベル）に丸める処理"],
+[17,"符号化","","量子化された値を2進数に変換し，デジタルデータとする処理"],
+[17,"標本化定理（サンプリング定理）","標本化定理|サンプリング定理|ナイキストの定理","信号の最高周波数f<sub>m</sub>に対し，f<sub>s</sub>＞2f<sub>m</sub> で標本化すれば元の信号を復元できるという定理"],
+[17,"サンプリング周波数","標本化周波数","1秒間に信号を測定する回数。サンプリング周期の逆数"],
+[17,"量子化雑音","","量子化で振幅値を丸めることによって生じる誤差を雑音として扱ったもの"],
+[17,"非線形量子化","","小振幅領域に細かいステップ，大振幅領域に粗いステップを割り当てて，量子化雑音の影響を低減する量子化"],
+[17,"線形量子化","","すべての量子化ステップが等間隔である量子化"],
+[17,"μ-law","μlaw|ミューロー|μ-law圧縮","非線形量子化で，入力信号を圧縮してから線形量子化し，復号時に逆関数で伸張するための関数"],
+[17,"交番2進符号（グレイコード）","グレイコード|交番2進符号|グレーコード","隣接する数値の間で1ビットだけが変化するように設計された符号"],
+
+[18,"ASK","Amplitude Shift Keying|振幅偏移変調","符号ごとに振幅の異なる搬送波を対応させるデジタル変調"],
+[18,"FSK","Frequency Shift Keying|周波数偏移変調","符号ごとに周波数の異なる搬送波を対応させるデジタル変調"],
+[18,"PSK","Phase Shift Keying|位相偏移変調","符号ごとに位相の異なる搬送波を対応させるデジタル変調"],
+[18,"OOK（オンオフキーイング）","OOK|オンオフキーイング|On Off Keying","2値符号0，1に対応して一方の搬送波成分を0にする振幅のデジタル変調。オン・オフの情報のみを伝送する"],
+[18,"BPSK","Binary PSK|2PSK","取り得る位相が0とπの2値で，1シンボルで1ビットを伝送する位相のデジタル変調"],
+[18,"QPSK","4PSK|Quadrature PSK","π/4，3π/4，5π/4，7π/4の4つの位相を使い，1シンボルで2ビット伝送する位相のデジタル変調"],
+[18,"8PSK","","8個の位相を使い，1シンボルで3ビット伝送する位相のデジタル変調"],
+[18,"多値変調","","取り得る状態の数をM（＝2<sup>n</sup>）個にして，1シンボルでnビットを伝送する変調"],
+[18,"信号点配置（コンスタレーション）","信号点配置|コンスタレーション","デジタル変調波の振幅と位相を平面上の点で表した図"],
+[18,"シンボルレート","ボーレート","1秒間に含まれるシンボル数。変調の状態が変化する速度［symbol/s］"],
+[18,"同相成分（I）","同相成分|I成分|In-phase","QPSKなどの式で cos(2πf<sub>c</sub>t) に掛かる成分"],
+[18,"直交成分（Q）","直交成分|Q成分|Quadrature-phase","QPSKなどの式で −sin(2πf<sub>c</sub>t) に掛かる成分"],
+[18,"同期検波","","送信側で用いたのと同じ搬送波を受信側で用意し，受信信号に乗算して検波する方式"],
+[18,"低域通過フィルタ（LPF）","LPF|低域通過フィルタ|ローパスフィルタ","低い周波数成分だけを通すフィルタ。同期検波後に搬送波の2倍の周波数成分を除去する"],
+[18,"QAM（直交振幅変調）","QAM|直交振幅変調|Quadrature Amplitude Modulation","位相だけでなく振幅も変化させて隣接信号点間の距離を長くした多値変調。位相がπ/2離れた2つのASK信号を合成して得られる"],
+[18,"16QAM","","4値ASK信号を同相成分と直交成分として合成し，1シンボルで4ビット伝送する変調"],
+[18,"直並列変換","シリアルパラレル変換|S/P変換","直列のビット列を並列の複数系列に分ける変換"],
+[18,"並直列変換","パラレルシリアル変換|P/S変換","並列の複数系列を直列のビット列にまとめる変換"],
+
+[19,"多重化","Multiplexing|マルチプレクシング","1つの伝送媒体を通して，複数の情報信号を同時に伝送する技術"],
+[19,"ガードバンド（保護帯域）","ガードバンド|保護帯域","周波数を分けて多重化する際，混信を防ぐために周波数軸上でチャネル間に設ける間隔"],
+[19,"時分割多重（TDM）","TDM|時分割多重","各チャネルのパルス幅を狭くし，空いた時間に他チャネルの信号を時間位置をずらして配置する多重化方式"],
+[19,"フレーム同期ビット","","時分割多重でフレームの境界を識別するために付加するビット"],
+[19,"タイムスロット","","時分割多重の1フレーム内で，各チャネルに割り当てられる時間区間"],
+[19,"符号分割多重（CDM）","CDM|符号分割多重","各送信信号に異なるパターンの符号を乗算し，符号間の相関の違いを利用して多重化する方式"],
+[19,"スペクトル拡散通信方式","スペクトル拡散|スペクトラム拡散","1次変調した信号に拡散符号を乗算（2次変調）し，信号を広い帯域に広げて伝送する方式"],
+[19,"拡散符号","","スペクトル拡散で送信信号に乗算する，クロック周波数の高い符号"],
+[19,"逆拡散","","受信側で送信側と同じ拡散符号を乗算して元の信号を復元すること"],
+[19,"アダマール行列","","各行を拡散符号とした場合，異なる行どうしの相互相関がすべて0になる行列"],
+[19,"相互相関","","2つの符号の対応する要素の積の和。直交する符号どうしでは0になる"],
+[19,"直交周波数分割多重（OFDM）","OFDM|直交周波数分割多重","直交する複数のサブキャリアを用いてデータを分割し並列に送信する方式。マルチパスに強く周波数利用効率が高い"],
+[19,"サブキャリア","副搬送波","OFDMでデータを分割して載せる複数の搬送波"],
+[19,"マルチパス","","送信された電波が建物や地形などに反射し，複数の経路を通って受信機に届くこと"],
+[19,"マルチパスフェージング","フェージング","複数経路からの信号が干渉し合い，受信信号の強度が変動して通信の誤りを引き起こす現象"],
+[19,"シンボル間干渉（ISI）","シンボル間干渉|ISI|Inter-Symbol Interference","マルチパスの遅延波が後続のシンボルと重なり合うことによる受信特性の劣化"],
+[19,"周波数選択性フェージング","","広帯域の信号がマルチパスを経由した際，周波数によって到来波の位相関係が異なるため，一部の周波数のレベルが低下する現象"],
+[19,"シングルキャリア伝送","","搬送波1本でデータを伝送する方式。高速化するとシンボル間干渉が発生しやすい"],
+[19,"マルチキャリア伝送","","複数の搬送波を使って並列に低速でデータを伝送する方式。遅延波の影響が小さくマルチパス環境に強い"],
+
+[20,"逆離散フーリエ変換（IDFT）","IDFT|逆離散フーリエ変換","OFDM変調器で，N個の複素データシンボルからOFDMシンボルの標本値系列を得るために用いる変換","fft"],
+[20,"離散フーリエ変換（DFT）","DFT|離散フーリエ変換","OFDM復調器で，標本化したN個の標本値系列からデータシンボルを取り出すために用いる変換","fft"],
+[20,"高速フーリエ変換（FFT）","FFT|高速フーリエ変換","DFT・IDFTを高速に計算するアルゴリズム。OFDMのハードウェア化を容易にする","fft"],
+[20,"マッピング","","分割したビット群を変調方式に従って複素平面上の点（IQ成分）に対応付け，複素データシンボルに変換する処理"],
+[20,"ガードインターバル","GI","OFDMシンボルの後半部分のコピーを先頭に挿入したもの。遅延時間がこの長さより短ければシンボル間干渉を防げる"],
+[20,"多元接続","Multiple Access","複数の送信者が1つの伝送路を共有して1つの受信点と通信すること"],
+[20,"FDMA","周波数分割多元接続","周波数を分けて複数のユーザが同時に通信する多元接続"],
+[20,"TDMA","時分割多元接続","時間を分けて複数のユーザが通信する多元接続"],
+[20,"CDMA","符号分割多元接続","異なる符号を割り当てて複数のユーザが同時に通信する多元接続"],
+[20,"OFDMA","直交周波数分割多元接続","ユーザの通信状況に応じてサブキャリアを割り当て，複数のユーザが同時に通信する多元接続。4G・5G，IEEE802.11axで利用"],
+[20,"セグメント","","地上デジタルテレビ放送で，1チャネルの帯域幅6MHzを13個に分割した単位。各432本のサブキャリアを持つ"]
+].map((r,i)=>({id:i,ch:r[0],t:r[1],alt:r[2]?r[2].split("|"):[],d:r[3],g:r[4]||""}));
+
+/* ================= 4択（概念） [章, 問題, 正解, 誤1, 誤2, 誤3, 解説] ================= */
+const MCQ = [
+[14,"IDSの検知方法のうち，未知の侵入手口にも対応できるのはどれ？","アノマリ型","シグネチャ型","パターンファイル型","ポート番号型","アノマリ型は「通常と異なる振る舞い」（極端にパケット量が多い等）を検出するため未知の手口にも対応できる。シグネチャ型は登録済みの手口パターンとのマッチングなので既知の手口しか検出できない。"],
+[14,"IDSとIPSの違いとして正しいものはどれ？","IPSは不正アクセスを検知するとその通信を遮断できる","IDSは通信を遮断できるが，IPSは通知しかできない","IPSはIPアドレスとポート番号しか検査できない","IDSはWebアプリケーション専用の対策である","IDSは監視・検知して管理者に通知するだけ。IPSはそれに加えて通信を遮断できるため迅速に対応できるが，誤検知で正当な通信まで遮断するおそれがある。"],
+[14,"WAFが主に防御する攻撃はどれ？","SQLインジェクションやクロスサイトスクリプティング","ストレージ内のマルウェア感染","ネットワーク層での外部からの不正アクセス全般","ケーブルの物理的な盗聴","WAFはWebアプリケーションの通信内容を検査し，SQLインジェクションやXSSなどWebアプリを狙った攻撃を防ぐ。"],
+[14,"ファイアウォールが主に検査する対象はどれ？","IPアドレスやポート番号などのヘッダ情報","パケットのデータ部分とパケット量","Webアプリケーションの入力値","ストレージ上のファイル","ファイアウォールはヘッダ情報（IPアドレス・ポート番号）でフィルタリングする。データ部分まで検査するのはIDS/IPS，Webアプリの通信内容を検査するのはWAF。"],
+[14,"図9.2のファイアウォール例で「廃棄」される通信はどれ？","許可されたサーバ以外への，外部から内部へのTCP接続要求（SYN=1，ACK=0）","TCPポート80番（Webサーバ）宛の通信","TCPポート25番（メールサーバ）宛の通信","内部から外部へのTCPコネクション確立要求","80番・25番は通過，内部→外部の接続要求も通過。許可されたコンピュータ以外への外部→内部の接続要求（SYN=1，ACK=0）は廃棄する。"],
+[14,"DMZを挟む2つのファイアウォールのうち，内側のファイアウォールのセキュリティ基準を上げる目的は？","外部向けサーバが被害を受けても内部ネットワークに影響が及ばないようにするため","外部向けサーバへの通信を高速化するため","DMZのサーバを外部から見えなくするため","パターンファイルを自動更新するため","DMZには外部向けサーバを置く。内側の基準を上げておけば，万一外部向けサーバがやられても内部ネットワークは守られる。"],
+[14,"ファイアウォールだけでは防げず，IDSが必要となる理由として正しいものは？","不正な通信でもフィルタリングのルールに合致すれば通り抜けてしまうから","ファイアウォールはTCP通信を一切検査できないから","ファイアウォールは内部に設置できないから","ファイアウォールは暗号化通信しか扱えないから","ファイアウォールはポリシーに合致した通信を許可するので，ルールに合ってさえいれば不正な通信も通る。IDSは通信の中身を分析して不正を検知する。"],
+[14,"共通鍵暗号方式の特徴として正しいものはどれ？","公開鍵暗号方式より処理が高速である","暗号化に使う鍵を公開してよい","鍵の配送問題が存在しない","素因数分解の困難性を安全性の根拠にしている","共通鍵暗号は暗号化と復号で同じ鍵を使い高速。ただし安全な鍵の受け渡し（鍵の配送問題）が課題。"],
+[14,"公開鍵暗号方式で，受信者が公開してよい鍵はどれ？","暗号化に使う公開鍵","復号に使う秘密鍵","送受信者で共有する共通鍵","初期化ベクトル","受信者が公開鍵（暗号化鍵）と秘密鍵（復号鍵）のペアを作り，公開鍵だけを公開する。"],
+[14,"ECBモードの問題点として正しいものはどれ？","同じ平文ブロックが同じ暗号ブロックになり，繰り返しを見抜かれる","1つ前の暗号ブロックが壊れると全体が復号できない","初期化ベクトルが必須で管理が難しい","公開鍵がないと暗号化できない","ECBは平文ブロックをそのまま暗号化するため，同じ値のブロックは同じ暗号文になり解読の危険がある。CBCは前の暗号ブロックとXORするのでこれを防げる。"],
+[14,"AESのブロック長はどれ？","128ビット","64ビット","192ビット","256ビット","AESのブロック長は128ビット固定。鍵長が128/192/256ビットから選べる。128ビットの入力を8ビットずつ16個に分け，4×4の配列で処理する。"],
+[14,"AESの第1段（鍵長128bit）の処理順として正しいものは？（最初のAddRoundKey(R0)の後）","SubBytes → ShiftRows → MixColumns → AddRoundKey","ShiftRows → SubBytes → AddRoundKey → MixColumns","MixColumns → ShiftRows → SubBytes → AddRoundKey","AddRoundKey → MixColumns → ShiftRows → SubBytes","平文とR0のAddRoundKeyの後，各段でSubBytes（換字）→ShiftRows（行ローテーション）→MixColumns（列の行列変換）→AddRoundKey（ラウンド鍵とXOR）。"],
+[14,"AESの最終段で行わない処理はどれ？","MixColumns","SubBytes","ShiftRows","AddRoundKey","最終段はSubBytes→ShiftRows→AddRoundKey(Rn)で，MixColumnsは行わない。"],
+[14,"RSAの安全性の根拠はどれ？","巨大な数の素因数分解が困難であること","離散対数問題が困難であること","ハッシュ値の衝突が起こりにくいこと","XORを2回行うと元に戻ること","RSAは素因数分解の困難性，Diffie-Hellmanは離散対数問題の困難性が根拠。"],
+[14,"Diffie-Hellman鍵共有の安全性の根拠はどれ？","離散対数問題が困難であること","素因数分解が困難であること","衝突耐性があること","鍵長が256ビットであること","m＝g<sup>a</sup> mod p を満たすaを求める離散対数問題の困難性を利用する。"],
+[14,"RSAで公開鍵として公開する値の組はどれ？","e と n","d と n","p と q","d と (p−1)(q−1)","公開鍵は(e, n)。dは秘密鍵として安全に管理する。p，qが知られるとdが計算できてしまう。"],
+[14,"暗号化技術とOSI参照モデルの階層の対応として正しいものはどれ？","IPsec：ネットワーク層","SSH：ネットワーク層","S/MIME：トランスポート層","TLS/SSL：データリンク層","表9.1：SSH・S/MIMEはアプリケーション層，TLS/SSLはセッション層〜トランスポート層，IPsecはネットワーク層。"],
+[14,"WPA2（無線LANのセキュリティ規格）で使われる暗号化アルゴリズムはどれ？","AES","DES","RSA","MD5","AESはWPA2の暗号化アルゴリズム。"],
+[14,"アンチウイルスがウイルスを検出する方法として正しいものは？","ウイルスの特徴を記したパターンファイルと比較する","送信元IPアドレスを照合する","SYNパケットの数を数える","電子証明書を検証する","アンチウイルスはパターンファイルとの比較で検出する。パターンファイルを更新することで新しい攻撃にも対応する。"],
+[14,"ストリーム暗号で，暗号文から平文を得る方法として正しいものは？","暗号化と同じ擬似乱数とXORをとる","秘密鍵dでべき乗剰余を計算する","換字表を逆に引く","ハッシュ値を比較する","XORは同じ値を2回適用すると元に戻る（M⊕K⊕K＝M）ので，同じ鍵から作った擬似乱数とXORすれば復号できる。"],
+[14,"TCP/IPで当初セキュリティがあまり重要視されなかった理由は？","当初は特定のユーザのみが利用していたため","暗号技術がまだ存在しなかったため","通信速度が遅く攻撃できなかったため","法律で攻撃が禁止されていたため","当初は特定ユーザのみが利用していたが，インターネットの普及でセキュリティが重要になった。利便性と安全性の両立が必要。"],
+
+[15,"MACと電子署名の比較として正しいものはどれ？","否認防止ができるのは電子署名だけである","MACは公開鍵暗号方式を用いる","電子署名では改ざんを検出できない","MACでは送信者を第三者に証明できる","MACは送受信者が同じ共通鍵を持つので受信者もMACを作れ，送信者の証明・否認防止はできない。電子署名は秘密鍵を持つ送信者しか作れないので両方できる。改ざん検出はどちらも可能。"],
+[15,"電子署名を作成するとき，送信者がハッシュ値の暗号化に使う鍵は？","送信者の秘密鍵","送信者の公開鍵","受信者の公開鍵","受信者の秘密鍵","署名は送信者の秘密鍵で作り，受信者は送信者の公開鍵で検証する（暗号化通信の場合とは逆）。"],
+[15,"電子署名を検証するとき，受信者が使う鍵は？","送信者の公開鍵","送信者の秘密鍵","受信者の秘密鍵","認証局の秘密鍵","受信者は送信者の公開鍵で署名を復号し，受信メッセージのハッシュ値と照合する。一致すれば改ざんなし・本人送信。"],
+[15,"MACを使う前に，送信者と受信者があらかじめ共有しておくものは？","共通鍵","秘密鍵","電子証明書","ハッシュ値","①送受信者で共通鍵を共有→②共通鍵とメッセージからMACを生成→③付加して送信→④受信者が同じ鍵で再計算→⑤一致すれば改ざんなし。"],
+[15,"MACが主に用いられている用途はどれ？","Wi-Fi，TLS，IPsec など","PKI，S/MIME など","CD音源の符号化","DNSの名前解決","MACの用途はWi-Fi，TLS，IPsecなど。電子署名の用途はPKI，S/MIMEなど。"],
+[15,"電子署名だけではなりすましを完全に防げず，PKIが必要になる理由は？","その公開鍵が本当に本人のものか証明できないから","電子署名では改ざんを検出できないから","ハッシュ値が必ず衝突するから","公開鍵暗号の処理が遅いから","署名者が公開鍵に対応する秘密鍵を持つことは分かるが，その公開鍵が本物かは分からない。認証局に電子証明書を発行してもらうことで証明する。"],
+[15,"PKIで，受信者がユーザAの電子証明書を検証するのに使う鍵は？","認証局の公開鍵","認証局の秘密鍵","ユーザAの秘密鍵","受信者の秘密鍵","電子証明書は認証局の秘密鍵で署名されているので，認証局の公開鍵で検証する。これでユーザAの公開鍵が正しいと確認できる。"],
+[15,"認証局が電子証明書を発行するときに使う鍵は？","認証局の秘密鍵","認証局の公開鍵","ユーザAの秘密鍵","ユーザAの公開鍵","認証局は登録されたユーザの公開鍵に対し，認証局の秘密鍵で電子署名を作成して電子証明書とする。"],
+[15,"現在は安全とはいえないハッシュアルゴリズムの組み合わせはどれ？","MD5 と SHA-1","SHA-256 と SHA-3","SHA-384 と SHA-512","SHA3-256 と SHAKE128","MD5（128bit），SHA-1（160bit）は×。SHA-2，SHA-3は〇。ビット長が長いほど安全。"],
+[15,"ハッシュ関数の性質として誤っているものはどれ？","入力が長いほどハッシュ値も長くなる","入力が1文字違うだけで全く異なるハッシュ値になる","任意の長さの入力を固定長に変換する","ハッシュ値から入力値を復元するのは困難","ハッシュ値の長さはアルゴリズムで決まり，入力の長さに関係なく一定（SHA-256なら常に256bit）。"],
+[15,"PPPの認証方式PAPの問題点は？","パスワードが暗号化されずに送信される","チャレンジメッセージが予測できる","電子証明書が必要で手間がかかる","ハッシュ関数の衝突が起きやすい","PAPはIDとパスワードを平文でやり取りするため盗聴・なりすましの危険がある。CHAPはチャレンジレスポンス方式でパスワードそのものを送らない。"],
+[15,"IPsecが動作する階層はどれ？","ネットワーク層","アプリケーション層","データリンク層","物理層","IPsecはネットワーク層で動作し，共通鍵暗号方式を利用する。"],
+[15,"ルータ間のトンネルモードのIPsecで，新IPヘッダの宛先アドレスはどれ？","VPNルータ","最終宛先のホスト","認証局","DNSサーバ","トンネルモードでは元のIPパケット全体を暗号化し，VPN装置宛の新IPヘッダを付ける。暗号化されるのはVPNルータ間のみ。"],
+[15,"IPsecのトランスポートモードの特徴として正しいものは？","IPヘッダは暗号化されず，通信経路のすべての区間が暗号化される","VPNルータ間の区間のみが暗号化される","元のIPパケット全体に新しいIPヘッダが付く","送信ホストはIPsecを実装しなくてよい","トランスポートモードはIPsecを実装したホスト間でIPペイロード部を保護する。ホスト間なので経路全体が暗号化されるが，IPヘッダは暗号化されない。"],
+[15,"IPsecのIKEフェーズ1で行うことはどれ？","Diffie-Hellmanで共通鍵を交換し，相手を認証してISAKMP SAを確立する","暗号化アルゴリズムを決めてIPsec SAを確立する","実際のデータを暗号化して送信する","電子証明書を発行する","フェーズ1：認証と鍵交換（DH，事前共有鍵等）→ISAKMP SA。フェーズ2：AESやSHA-2などのパラメータ決定→IPsec SA。その後IPsec通信開始。"],
+[15,"IPsec SAについて正しいものはどれ？","送信と受信でそれぞれSAが必要","1つのSAで送受信を兼ねる","IKEフェーズ1で確立される","TLSのハンドシェイクで確立される","IKEフェーズ2で確立されるIPsec SAは実際のデータ通信に使われ，送受信それぞれにSAが必要。"],
+[15,"HTTPSで，通信データそのものの暗号化に使う方式は？","共通鍵暗号方式","公開鍵暗号方式","ハッシュ関数","電子署名","通信の暗号化は高速な共通鍵暗号，その共通鍵の配送に公開鍵暗号を使う（TLS1.3はDiffie-Hellman鍵交換のみ対応）。"],
+[15,"TLS1.3で対応している鍵交換方式は？","Diffie-Hellman鍵交換のみ","RSA鍵交換のみ","事前共有鍵のみ","鍵交換は行わない","資料ではTLS1.3はDiffie-Hellman鍵交換のみに対応と説明されている。"],
+[15,"IEEE802.1Xで，認証前の初期アクセス時の端末の状態として正しいものは？","認証サーバとのみ通信できるVLANに接続され，一時的なIPアドレスが付与される","すべてのネットワークに接続できる","ネットワークに一切接続できない","固定IPアドレスが自動で割り当てられる","①②初期は認証用VLANで一時IP→③ID/パスワード送信→④認証OKならネットワーク情報を送信→⑤APがVLANを切り替え→⑥IP再設定→⑦接続可能。"],
+[15,"IEEE802.1Xで，認証後に端末を接続するVLANを切り替えるのは？","アクセスポイント（オーセンティケータ）","端末（サプリカント）","認証サーバ","認証局","手順⑤でアクセスポイントがVLANを切り替え，⑥で端末がIPアドレスをリセットして再設定する。"],
+[15,"事前共有鍵（PSK）による認証で，各装置がPSKと生成した共通鍵を組み合わせて作るものは？","ハッシュ値（認証トークン）","電子証明書","初期化ベクトル","セッションID","PSKと共通鍵からハッシュ値（認証トークン）を作り，受信側が同じ計算をして一致すれば相手は正しいPSKを持つと判断できる。"],
+[15,"認証の要素のうち「あるものを持っていること」による認証はどれ？","IDカードや電子証明書","パスワードや暗証番号","指紋や虹彩","メッセージ認証コード","知識：パスワード・暗証番号・秘密鍵，所持：IDカード・鍵・電子証明書・電話番号，生体：指紋・虹彩・顔。"],
+
+[16,"格納型XSSで影響を受けるのは誰？","脆弱性サイトにアクセスした人すべて","誘導サイトのリンクからアクセスした人だけ","攻撃者自身だけ","データベース管理者だけ","格納型は脆弱性サイトにスクリプトを埋め込むので，アクセスするたびに実行され全員が影響を受ける。反射型は誘導サイトのリンクから来た人が対象。"],
+[16,"反射型XSSで攻撃に利用されるサイトは？","誘導サイトと脆弱性サイトの2つ","脆弱性サイトのみ","DNSサーバと誘導サイト","認証局と脆弱性サイト","反射型（間接攻撃）は誘導サイトに脆弱性リンクを仕込み，ユーザがクリックして脆弱性サイトにアクセスするとスクリプトが実行される。"],
+[16,"SELECT * FROM user WHERE id = 'aiueo' or 'A'='A' を実行した結果は？","全ての行が選択される","1行も選択されない","idがaiueoの行だけ選択される","構文エラーになる","'A'='A' は常に真なので，idに関係なく検索条件が常に真となり全行が取り出される。"],
+[16,"SQLインジェクション対策のエスケープ処理で，シングルクォートはどう扱う？","2個連続させて1個の文字として扱う","入力から削除する","ダブルクォートに置き換える","全角に変換する","' を '' にすると文字列中の1文字として扱われ，aiueo' or 'A'='A 全体が1つの文字列になり条件として解釈されなくなる。"],
+[16,"CSRFとセッションハイジャックの違いとして正しいものは？","CSRFはセッションIDを盗まず，正規のセッションを踏み台にする","CSRFはセッションIDを盗んでなりすます","セッションハイジャックは罠サイトを閲覧させるだけで成立する","両者に違いはない","セッションハイジャックはセッションIDを盗んでなりすます。CSRFはログイン中のユーザに罠サイトを見せ，正規セッションのまま意図しないリクエストを送らせる。"],
+[16,"セッションIDが含まれることが多いものはどれ？","Cookie","IPヘッダ","DNS応答","電子証明書","セッションIDはCookieに含まれることが多い。XSSでCookieが盗まれるとセッションハイジャックにつながる。"],
+[16,"CSRFの被害として想定されないものはどれ？","大量のリクエストでサーバが停止する","アカウントのパスワード変更","商品の勝手な購入","掲示板への不正投稿","CSRFの被害例はパスワード変更・勝手な購入・不正投稿・不正送金など。サーバ停止はDoS攻撃の被害。"],
+[16,"SYNフラッド攻撃で，攻撃者がサーバに返さないパケットは？","ACK","SYN","SYN+ACK","RST","送信元を偽装したSYNを大量に送り，サーバのSYN+ACKにACKを返さないことで応答待ち状態を大量に作らせる。"],
+[16,"SYNフラッド攻撃への対策として資料に挙げられているものは？","3ウェイハンドシェイク時のタイムアウトの短縮","オープン・リゾルバにする","パスワードを長くする","CBCモードを使う","SYNフラッド対策：タイムアウト短縮。DNSリフレクタ対策：外部からの再帰問い合わせを許可しない。共通：パケットフィルタリング，IDS/IPS/WAFの導入。"],
+[16,"DNSリフレクタ攻撃への対策として正しいものは？","外部の不特定IPアドレスからの再帰問い合わせを許可しない","DNSサーバをオープン・リゾルバにする","3ウェイハンドシェイクのタイムアウトを長くする","セッションIDを長くする","踏み台にされないよう，オープン・リゾルバになっていないか確認し，外部からの再帰問い合わせを許可しない設定にする。"],
+[16,"DNSリフレクタ攻撃で，攻撃者が偽装するものは？","送信元IPアドレス（攻撃対象のサーバのアドレスにする）","宛先ポート番号","DNSサーバの電子証明書","Cookieの値","送信元を標的のアドレスに偽装して踏み台DNSに問い合わせると，応答が標的に送られる。多数のDNSサーバで行うと大量の応答が標的に集中する。"],
+[16,"Miraiが新たなIoT機器に感染を広げる手口はどれ？","Telnetへのポートスキャンと辞書攻撃","SQLインジェクション","メールの添付ファイル","CSRFの罠サイト","Mirai感染機器はランダムなIPのTelnetにポートスキャンし，見つけた機器に辞書攻撃で侵入を試みる。"],
+[16,"Miraiで，侵入に成功した機器のログイン情報が最初に報告される先は？","レポートサーバ","C&Cサーバ","ダウンローダ","DNSサーバ","③レポートサーバへ報告→④レポートサーバがダウンローダへ転送→⑤ダウンローダが侵入してMirai本体を感染させる。①C&Cサーバは攻撃命令・生存確認。"],
+[16,"ログイン試行回数に制限があってもアカウントロックされにくい攻撃は？","リバースブルートフォース攻撃","ブルートフォース攻撃","辞書攻撃","SYNフラッド攻撃","パスワードを固定して多数のユーザ名で試すので，1アカウントあたりの試行は少なくロックされにくい。"],
+[16,"パスワードの使い回しを狙う攻撃はどれ？","パスワードリスト攻撃","リバースブルートフォース攻撃","辞書攻撃","DNSリフレクタ攻撃","過去に漏洩したIDとパスワードの組を別サービスで試す。使い回しが多いことを利用する。"],
+[16,"DoS攻撃とDDoS攻撃の違いとして正しいものは？","DDoSはボットネットなど多数のコンピュータから一斉に行う","DDoSは1台のコンピュータから行う","DoSは必ずDNSサーバを踏み台にする","DDoSはパスワードを盗む攻撃である","DoSは基本的に1台から，DDoSはマルウェアに感染した多数の端末（ボットネット）から一斉に行うため規模が格段に大きい。"],
+[16,"XSSでセッションIDを盗む流れで，攻撃者が最初に探すものは？","ユーザの入力がそのままHTMLに反映されるページ","オープン・リゾルバのDNSサーバ","Telnetが開いているIoT機器","漏洩したパスワードのリスト","①脆弱なページ（コメント欄・検索窓など）を探す→②Cookieを攻撃者サイトへ送るスクリプトを注入→③被害者が閲覧しCookie窃取→④なりすまし。"],
+[16,"SQLインジェクションの被害として想定されるものは？","データベースの非公開情報の漏洩や改ざん・消去","搬送波の周波数の変動","電子証明書の失効","IPアドレスの枯渇","DB内の非公開情報漏洩，改ざん・消去，Webページ改ざん，パスワード変更，システム停止などが想定される。"],
+
+[17,"AMの被変調波の占有周波数帯域幅は，元の信号波の何倍？","2倍","1倍","1/2倍","4倍","AM波は f<sub>c</sub>−f<sub>s</sub>，f<sub>c</sub>，f<sub>c</sub>＋f<sub>s</sub> の成分を持ち，上下の側波帯で帯域幅は2f<sub>s</sub>（信号の2倍）に広がる。"],
+[17,"FMがAMより雑音に強い理由として正しいものは？","多くの雑音は振幅に影響し，FMは振幅の変化の影響を受けにくいから","FMは占有周波数帯域幅が狭いから","FMは搬送波を使わないから","FMは送信電力が大きいから","雑音の多くは振幅に影響する。FMは周波数で情報を伝えるので，受信機で振幅を一定にして雑音を除去できる。"],
+[17,"AMと比較したFMの欠点はどれ？","占有周波数帯域幅が広い","雑音に弱い","復調できない","アンテナが長くなる","FMの帯域幅は理論上無限で，カールソン則 B＝2(Δf＋f<sub>m</sub>) で近似されるようにAMより広い。"],
+[17,"変調による利点に含まれないものはどれ？","伝送路の雑音を完全に除去できる","アンテナの長さを短くできる","同時に複数の信号を伝送できる（多重化）","伝送に必要な周波数帯域幅を抑えられる","変調の利点はアンテナの短縮・多重化・帯域幅の抑制の3つ。雑音を完全に除去できるわけではない。"],
+[17,"電波の周波数が高くなると，半波長アンテナの長さはどうなる？","短くなる","長くなる","変わらない","周波数の2乗に比例して長くなる","λ＝c／f なので周波数が高いほど波長が短く，アンテナ（λ/2）も短くなる。"],
+[17,"SSB（単側波帯変調）の特徴はどれ？","占有周波数帯域幅を半分にでき，電力も節減できる","帯域幅が2倍になるが雑音に強い","搬送波だけを送る","2つの側波帯を両方とも2倍の電力で送る","上側波帯と下側波帯は同じ情報を持つので，BPFで片方だけ送れば復調できる。帯域幅はf<sub>m</sub>（AMの半分）。"],
+[17,"PCMの処理の順序として正しいものは？","標本化 → 量子化 → 符号化","量子化 → 標本化 → 符号化","符号化 → 標本化 → 量子化","標本化 → 符号化 → 量子化","時間を区切って測る（標本化）→振幅を段階に丸める（量子化）→2進数にする（符号化）。"],
+[17,"量子化ビット数を増やしたときの影響として正しいものは？","量子化雑音は減るが，データ量は増える","量子化雑音もデータ量も減る","量子化雑音は増え，データ量は減る","サンプリング周波数が上がる","レベル数L＝2<sup>n</sup>が増え精度が上がるので量子化雑音は減る。その分データ量は増える。"],
+[17,"非線形量子化で，細かい量子化ステップを割り当てる領域は？","小振幅領域","大振幅領域","全領域に均等","信号が0の時だけ","音声は小振幅の出現確率が高く量子化雑音の影響を受けやすい。小振幅に細かく，大振幅に粗く割り当てる。"],
+[17,"線形量子化で信号の振幅が小さいときに問題になることは？","雑音との比率（SN比）が悪くなり信号が雑音に埋もれる","データ量が急増する","サンプリング定理を満たさなくなる","搬送波が消える","線形量子化では量子化雑音が信号の大きさに関係なく一定レベルで加わるため，小振幅ではSN比が悪化する。"],
+[17,"CD音源のサンプリング周波数はどれ？","44.1 kHz","8 kHz","20 kHz","3.4 kHz","CD：f<sub>s</sub>＝44.1kHz，f<sub>m</sub>＝20kHz。電話：f<sub>s</sub>＝8kHz，f<sub>m</sub>＝3.4kHz。どちらも f<sub>s</sub>＞2f<sub>m</sub> を満たす。"],
+[17,"電話音声のサンプリング周波数と信号周波数の上限の組み合わせは？","f<sub>s</sub>＝8 kHz，f<sub>m</sub>＝3.4 kHz","f<sub>s</sub>＝44.1 kHz，f<sub>m</sub>＝20 kHz","f<sub>s</sub>＝3.4 kHz，f<sub>m</sub>＝8 kHz","f<sub>s</sub>＝4 kHz，f<sub>m</sub>＝3.4 kHz","8＞2×3.4＝6.8 なので標本化定理を満たす。"],
+[17,"交番2進符号（グレイコード）の利点はどれ？","隣接する値の間で1ビットしか変化せず，誤りを少なくできる","ビット数を半分にできる","量子化雑音が0になる","暗号化の効果がある","隣接値で1ビットしか変わらないので，隣の値と誤っても1ビット誤りで済む。デジタル変調（多値PSK）で利用される。"],
+[17,"FMとPMの関係として正しいものは？","本質的に同じ（信号を微分してFM変調するとPM波になる）","全く無関係な方式である","PMはAMの一種である","FMは振幅も同時に変化させる","式(5)(6)より，位相の変化と周波数の変化は微分・積分の関係にあり，FMとPMは本質的に同じ。"],
+[17,"デジタル信号（矩形波）をそのまま送ると帯域幅が広くなる理由は？","急峻な波形は非常に広い周波数成分（高調波）を含むから","振幅が大きすぎるから","搬送波の周波数が低いから","サンプリング周波数が高いから","矩形波は高調波を含み帯域が広い。変調で波形を滑らかにすると必要な帯域幅を抑えられ，干渉回避や多重化が容易になる。"],
+[17,"通信システムで「ほかの通信系の信号が混入すること」を何という？","干渉","雑音","変調","符号化","雑音は信号と無関係なランダムな電気信号の混入，干渉はほかの通信系の信号の混入。"],
+
+[18,"BPSKで取り得る位相はどれ？","0 と π","π/4 と 3π/4","0，π/2，π，3π/2 の4つ","0 のみ","BPSKは符号に応じて位相0とπの2値。1シンボル1ビット。"],
+[18,"QPSKで取り得る位相の組はどれ？","π/4，3π/4，5π/4，7π/4","0，π","0，π/8，π/4，3π/8","π/2，π","QPSK（4PSK）は4つの位相で1シンボル2ビット。"],
+[18,"多値PSKで多値数Mを増やすとどうなる？","単位時間に多くのデータを送れるが，雑音の影響を受けやすくなる","伝送できるデータ量が減る","雑音に強くなる","シンボルレートが自動的に上がる","位相の許容誤差が小さくなるため雑音に弱くなる。"],
+[18,"多値PSKで各位相にビットを割り当てるときグレイコードを使う理由は？","隣の位相に誤って復調されても誤りを1ビットに抑えるため","伝送速度を2倍にするため","暗号化するため","搬送波を再生しやすくするため","隣接位相間は誤る可能性が高いので，隣接どうしが1ビット違いになるよう交番2進符号を割り当てる。"],
+[18,"16PSKと16QAMを比べたとき，誤り率が低いのはどちら？","16QAM（信号点間距離が長い）","16PSK（信号点間距離が長い）","どちらも同じ","16PSK（振幅が一定だから）","最大振幅Aのとき d<sub>p</sub>＝2A sin(π/16)≈0.39A，d<sub>q</sub>≈0.47A。誤り率は信号点間距離で決まり，16QAMの方が低い。"],
+[18,"5Gの携帯電話で導入されているQAMはどれ？","1024QAM","16QAM","4QAM","8QAM","資料では5Gで1024QAMが導入されていると説明されている（1シンボル10ビット）。"],
+[18,"QPSKの説明として正しいものはどれ？","同相成分と直交成分それぞれに2ASK（BPSK）を行い合成したもの","振幅だけを4段階に変えたもの","周波数を4種類に切り替えるもの","搬送波を使わないもの","i(t)cos(2πf<sub>c</sub>t)−q(t)sin(2πf<sub>c</sub>t) で，i，q がそれぞれ±1をとる。"],
+[18,"QPSK復調器で，同期検波の後にLPFで除去する成分は？","搬送波の2倍の周波数成分","直流成分","信号波の成分","雑音のみ","cos×cos＝(1＋cos2θ)/2 のように2倍周波数成分が出るのでLPFで除去し，残った成分の正負を判定する。"],
+[18,"QPSK復調器で，再生した cos 波から −sin 波を作る回路は？","π/2移相器","LPF","並直列変換器","DA変換器","搬送波再生した cos(2πf<sub>c</sub>t) をπ/2移相して −sin(2πf<sub>c</sub>t) を作り，直交成分の同期検波に使う。"],
+[18,"16QAM信号の生成方法として正しいものは？","4値ASK信号を同相成分と直交成分として合成する","16個の周波数を切り替える","16PSKに振幅一定の制約を加える","2値ASKを4回繰り返す","位相がπ/2離れた2つの4値ASK信号の合成。4bitを2bitずつI，Qに分けDA変換する。"],
+[18,"資料の16QAMで，2ビットと4値ASKのレベルの対応で「11」は？","+1/3","+1","−1/3","−1","10⇒+1，11⇒+1/3，01⇒−1/3，00⇒−1（隣どうしが1ビット違いのグレイコード順）。"],
+[18,"資料のQPSK変調器でのレベル変換の規則は？","0 ⇒ 1，1 ⇒ −1","0 ⇒ −1，1 ⇒ 1","0 ⇒ 0，1 ⇒ 1","0 ⇒ 1/2，1 ⇒ −1/2","2bitを直並列変換し，それぞれ 0⇒1，1⇒−1 に変換して i(t)，q(t) とする。"],
+[18,"デジタル変調の誤り率を左右する主な要因は？","信号点間距離","搬送波の初期位相","シンボルの並び順","ビット列の長さ","信号点どうしが離れているほど雑音で隣と間違えにくく，誤り率が下がる。"],
+[18,"OOKの説明として正しいものは？","2値符号に対応して一方の搬送波成分を0にするASK","2つの周波数を切り替えるFSK","位相を0とπで切り替えるPSK","振幅と位相を両方変えるQAM","オンオフキーイング：符号”0”で振幅0，符号”1”で搬送波を送る。"],
+
+[19,"24チャネルTDMの1フレームが125μsである理由は？","音声を8kHz（周期125μs）で標本化しているから","フレーム同期ビットが125個あるから","伝送速度が125kbpsだから","24チャネル×5μsだから","サンプリング周期 1/8000＝125μs。1サンプル8bitなので1chあたり 8bit/125μs＝64kbps。"],
+[19,"8bit量子化の音声24chをTDMで多重化したとき，1フレームのビット長は？","193 bit","192 bit","24 bit","200 bit","8×24＋1（フレーム同期ビット）＝193bit。伝送速度は 193bit/125μs＝1.544Mbps。"],
+[19,"スペクトル拡散通信方式の特徴として誤っているものは？","占有する周波数帯域が狭くなる","他からの妨害に強い","秘匿性がある","多重化が可能","スペクトル拡散は信号を広い帯域に拡散する。特徴は(1)妨害に強い(2)秘匿性(3)多重化可能。"],
+[19,"スペクトル拡散で，伝送路で混入した妨害波は逆拡散でどうなる？","拡散符号で拡散され，帯域内の電力密度が小さくなる","2倍に増幅される","そのまま残る","完全に0になる","r(t)＝s(t)＋n(t)×m(t)。希望信号はm²＝1で元に戻り，妨害波はm(t)で拡散される。"],
+[19,"スペクトル拡散に秘匿性がある理由として正しいものは？","雑音と見分けがつかないほど電力密度が小さく，同じ拡散符号がないと逆拡散できないから","必ずAESで暗号化されるから","送信電力が非常に大きいから","周波数を1つしか使わないから","広帯域に拡散するので傍受されにくく，拡散符号が暗号鍵の役割を果たす。"],
+[19,"アダマール行列の異なる行どうしの相互相関はいくつ？","0","1","−1","符号長N","異なる行は直交しており相互相関はすべて0。だから同じ符号で逆拡散すると希望信号だけ取り出せる（CDM）。"],
+[19,"OFDMがFDMより周波数利用効率が高い理由は？","サブキャリアのスペクトルが重なっていても直交性によりデータを取り出せ，間隔を狭くできるから","ガードバンドを広くとるから","サブキャリアを1本しか使わないから","シンボル長を短くするから","FDMはガードバンドが必要だが，OFDMは直交するサブキャリアを重ねて配置できる。"],
+[19,"OFDMがマルチパスに強い理由は？","高速データを複数の低速データに分割し，各搬送波のシンボル長が長くなるから","搬送波を1本にまとめるから","シンボル長を短くするから","反射波を完全に遮断するから","シンボル長が長いと遅延波と重なる割合が相対的に小さくなり，シンボル間干渉の影響を受けにくい。"],
+[19,"伝送速度を上げて1シンボルの時間（シンボル長）を短くすると，シンボル間干渉は？","増える","減る","変わらない","完全になくなる","シンボル長が短いと遅延波が次・その次のシンボルにまで重なり，より多くの干渉を受ける。"],
+[19,"周波数選択性フェージングが起こる原因は？","複数経路の到来波が合成される際，周波数によって位相関係が異なるから","送信機の電力が不足するから","サンプリング周波数が低いから","拡散符号が直交していないから","広帯域信号がマルチパスを通ると，周波数ごとに強め合い・打ち消し合いが異なり，一部の周波数のレベルが低下する。"],
+[19,"OFDMで，隣接するサブキャリアの周波数間隔f<sub>0</sub>とOFDMシンボル長Tの関係は？","f<sub>0</sub>＝1/T","f<sub>0</sub>＝T","f<sub>0</sub>＝2T","f<sub>0</sub>＝1/(2T)","三角関数の直交性はシンボル長Tの区間で成り立ち，基本周波数 f<sub>0</sub>＝1/T の整数倍のサブキャリアが互いに直交する。"],
+[19,"FDMでガードバンドを設ける理由は？","各チャネルの周波数が重なって混信するのを防ぐため","伝送速度を上げるため","暗号化のため","フレームの境界を示すため","周波数が重なると混信するので，周波数軸上でチャネル間に間隔（保護帯域）を空ける。"],
+[19,"マルチパスで逆位相の電波が合成されるとどうなる？","打ち消しあって信号が小さくなり品質が劣化する","強め合って必ず品質が上がる","周波数が2倍になる","変化しない","経路ごとに振幅・位相・到来時間が異なり，逆位相だと打ち消し合う。"],
+
+[20,"OFDM信号を直接（アナログ的に）生成するのが非現実的な理由は？","N個のデジタル変調器とN個の正確なキャリア波形生成器が必要になるから","サブキャリアが1本しかないから","DFTが存在しないから","ガードインターバルが挿入できないから","そこで複素表現u(t)を標本化して考えると，IDFTで計算できることを利用する。"],
+[20,"OFDM変調器と復調器で使う変換の組み合わせとして正しいものは？","変調：IDFT，復調：DFT","変調：DFT，復調：IDFT","変調：IDFT，復調：IDFT","変調：微分，復調：積分","複素データシンボルをIDFTしてOFDMシンボルの標本値を得る。復調は標本化した系列をDFTする。FFTで高速計算できる。"],
+[20,"ガードインターバルの中身として正しいものは？","OFDMシンボルの後半部分のコピーを先頭に挿入したもの","すべて0の無信号区間","次のシンボルの先頭部分","フレーム同期ビット","後半のコピーを先頭に付けるので，GIと元のシンボルが連続的につながり，各サブキャリアはGIを含めて連続的な正弦波になる。"],
+[20,"ガードインターバルによりシンボル間干渉なく切り出せる条件は？（τ：遅延時間，Tg：GI長）","τ ＜ Tg","τ ＞ Tg","τ ＝ 2Tg","Tgに関係なく常に可能","遅延波の遅延時間がGI長より短ければ，ISIのない区間を1シンボル分切り出せ，サブキャリア間の直交性も保たれる。"],
+[20,"OFDMとOFDMAの違いとして正しいものは？","OFDMAはユーザの状況に応じてサブキャリアを割り当て，複数ユーザが同時に通信する","OFDMAはサブキャリアを1本だけ使う","OFDMは複数ユーザで同時にサブキャリアを分け合う","OFDMAは時間を一切分割しない","OFDMはある時刻に全サブキャリアを1ユーザが使う。OFDMAはサブキャリア（と時間）を複数ユーザに割り当てる。"],
+[20,"地上デジタルテレビ放送で1チャネル（6MHz）を分割するセグメント数は？","13","12","432","5617","13セグメント×各432本＋1＝5617本のサブキャリア。変調はQPSK，16QAM，64QAM。"],
+[20,"IEEE802.11axで，20MHz幅チャネルのOFDMのサブキャリア数は？","242本","64本","432本","5617本","IEEE802.11axは20MHzで242本，サブキャリアの変調にQPSK，64QAM，1024QAMなどを使う。"],
+[20,"資料のOFDM変調器のQPSKマッピングで，ビット「01」に対応する複素データシンボルは？","−1＋j","1＋j","−1−j","1−j","00→1＋j，01→−1＋j，11→−1−j，10→1−j。"],
+[20,"OFDM信号S(t)は複素表現u(t)とどういう関係にある？","u(t)の実部","u(t)の虚部","u(t)の絶対値","u(t)の微分","S(t)＝Re[u(t)]。オイラーの公式で展開すると実部が a<sub>n</sub>cos − b<sub>n</sub>sin の形になる。"],
+[20,"OFDM変調器でサブキャリアの変調に16QAMを使う場合，データビット列は何ビットずつに分割する？","4ビット","2ビット","8ビット","16ビット","QPSKなら2bit，16QAMなら4bit（log<sub>2</sub>16）ずつに分割してマッピングする。"],
+[20,"地上デジタルテレビ放送のサブキャリア変調に使われないものはどれ？","1024QAM","QPSK","16QAM","64QAM","地デジはQPSK，16QAM，64QAM。1024QAMはIEEE802.11ax（や5G）で使われる。"],
+[20,"OFDM復調器で標本化する周期は？（N：サブキャリア数，f<sub>0</sub>：搬送波間隔）","1/(N f<sub>0</sub>)","N/f<sub>0</sub>","1/f<sub>0</sub>","N f<sub>0</sub>","1シンボル長T＝1/f<sub>0</sub>をN等分した 1/(Nf<sub>0</sub>) で標本化し，N個の標本値にDFTを適用する。"],
+[20,"4G・5Gの携帯電話や無線LAN（IEEE802.11ax）で使われている多元接続方式は？","OFDMA","FDMA","TDMA","CDMA","OFDMAは携帯電話（4G，5G），無線LAN（IEEE802.11ax）で利用されている。"]
+].map((r,i)=>({id:i,ch:r[0],q:r[1],c:[r[2],r[3],r[4],r[5]],e:r[6]}));
+/* ================= 乱数・ユーティリティ ================= */
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const sample=(a,n)=>shuffle(a).slice(0,n);
+const uniq=a=>[...new Set(a)];
+function othersFrom(pool,correct,n){return sample(uniq(pool).filter(x=>x!==correct),n)}
+
+/* ================= SVG ヘルパー ================= */
+let _mk=0;
+function S(w,h,inner){const id='ah'+(++_mk);return `<svg class="fg" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg"><defs><marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" class="ah"/></marker></defs>${inner.replace(/#M#/g,'#'+id)}</svg>`}
+function T(x,y,s,o={}){const fs=o.fs||13;const L=String(s).split('\n');const y0=y-(L.length-1)*fs*0.6;return `<text x="${x}" y="${y0.toFixed(1)}" font-size="${fs}" text-anchor="${o.a||'middle'}" dominant-baseline="central" class="${o.c||''}"${o.w?` font-weight="${o.w}"`:''}>${L.map((l,i)=>`<tspan x="${x}" y="${(y0+i*fs*1.2).toFixed(1)}" dominant-baseline="central">${l}</tspan>`).join('')}</text>`}
+function R(x,y,w,h,c='bx',rx=6){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" class="${c}"/>`}
+function BX(x,y,w,h,s,c='bx',o={}){const b=s==='?';return R(x,y,w,h,b?'blank':c,o.rx??6)+T(x+w/2,y+h/2,b?'？':s,{fs:o.fs||13,c:b?'bl':(o.tc||''),w:b?800:o.w})}
+function AR(x1,y1,x2,y2,o={}){return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="ln${o.d?' dash':''}" marker-end="url(#M#)"${o.both?' marker-start="url(#M#)"':''}/>`+(o.l!=null?T((x1+x2)/2+(o.dx||0),(y1+y2)/2+(o.dy??-9),o.l,{fs:o.fs||11.5,c:o.lc||'',w:o.lw}):'')}
+function LN(x1,y1,x2,y2,c='ln'){return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${c}"/>`}
+function P(d,c='ln'){return `<path d="${d}" class="${c}"/>`}
+function chainV(items,o={}){const w=o.w||230,W=w+40,h=o.h||34,g=22;let s='',y=8;items.forEach((it,i)=>{s+=BX(20,y,w,h,it,'bx',{fs:o.fs||13});if(i<items.length-1)s+=AR(20+w/2,y+h,20+w/2,y+h+g-1);y+=h+g});return S(W,y-g+8,s)}
+function CON(pts,o={}){const N=o.size||240,c=N/2,sc=(N/2-30)/(o.max||1.15);let s=LN(10,c,N-10,c,'ax')+LN(c,10,c,N-10,'ax')+T(N-12,c-11,'I',{fs:12,c:'mut'})+T(c+11,14,'Q',{fs:12,c:'mut'});
+  if(o.circle)s+=`<circle cx="${c}" cy="${c}" r="${(sc*o.circle).toFixed(1)}" class="ln dash" style="opacity:.45"/>`;
+  pts.forEach((p,i)=>{const x=c+p[0]*sc,y=c-p[1]*sc,h=o.hl===i;s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${h?7.5:4.5}" class="${h?'pth':'pt'}"/>`;
+    if(p[2]!=null&&o.labels!==false){const ang=Math.atan2(p[1],p[0]);const lx=o.radial?Math.cos(ang)*20:0,ly=o.radial?-Math.sin(ang)*16:-13;s+=T(x+lx,y+ly,p[2],{fs:o.lfs||11,c:'mono'})}});
+  if(o.extra)s+=o.extra(c,sc);return S(N,N,s)}
+const pskPts=(M,off=0,labels)=>Array.from({length:M},(_,k)=>{const a=off+2*Math.PI*k/M;return [Math.cos(a),Math.sin(a),labels?labels[k]:null]});
+function wavePath(fn,x0,x1,yc,A,t0,t1,N=600){let d='';for(let i=0;i<=N;i++){const t=t0+(t1-t0)*i/N;const x=x0+(x1-x0)*i/N;d+=(i?'L':'M')+x.toFixed(1)+','+(yc-A*fn(t)).toFixed(1)}return d}
+
+/* ================= 図表問題ジェネレータ =================
+   返り値: {q, fig, c:[正解,...], e, figChoices?} */
+const QAMLV={'00':-1,'01':-1/3,'11':1/3,'10':1};
+const fr=v=>({'-1':'−1','1':'+1'}[String(v)]||(v>0?'+1/3':'−1/3'));
+const GRAY3=['000','001','011','010','110','111','101','100'];
+const FIG = {
+const_name:{ch:18,gen(){
+  const L=Math.SQRT1_2,q=[-1,-1/3,1/3,1];
+  const sets={
+    'BPSK':{p:pskPts(2),o:{circle:1}},
+    'QPSK':{p:pskPts(4,Math.PI/4),o:{circle:1}},
+    '8PSK':{p:pskPts(8,Math.PI/8),o:{circle:1}},
+    '16PSK':{p:pskPts(16),o:{circle:1}},
+    '16QAM':{p:q.flatMap(a=>q.map(b=>[a*L,b*L])),o:{}},
+    'OOK':{p:[[0,0],[1,0]],o:{}},
+  };
+  const name=pick(Object.keys(sets));const st=sets[name];
+  const ex={'BPSK':'位相0とπの2点 → BPSK（1シンボル1bit）','QPSK':'位相π/4，3π/4，5π/4，7π/4の4点 → QPSK（2bit）','8PSK':'円周上に等間隔8点 → 8PSK（3bit）','16PSK':'円周上に等間隔16点（振幅一定） → 16PSK（4bit）','16QAM':'4×4の格子状16点（振幅も位相も変化） → 16QAM（4bit）','OOK':'原点（振幅0）と1点 → OOK（オンオフキーイング）'};
+  return {q:'次の信号点配置（コンスタレーション）で表される変調方式はどれ？',fig:CON(st.p,st.o),c:[name,...othersFrom(Object.keys(sets),name,3)],e:ex[name]+'。<br>PSKは振幅一定なので点が円周上に並ぶ。QAMは振幅も変えるので格子状に並び，同じ16値でも16PSKより信号点間距離が長い。'}}},
+qam_code:{ch:18,gen(){
+  const codes=Object.keys(QAMLV);const ci=pick(codes),cq=pick(codes);const ans=ci+cq;
+  const pts=[];let hl=0;const L=Math.SQRT1_2;
+  codes.forEach(a=>codes.forEach(b=>{if(a===ci&&b===cq)hl=pts.length;pts.push([QAMLV[a]*L,QAMLV[b]*L])}));
+  const extra=(c,sc)=>[-1,-1/3,1/3,1].map(v=>T(c+v*L*sc,2*c-12,fr(v),{fs:10,c:'mut'})+T(16,c-v*L*sc,fr(v),{fs:10,c:'mut'})).join('');
+  const all=codes.flatMap(a=>codes.map(b=>a+b));
+  const near=all.filter(x=>x!==ans&&[...x].filter((ch,i)=>ch!==ans[i]).length===1);
+  const wrong=sample(near,2).concat(othersFrom(all.filter(x=>!near.includes(x)),ans,1));
+  return {q:'資料の16QAMで，<b>オレンジ色の点</b>に対応する4ビットの符号はどれ？（上位2bit→I相，下位2bit→Q相，レベル対応 10⇒+1，11⇒+1/3，01⇒−1/3，00⇒−1）',fig:CON(pts,{hl,extra,labels:false}),c:[ans,...wrong],e:`I相の値は ${fr(QAMLV[ci])} → <code>${ci}</code>，Q相の値は ${fr(QAMLV[cq])} → <code>${cq}</code>。よって <b>${ans}</b>。<br>4値ASKのレベル対応（00:−1，01:−1/3，11:+1/3，10:+1）は隣どうしが1bit違いのグレイコード順になっている。`}}},
+qpsk_code:{ch:18,gen(){
+  const map=[[1,1,'00'],[-1,1,'10'],[-1,-1,'11'],[1,-1,'01']];const k=ri(0,3);const L=Math.SQRT1_2;
+  const ans=map[k][2];const ph=['π/4','3π/4','5π/4','7π/4'][k];
+  return {q:'資料18のQPSK変調器（2bitを直並列変換し，各ビットを 0⇒1，1⇒−1 にレベル変換して i(t)，q(t) とする）で，<b>オレンジ色の点</b>を送るときの2ビットの符号はどれ？',fig:CON(map.map(m=>[m[0]*L,m[1]*L]),{hl:k,labels:false,circle:1}),c:[ans,...['00','01','10','11'].filter(x=>x!==ans)],e:`点は位相 ${ph}，i＝${map[k][0]>0?'1':'−1'}，q＝${map[k][1]>0?'1':'−1'}。レベル変換 0⇒1，1⇒−1 を逆にたどると i→<code>${ans[0]}</code>，q→<code>${ans[1]}</code> なので <b>${ans}</b>。<br>（対応：00→π/4，10→3π/4，11→5π/4，01→7π/4。隣接点どうしは1bit違い）`}}},
+psk8_gray:{ch:18,gen(){
+  const isGray=a=>a.every((x,i)=>{const y=a[(i+1)%8];return [...x].filter((c,j)=>c!==y[j]).length===1});
+  const nat=['000','001','010','011','100','101','110','111'];
+  let wrongs=[nat];while(wrongs.length<3){const p=shuffle(GRAY3);if(!isGray(p)&&!wrongs.some(w=>w.join()===p.join()))wrongs.push(p)}
+  const rot=ri(0,7);const g=GRAY3.slice(rot).concat(GRAY3.slice(0,rot));
+  const mk=a=>CON(pskPts(8,0,a),{circle:1,radial:true,lfs:12,size:220,max:1.5});
+  return {q:'8PSKで，<b>交番2進符号（グレイコード）</b>を用いた信号点配置はどれ？',fig:'',figChoices:true,c:[mk(g),...wrongs.map(mk)],e:'グレイコードでは<b>隣り合う信号点どうしのビット差が常に1ビット</b>になる（000→001→011→010→110→111→101→100→000）。雑音で隣の位相に誤って復調されても誤りは1ビットで済む。自然2進（000,001,010,011…）では 001→010 のように2ビット以上変わる箇所がある。'}}},
+wave_dig:{ch:18,gen(){
+  let bits;do{bits=Array.from({length:4},()=>ri(0,1))}while(!bits.includes(0)||!bits.includes(1));
+  const kind=pick(['ASK','OOK','FSK','PSK']);
+  const W=360,x0=10,bw=(W-20)/4,yc=82,A=36;
+  const fn=t=>{const b=bits[Math.min(3,Math.floor(t))];let amp=1,f=3,ph=0;if(kind==='ASK')amp=b?1:0.35;if(kind==='OOK')amp=b?1:0;if(kind==='FSK')f=b?4:2;if(kind==='PSK')ph=b?0:Math.PI;return amp*Math.sin(2*Math.PI*f*t+ph)};
+  let s=LN(x0,yc,W-x0,yc,'ax');for(let i=1;i<4;i++)s+=LN(x0+bw*i,30,x0+bw*i,128,'ax dash');
+  bits.forEach((b,i)=>s+=T(x0+bw*(i+.5),18,String(b),{fs:15,w:800}));
+  s+=P(wavePath(fn,x0,W-x0,yc,A,0,4,800),'wv');
+  const ex={ASK:'符号によって<b>振幅</b>が変わっている（1:大，0:小）→ ASK',OOK:'符号0のとき<b>振幅が0</b>（搬送波を止める）→ OOK（オンオフキーイング）',FSK:'符号によって<b>周波数</b>（波の細かさ）が変わっている → FSK',PSK:'振幅・周波数は一定で，符号が変わる境目で<b>位相</b>が反転している → PSK（BPSK）'};
+  return {q:`ビット列「${bits.join('')}」を変調した次の波形の方式はどれ？`,fig:S(W,136,s),c:[kind,...['ASK','OOK','FSK','PSK'].filter(x=>x!==kind)],e:ex[kind]+'。<br>ASK：振幅，FSK：周波数，PSK：位相を符号ごとに変える。OOKはASKの一種で一方の振幅を0にする。'}}},
+wave_ana:{ch:17,gen(){
+  const kind=pick(['AM','FM']);const W=360,x0=10;
+  const sfn=t=>Math.sin(2*Math.PI*t);
+  const fn=kind==='AM'?t=>(1+0.6*sfn(t))/1.6*Math.sin(2*Math.PI*12*t):t=>Math.sin(2*Math.PI*12*t-5*Math.cos(2*Math.PI*t));
+  let s=T(x0,14,'信号波 s(t)',{fs:11.5,a:'start',c:'mut'})+LN(x0,48,W-x0,48,'ax')+P(wavePath(sfn,x0,W-x0,48,22,0,2,200),'wv2');
+  s+=T(x0,88,'被変調波 v(t)',{fs:11.5,a:'start',c:'mut'})+LN(x0,130,W-x0,130,'ax')+P(wavePath(fn,x0,W-x0,130,34,0,2,1200),'wv');
+  const names={AM:'振幅変調（AM）',FM:'周波数変調（FM）'};
+  return {q:'上の信号波で搬送波を変調したところ，下の被変調波が得られた。この変調方式はどれ？',fig:S(W,172,s),c:[names[kind],names[kind==='AM'?'FM':'AM'],'パルス符号変調（PCM）','単側波帯変調（SSB）'],e:kind==='AM'?'被変調波の<b>振幅（包絡線）</b>が信号波と同じ形に変化している → 振幅変調（AM）。v(t)＝{A<sub>c</sub>＋s(t)}cos2πf<sub>c</sub>t。':'被変調波の振幅は一定で，信号波が大きいところで<b>波が細かく（周波数が高く）</b>，小さいところで粗くなっている → 周波数変調（FM）。雑音に強いが帯域幅が広い。'}}},
+am_spec:{ch:17,gen(){
+  const v=ri(0,1);const W=360,yb=150;
+  let s=AR(15,yb,W-10,yb)+T(W-20,yb+16,'周波数',{fs:11,c:'mut'});
+  const fc=200,fs=70;
+  s+=LN(fc,yb,fc,40,'ln')+`<circle cx="${fc}" cy="40" r="3" class="pt"/>`+T(fc,28,'搬送波',{fs:11.5});
+  s+=P(`M${fc-fs-30},${yb} L${fc-fs+30},${yb} L${fc-fs+30},${yb-60} Z`,v===0?'fillr':'fillw')+P(`M${fc+fs-30},${yb} L${fc+fs+30},${yb} L${fc+fs-30},${yb-60} Z`,v===0?'fillr':'fillw');
+  s+=T(fc-fs,yb+16,'f<tspan baseline-shift="sub" font-size="9">c</tspan>−f<tspan baseline-shift="sub" font-size="9">s</tspan>',{fs:12})+T(fc,yb+16,'f<tspan baseline-shift="sub" font-size="9">c</tspan>',{fs:12})+T(fc+fs,yb+16,'f<tspan baseline-shift="sub" font-size="9">c</tspan>+f<tspan baseline-shift="sub" font-size="9">s</tspan>',{fs:12});
+  if(v===0){s+=T(fc+fs,yb-76,'X',{fs:16,w:800,c:'bl'});
+    return {q:'AM波の周波数スペクトルで，<b>X</b>の成分を何という？',fig:S(W,175,s),c:['上側波帯','下側波帯','搬送波','ガードバンド'],e:'AM波 v(t)＝A<sub>c</sub>cos2πf<sub>c</sub>t＋(mA<sub>c</sub>/2){cos2π(f<sub>c</sub>＋f<sub>s</sub>)t＋cos2π(f<sub>c</sub>−f<sub>s</sub>)t} より，f<sub>c</sub>より上が<b>上側波帯</b>，下が下側波帯。どちらも元の信号と同じ情報を持つので，片方だけ送るのがSSB。'}}
+  s+=AR(fc-fs-30,yb+34,fc+fs+30,yb+34,{both:true,l:'B ＝ ？',dy:12,fs:13,lw:800});
+  return {q:'最高周波数 f<sub>m</sub> の信号波でAM変調したとき，被変調波の占有周波数帯域幅 B はいくら？',fig:S(W,200,s),c:['2f<sub>m</sub>','f<sub>m</sub>','f<sub>c</sub>','f<sub>c</sub>＋f<sub>m</sub>'],e:'下側波帯（f<sub>c</sub>−f<sub>m</sub>〜f<sub>c</sub>）と上側波帯（f<sub>c</sub>〜f<sub>c</sub>＋f<sub>m</sub>）を合わせて <b>B＝2f<sub>m</sub></b>（信号波の2倍）。SSBなら片側だけなので f<sub>m</sub>。'}}},
+comm_chain:{ch:17,gen(){
+  const items=['情報源','送信機','伝送路','受信機','受信者'];const k=ri(0,4);const ans=items[k];
+  const W=300;let s='',y=8;items.forEach((it,i)=>{s+=BX(30,y,160,32,i===k?'?':it);if(i<4)s+=AR(110,y+32,110,y+52);y+=52});
+  s+=BX(210,8+2*52,80,32,'雑音・干渉','bx2',{fs:11.5})+AR(210,8+2*52+16,191,8+2*52+16);
+  const ex={情報源:'送信する情報（音声・画像・データ）の発生源',送信機:'情報を伝送に適した信号に変換（変調・符号化・多重化）して送り出す',伝送路:'情報を伝える媒体（同軸ケーブル・光ファイバ・空間）。雑音・干渉が混入する',受信機:'送信機の逆の処理（復調・復号化）で信号を元に戻す',受信者:'情報を受け取る側'};
+  return {q:'通信システムの基本構成で，<b>？</b>に入るものはどれ？',fig:S(W,y-12,s),c:[ans,...othersFrom(items.concat(['変調器']),ans,3)],e:`？は<b>${ans}</b>：${ex[ans]}。<br>情報源 → 送信機 → 伝送路（雑音・干渉） → 受信機 → 受信者。`}}},
+pcm_chain:{ch:17,gen(){
+  const items=['アナログ信号','標本化','量子化','符号化','デジタル信号'];const k=ri(1,3);const ans=items[k];
+  const ex={標本化:'一定の時間間隔で振幅値を測定する',量子化:'測定した振幅値を決められた段階に丸める（ここで量子化雑音が生じる）',符号化:'量子化した値を2進数にする'};
+  return {q:'PCM（パルス符号変調）の処理の流れで，<b>？</b>に入るものはどれ？',fig:chainV(items.map((x,i)=>i===k?'?':x)),c:[ans,...othersFrom(['標本化','量子化','符号化','変調','多重化'],ans,3)],e:`？は<b>${ans}</b>：${ex[ans]}。<br>標本化 → 量子化 → 符号化 の順。`}}},
+quant:{ch:17,gen(){
+  const nl=Math.random()<.5;const W=300,H=200,x0=40,yc=100;
+  const lv=nl?[-1,-.62,-.36,-.17,-.05,.05,.17,.36,.62,1]:[-1,-.78,-.56,-.33,-.11,.11,.33,.56,.78,1];
+  let s=LN(x0,10,x0,H-10,'ax')+LN(x0,yc,W-10,yc,'ax')+T(W-12,H-6,'時間',{fs:11,c:'mut',a:'end'})+T(x0-6,14,'振幅',{fs:11,c:'mut',a:'end'});
+  lv.forEach(v=>s+=LN(x0,yc-v*85,W-10,yc-v*85,'ax dash'));
+  s+=P(wavePath(t=>Math.sin(2*Math.PI*t)*0.9,x0,W-10,yc,85,0,1,200),'wv');
+  return {q:'次の図の破線は量子化の各レベルを表している。この量子化方式はどれ？',fig:S(W,H,s),c:nl?['非線形量子化','線形量子化','標本化','符号化']:['線形量子化','非線形量子化','標本化','符号化'],e:nl?'振幅0付近（小振幅領域）でレベルの間隔が細かく，大振幅で粗い → <b>非線形量子化</b>。小振幅の量子化雑音を減らせる（μ-lawで圧縮→線形量子化→伸張）。':'レベルが等間隔 → <b>線形量子化</b>。量子化雑音が信号の大きさに関係なく一定に加わるので，小振幅ではSN比が悪くなる。'}}},
+dmz:{ch:14,gen(){
+  const W=320;let s='';
+  s+=`<ellipse cx="160" cy="28" rx="80" ry="20" class="bx2"/>`+T(160,28,'インターネット');
+  s+=AR(160,48,160,64)+BX(100,66,120,30,'ファイアウォール','bx',{fs:12});
+  s+=AR(160,96,160,114)+R(20,116,280,74,'zone',10)+BX(40,138,105,34,'Webサーバ','bx',{fs:12})+BX(175,138,105,34,'メールサーバ','bx',{fs:12})+R(255,105,58,24,'blank',6)+T(284,117,'？',{c:'bl',w:800});
+  s+=AR(160,190,160,208)+BX(100,210,120,30,'ファイアウォール','bx',{fs:12})+AR(160,240,160,258)+BX(80,260,160,34,'内部ネットワーク(LAN)','bx2',{fs:12});
+  return {q:'2つのファイアウォールの間に設けた，外部向けサーバを置く区間（<b>？</b>）を何という？',fig:S(W,302,s),c:['DMZ（非武装地帯）','VPN','VLAN','PKI'],e:'<b>DMZ</b>：外部からも内部からも隔離されたサブネット。外部向けサーバ（Web・メール）を置き，内側のファイアウォールの基準を高くしておけば，万一サーバが被害を受けても内部ネットワークに影響が及ばない。'}}},
+fw_table:{ch:14,gen(){
+  const cols=['ファイアウォール','IDS/IPS','WAF'];const rows=['検査対象','防御対象','防御できる攻撃'];
+  const D=[['IPアドレスやポート番号などのヘッダ情報','ヘッダ情報，データ部分，パケット量','Webアプリケーションの通信内容'],['ネットワーク層','OS，ミドルウェア','Webアプリケーション'],['外部からの不正アクセス','マルウェア，DoS','SQLインジェクション，XSS']];
+  const r=ri(0,2),c=ri(0,2);const ans=D[r][c];
+  let h='<table class="tbl"><tr><th>項目</th>'+cols.map(x=>`<th>${x}</th>`).join('')+'</tr>';
+  rows.forEach((rn,i)=>{h+=`<tr><th>${rn}</th>`+D[i].map((v,j)=>i===r&&j===c?'<td class="blank">？</td>':`<td>${v}</td>`).join('')+'</tr>'});h+='</table>';
+  const wrong=D[r].filter((_,j)=>j!==c).concat([pick(D[(r+1)%3])]);
+  return {q:`ファイアウォール・IDS/IPS・WAFの比較表で，<b>？</b>（${cols[c]}の「${rows[r]}」）に入るものはどれ？`,fig:h,c:[ans,...wrong],e:`正解は「${ans}」。<br>ファイアウォール：ヘッダ情報で外部からの不正アクセスを防ぐ／IDS/IPS：データ部分やパケット量まで見てマルウェア・DoSを検知（IPSは遮断も）／WAF：Webアプリの通信内容を見てSQLインジェクション・XSSを防ぐ。`}}},
+ecb_cbc:{ch:14,gen(){
+  const cbc=Math.random()<.5;const W=360;let s='';const xs=[20,135,250];
+  xs.forEach((x,i)=>{s+=BX(x,8,90,30,'平文'+(i+1),'bx2',{fs:12});
+    if(cbc){s+=AR(x+45,38,x+45,58)+`<circle cx="${x+45}" cy="68" r="10" class="bx"/>`+T(x+45,68,'⊕',{fs:16})+AR(x+45,78,x+45,94)}else s+=AR(x+45,38,x+45,94);
+    s+=BX(x,96,90,30,'暗号化','bx',{fs:12})+AR(x+45,126,x+45,146)+BX(x,148,90,30,'暗号'+(i+1),'bx2',{fs:12});
+    if(cbc&&i<2)s+=P(`M${x+45},178 L${x+45},190 L${x+102},190 L${x+102},68 L${xs[i+1]+34},68`,'ln')+`<line x1="${xs[i+1]+33}" y1="68" x2="${xs[i+1]+35}" y2="68" class="ln" marker-end="url(#M#)"/>`});
+  if(cbc)s+=T(8,68,'IV',{fs:12,w:800,a:'start'})+AR(26,68,xs[0]+34,68);
+  return {q:'次の図のブロック暗号の利用モードはどれ？',fig:S(W,cbc?198:186,s),c:cbc?['CBCモード','ECBモード','ストリーム暗号','公開鍵暗号方式']:['ECBモード','CBCモード','ストリーム暗号','公開鍵暗号方式'],e:cbc?'1つ前の暗号ブロックを次の平文ブロックとXOR（⊕）してから暗号化し，最初はIV（初期化ベクトル）を使う → <b>CBCモード</b>。同じ平文ブロックでも通常は異なる暗号ブロックになる。':'各平文ブロックを独立にそのまま暗号化 → <b>ECBモード</b>。同じ平文ブロックは同じ暗号ブロックになるため繰り返しが見抜かれる危険がある。'}}},
+shiftrows:{ch:14,gen(){
+  const g=(x0,arr)=>arr.map((row,r)=>row.map((v,c)=>BX(x0+c*30,10+r*30,30,30,String(v),r?'bx':'bx2',{fs:12,rx:0})).join('')).join('');
+  const before=[0,1,2,3].map(r=>[1,2,3,4].map(c=>r*4+c));const after=before.map((row,r)=>row.slice(r).concat(row.slice(0,r)));
+  const s=g(10,before)+AR(140,70,180,70)+g(190,after);
+  return {q:'AESの処理で，4×4の状態配列を左図から右図のように変換する処理はどれ？',fig:S(320,140,s),c:['ShiftRows','SubBytes','MixColumns','AddRoundKey'],e:'各行を左にローテーション（1行目は0，2行目は1，3行目は2，4行目は3バイト）している → <b>ShiftRows</b>。<br>SubBytes：Sボックスで1バイトずつ換字／MixColumns：列ごとの行列変換／AddRoundKey：ラウンド鍵とのXOR。'}}},
+dh:{ch:14,gen(){
+  const W=340;let s=BX(10,8,140,30,'ユーザA','bx2')+BX(190,8,140,30,'ユーザB','bx2')+T(170,52,'素数 p，原始根 g を共有',{fs:11.5,c:'mut'});
+  s+=BX(10,66,140,34,'乱数 a（秘密）','bx',{fs:12})+BX(190,66,140,34,'乱数 b（秘密）','bx',{fs:12});
+  s+=BX(10,116,140,34,'m＝g^a mod p','bx',{fs:12})+BX(190,116,140,34,'n＝g^b mod p','bx',{fs:12});
+  s+=AR(150,127,190,150,{})+AR(190,139,150,162,{})+T(170,176,'公開値を交換',{fs:11,c:'mut'});
+  s+=BX(10,190,140,34,'K＝？','bx',{fs:13})+BX(190,190,140,34,'K＝m^b mod p','bx',{fs:12})+T(170,240,'どちらも K＝g^(ab) mod p',{fs:11.5,c:'mut'});
+  s=s.replace(/g\^a/g,'g<tspan baseline-shift="super" font-size="9">a</tspan>').replace(/g\^b/g,'g<tspan baseline-shift="super" font-size="9">b</tspan>').replace(/m\^b/g,'m<tspan baseline-shift="super" font-size="9">b</tspan>').replace(/g\^\(ab\)/g,'g<tspan baseline-shift="super" font-size="9">ab</tspan>');
+  return {q:'Diffie-Hellman鍵共有で，ユーザAが共通鍵Kを求める式（<b>？</b>）はどれ？',fig:S(W,250,s),c:['n<sup>a</sup> mod p','m<sup>a</sup> mod p','n<sup>b</sup> mod p','g<sup>a+b</sup> mod p'],e:'ユーザAは相手の公開値 n と自分の秘密 a を使い <b>K＝n<sup>a</sup> mod p＝g<sup>ab</sup> mod p</b>。ユーザBは K＝m<sup>b</sup> mod p＝g<sup>ab</sup> mod p で同じ鍵になる。a，b は公開しない。'}}},
+sig:{ch:15,gen(){
+  const W=340;let s=T(80,12,'送信者',{fs:12,w:800})+T(260,12,'受信者',{fs:12,w:800});
+  s+=BX(20,26,120,28,'メッセージ','bx2',{fs:12})+AR(80,54,80,70)+BX(20,72,120,28,'ハッシュ関数','bx',{fs:12})+AR(80,100,80,116)+BX(20,118,120,28,'ハッシュ値','bx',{fs:12})+AR(80,146,80,162)+BX(20,164,120,28,'① で暗号化','blank',{fs:12})+AR(80,192,80,206)+BX(20,208,120,28,'電子署名','bx2',{fs:12});
+  s+=AR(140,40,200,40,{l:'送信',fs:11})+AR(140,222,200,222,{l:'送信',fs:11});
+  s+=BX(200,26,120,28,'メッセージ','bx2',{fs:12})+AR(260,54,260,70)+BX(200,72,120,28,'ハッシュ関数','bx',{fs:12})+AR(260,100,260,116)+BX(200,118,120,28,'ハッシュ値','bx',{fs:12});
+  s+=BX(200,208,120,28,'電子署名','bx2',{fs:12})+AR(260,208,260,192)+BX(200,164,120,28,'② で復号','blank',{fs:12});
+  s+=T(260,154,'↕ 照合',{fs:11.5,w:700});
+  const P2=['①送信者の秘密鍵　②送信者の公開鍵','①送信者の公開鍵　②送信者の秘密鍵','①受信者の公開鍵　②受信者の秘密鍵','①共通鍵　②共通鍵'];
+  return {q:'電子署名の仕組みで，①・②で使う鍵の組み合わせとして正しいものはどれ？',fig:S(W,244,s),c:P2,e:'署名は<b>送信者の秘密鍵</b>で作成し，受信者は<b>送信者の公開鍵</b>で復号する。復号したハッシュ値と受信メッセージから計算したハッシュ値が一致すれば，改ざんがなく，秘密鍵の持ち主が送ったことが確認できる。共通鍵を使うのはMAC。'}}},
+mac:{ch:15,gen(){
+  const W=340;let s=T(80,12,'送信者',{fs:12,w:800})+T(260,12,'受信者',{fs:12,w:800});
+  s+=BX(10,26,65,28,'共通鍵','hl',{fs:12})+BX(85,26,65,28,'メッセージ','bx2',{fs:11})+AR(42,54,70,74)+AR(117,54,90,74)+BX(20,76,120,28,'？関数','bx',{fs:12})+AR(80,104,80,120)+BX(20,122,120,28,'？','bx2',{fs:12});
+  s+=AR(150,40,190,40,{l:'送信',fs:11})+AR(140,136,190,136,{l:'送信',fs:11});
+  s+=BX(190,26,65,28,'メッセージ','bx2',{fs:11})+BX(265,26,65,28,'共通鍵','hl',{fs:12})+AR(222,54,250,74)+AR(297,54,270,74)+BX(200,76,120,28,'？関数','bx',{fs:12})+AR(260,104,260,120)+BX(200,122,120,28,'？','bx2',{fs:12})+T(260,168,'↔ 照合：一致すれば改ざんなし',{fs:11.5,w:700});
+  return {q:'送信者と受信者が同じ<b>共通鍵</b>を使い，次の図のように改ざんを検出する仕組み（図中の？）はどれ？',fig:S(W,182,s),c:['MAC（メッセージ認証コード）','電子署名','PKI（公開鍵基盤）','CHAP'],e:'共通鍵とメッセージをMAC関数（HMACならハッシュ関数）に入れてMACを作り，受信者も同じ鍵で再計算して照合する → <b>MAC</b>。改ざん検出はできるが，受信者もMACを作れるので送信者の証明・否認防止はできない（ここが電子署名との違い）。'}}},
+pki:{ch:15,gen(){
+  const L=['②公開鍵登録','③電子証明書発行','④電子署名A＋電子証明書','⑤ユーザAの公開鍵を確認'];const k=ri(0,3);
+  const W=360;let s=BX(120,8,120,34,'認証局','bx2',{w:800})+BX(10,180,110,34,'ユーザA','bx')+BX(240,180,110,34,'ユーザB','bx');
+  const lb=(i,t)=>i===k?'？':t;
+  s+=AR(30,180,125,42)+T(8,108,lb(0,'②公開鍵\n登録'),{fs:11,a:'start',c:i_c(k,0)});
+  s+=AR(165,42,95,180)+T(138,112,lb(1,'③電子証明書\n発行'),{fs:11,a:'start',c:i_c(k,1)});
+  s+=AR(120,197,240,197)+T(180,226,lb(2,'④電子署名A＋電子証明書'),{fs:11,c:i_c(k,2)});
+  s+=AR(290,180,235,42,{d:true})+T(270,112,lb(3,'⑤Aの公開鍵\nを確認'),{fs:11,a:'start',c:i_c(k,3)});
+  const ans=L[k].slice(1);
+  const ex='①ユーザAが鍵ペアを用意 → ②公開鍵を認証局に登録 → ③認証局が<b>認証局の秘密鍵</b>で署名した電子証明書を発行 → ④ユーザAが自分の秘密鍵で作った電子署名と電子証明書をBへ送信 → ⑤Bは<b>認証局の公開鍵</b>で証明書を検証してAの公開鍵が正しいと確認 → ⑥Aの公開鍵で電子署名を確認（改ざん・なりすましを検出）。';
+  return {q:'PKIの仕組みで，<b>？</b>に入るものはどれ？',fig:S(W,240,s),c:[ans,...L.filter((_,i)=>i!==k).map(x=>x.slice(1))],e:`？は<b>${ans}</b>。<br>${ex}`}}},
+ipsec:{ch:15,gen(){
+  const tun=Math.random()<.5;const cells=tun?['新IPヘッダ','ESPヘッダ','元のIPヘッダ','TCPヘッダ','データ','ESPトレーラ','ESP認証データ']:['IPヘッダ','ESPヘッダ','TCPヘッダ','データ','ESPトレーラ','ESP認証データ'];
+  const W=320,h=30;let s='';cells.forEach((c,i)=>s+=BX(20,10+i*h,150,h,c,(c.includes('ESP')?'hl':(i>=2||(!tun&&i>=2))?'bx':'bx2'),{fs:12,rx:0}));
+  const e0=tun?2:2,e1=cells.length-2;// 暗号化: ESPヘッダの次〜トレーラ
+  const br=(i0,i1,x,l)=>P(`M${x-8},${10+i0*h+3} L${x},${10+i0*h+3} L${x},${10+(i1+1)*h-3} L${x-8},${10+(i1+1)*h-3}`,'ln')+T(x+8,10+(i0+i1+1)/2*h,l,{fs:11.5,a:'start'});
+  s+=br(e0,e1,186,'暗号化\nの範囲')+br(1,e1,250,'認証\nの範囲');
+  return {q:'次の図はIPsecのパケット構成である。このモードはどれ？',fig:S(W,20+cells.length*h,s),c:tun?['トンネルモード','トランスポートモード','ECBモード','CBCモード']:['トランスポートモード','トンネルモード','ECBモード','CBCモード'],e:tun?'元のIPパケット全体（元のIPヘッダを含む）を暗号化し，VPN装置宛の<b>新IPヘッダ</b>を付けている → <b>トンネルモード</b>。主にVPNルータ間で使い，ホストはIPsecを実装しなくてよい。':'元のIPヘッダの後ろにESPヘッダを挿入し，IPペイロード部だけを暗号化（<b>IPヘッダは暗号化されない</b>） → <b>トランスポートモード</b>。IPsecを実装したホスト間で使い，経路のすべての区間が暗号化される。'}}},
+x8021:{ch:15,gen(){
+  const roles=['サプリカント','オーセンティケータ','認証サーバ'];const k=ri(0,2);
+  const W=360;let s=BX(5,20,100,44,'クライアント\n端末','bx2',{fs:12})+BX(130,20,100,44,'アクセスポイント\n/L2スイッチ','bx2',{fs:11})+BX(255,20,100,44,'認証\nサーバ','bx2',{fs:12});
+  s+=AR(105,42,130,42,{both:true})+AR(230,42,255,42,{both:true});
+  roles.forEach((r,i)=>s+=BX(5+i*125,84,100,30,i===k?'?':r,'bx',{fs:i===1?11:12}));
+  return {q:'IEEE802.1Xの構成要素で，<b>？</b>に入る名称はどれ？',fig:S(W,124,s),c:[roles[k],...othersFrom(roles.concat(['認証局']),roles[k],3)],e:'IEEE802.1Xの構成要素：クライアント端末＝<b>サプリカント</b>，無線LANアクセスポイントやL2スイッチ＝<b>オーセンティケータ</b>，<b>認証サーバ</b>。認証に成功するとアクセスポイントがVLANを切り替え，端末は利用可能なネットワークに接続できる。'}}},
+chap:{ch:15,gen(){
+  const W=340;let s=BX(10,6,110,28,'クライアント','bx2',{fs:12})+BX(220,6,110,28,'サーバ','bx2',{fs:12})+LN(65,34,65,210,'ax dash')+LN(275,34,275,210,'ax dash');
+  s+=BX(215,44,120,26,'乱数C生成','bx',{fs:11.5})+AR(275,86,65,86,{l:'チャレンジ(C)'})+BX(5,100,120,26,'R＝E[C,P]','bx',{fs:11.5})+AR(65,142,275,142,{l:'レスポンス(R)'})+BX(215,154,120,40,'D＝E[C,P]\nR＝D なら成功','bx',{fs:11});
+  return {q:'次の図のような手順で認証を行うPPPの認証方式はどれ？（P：パスワード）',fig:S(W,214,s),c:['CHAP','PAP','IEEE802.1X','PKI'],e:'サーバが乱数（チャレンジ）を送り，クライアントがそれとパスワードから計算したレスポンスを返す<b>チャレンジレスポンス方式</b> → <b>CHAP</b>。パスワード自体は送らない。PAPはIDとパスワードを暗号化せずに送るため盗聴・なりすましの危険がある。'}}},
+hash:{ch:15,gen(){
+  const v=ri(0,2);const W=340;let s='';
+  if(v===0){s=BX(10,30,90,34,'入力値','bx2')+AR(100,47,130,47)+BX(130,30,90,34,'ハッシュ関数','bx',{fs:12})+AR(220,47,250,47)+BX(250,30,80,34,'出力値','bx2')+P('M290,64 C290,110 55,110 55,70','ln dash')+`<line x1="55" y1="72" x2="55" y2="68" class="ln" marker-end="url(#M#)"/>`+T(172,100,'✕ 復元困難',{fs:13,w:800,c:'bl'});
+    return {q:'ハッシュ関数の性質のうち，次の図が表すものはどれ？',fig:S(W,120,s),c:['一方向性（原像計算困難性）','衝突耐性','第2原像計算困難性','否認防止'],e:'出力値（ハッシュ値）から入力値を復元することは困難 → <b>一方向性（原像計算困難性）</b>。'}}
+  if(v===1){s=BX(10,10,90,30,'入力値 a','bx2',{fs:12})+BX(10,70,90,30,'入力値 b','bx2',{fs:12})+AR(100,25,130,25)+AR(100,85,130,85)+BX(130,10,90,30,'ハッシュ関数','bx',{fs:12})+BX(130,70,90,30,'ハッシュ関数','bx',{fs:12})+AR(220,25,250,48)+AR(220,85,250,62)+BX(250,38,80,34,'出力値 h','bx2',{fs:12})+T(170,118,'a≠b なのに同じ h になることが極めて起こりにくい',{fs:11.5,c:'mut'});
+    return {q:'ハッシュ関数の性質のうち，次の図が表すものはどれ？',fig:S(W,130,s),c:['衝突耐性','一方向性（原像計算困難性）','任意長の入力を固定長に変換する性質','否認防止'],e:'異なる入力値から同じ出力値が生成されること（衝突）が極めて低い確率でしか起こらない → <b>衝突耐性</b>。'}}
+  ['128bit','512bit','2Mbyte'].forEach((x,i)=>s+=BX(10,8+i*40,90,30,'入力 '+x,'bx2',{fs:11.5})+AR(100,23+i*40,130,23+i*40)+BX(130,8+i*40,90,30,'SHA-256','bx',{fs:12})+AR(220,23+i*40,250,23+i*40)+BX(250,8+i*40,80,30,'256bit','bx2',{fs:12}));
+  return {q:'次の図が示すハッシュ関数の特徴はどれ？',fig:S(W,128,s),c:['任意の長さの入力を固定長の出力に変換する','入力が長いほど安全な出力になる','出力から入力を復元できる','入力値と出力値は常に同じ長さになる'],e:'入力の長さ（128bit，512bit，2Mbyte）に関係なく，SHA-256の出力は常に256bit。ハッシュ関数は<b>任意の長さのデータを固定長のデータに変換する</b>関数。入力が1文字違うだけでも全く異なる値になる。'}}},
+xss:{ch:16,gen(){
+  const st=Math.random()<.5;const W=340;let s='';
+  if(st){s=BX(10,10,90,32,'攻撃者','bx2')+BX(230,65,100,32,'脆弱性サイト','bad',{fs:12})+AR(100,26,230,72,{l:'①スクリプトを挿入',dx:10,dy:-14})+BX(10,120,90,32,'ユーザ','bx2')+AR(100,128,230,88,{l:'リクエスト',dx:-4,dy:-12})+AR(236,97,100,146,{l:'②スクリプトを含むHTML',dx:20,dy:16})+T(55,168,'③スクリプトが実行',{fs:11.5,w:700});
+    return {q:'次の図のクロスサイトスクリプティングのタイプはどれ？',fig:S(W,180,s),c:['格納型XSS','反射型XSS','CSRF','SQLインジェクション'],e:'攻撃者が<b>脆弱性サイトに直接スクリプトを埋め込み</b>，アクセスするたびに実行される → <b>格納型</b>（直接攻撃するタイプ）。影響を受けるのは脆弱性サイトにアクセスした人すべて。'}}
+  s=BX(10,10,90,32,'攻撃者','bx2')+BX(230,10,100,32,'誘導サイト','bx',{fs:12})+AR(100,26,230,26,{l:'①脆弱性リンク挿入'})+BX(10,110,90,32,'ユーザ','bx2')+BX(230,110,100,32,'脆弱性サイト','bad',{fs:12})+AR(70,110,250,42,{l:'閲覧',dx:-30,dy:-2})+AR(100,122,230,122,{l:'②リンクをクリック',dy:-10})+AR(230,136,100,136,{l:'スクリプト入りHTML',dy:12})+T(55,166,'③スクリプトが実行',{fs:11.5,w:700});
+  return {q:'次の図のクロスサイトスクリプティングのタイプはどれ？',fig:S(W,178,s),c:['反射型XSS','格納型XSS','CSRF','DNSリフレクタ攻撃'],e:'<b>誘導サイト</b>と脆弱性サイトの2サイトを使い，誘導サイトのリンク経由でアクセスしたときにスクリプトが実行される → <b>反射型</b>（間接的に攻撃するタイプ）。影響を受けるのはリンクからアクセスした人。'}}},
+syn:{ch:16,gen(){
+  const W=340;let s=BX(10,6,110,28,'攻撃者','bx2',{fs:12})+BX(220,6,110,28,'サーバ','bx2',{fs:12})+LN(65,34,65,206,'ax dash')+LN(275,34,275,206,'ax dash');
+  [0,1].forEach(i=>{const y=58+i*66;s+=AR(65,y,275,y,{l:'SYN（送信元を偽装）',fs:10.5})+AR(275,y+24,65,y+24,{d:true,l:'SYN+ACK',fs:10.5})+T(70,y+40,'ACKを返さない ✕',{fs:10.5,c:'bl',a:'start'})});
+  s+=T(70,190,'… 大量に繰り返す',{fs:11,c:'mut',a:'start'})+BX(215,176,120,26,'応答待ちが大量に','bad',{fs:11});
+  return {q:'次の図の攻撃の名称はどれ？',fig:S(W,210,s),c:['SYNフラッド攻撃','DNSリフレクタ攻撃','ブルートフォース攻撃','セッションハイジャック'],e:'送信元を偽装したSYNを大量に送り，サーバのSYN+ACKにACKを返さないことで「応答待ち状態」を大量に作らせ，メモリを枯渇させる → <b>SYNフラッド攻撃</b>（DoS攻撃の一種）。対策：3ウェイハンドシェイクのタイムアウト短縮など。'}}},
+dnsref:{ch:16,gen(){
+  const W=340;let s=BX(10,80,80,32,'攻撃者','bx2',{fs:12});
+  [0,1,2].forEach(i=>{const y=20+i*60;s+=BX(130,y,90,32,'DNSサーバ','bx',{fs:11.5})+AR(90,96,130,y+16,{})+AR(220,y+16,250,96)});
+  s+=BX(250,80,85,32,'標的サーバ','bad',{fs:11.5})+T(110,206,'送信元IP＝標的に偽装して問い合わせ',{fs:11,c:'mut'})+T(292,130,'大量の\n応答',{fs:11,w:700});
+  return {q:'次の図の攻撃の名称はどれ？',fig:S(W,216,s),c:['DNSリフレクタ攻撃','SYNフラッド攻撃','パスワードリスト攻撃','CSRF'],e:'送信元IPアドレスを標的に偽装して第三者のDNSサーバ（踏み台）に問い合わせ，DNS応答を標的に集中させる → <b>DNSリフレクタ攻撃</b>。対策：オープン・リゾルバにせず，外部の不特定IPからの再帰問い合わせを許可しない。'}}},
+sess:{ch:16,gen(){
+  const W=340;let s=BX(10,6,90,28,'ユーザ','bx2',{fs:12})+BX(240,6,90,28,'Webサーバ','bx2',{fs:12})+LN(55,34,55,190,'ax dash')+LN(285,34,285,190,'ax dash');
+  s+=AR(55,50,285,50,{l:'ログイン'})+AR(285,78,55,78,{l:'SID＝1234 を発行'})+AR(55,106,285,106,{l:'リクエスト(SID＝1234)'});
+  s+=BX(110,130,110,28,'悪意のある人','bad',{fs:11.5})+AR(220,144,285,144,{l:'盗んだSIDで\nリクエスト',dy:22,fs:10.5});
+  return {q:'次の図の攻撃の名称はどれ？',fig:S(W,196,s),c:['セッションハイジャック','CSRF（クロスサイトリクエストフォージェリ）','SQLインジェクション','DoS攻撃'],e:'ログイン時に発行された<b>セッションIDを盗み</b>，正規ユーザになりすましてアクセスする → <b>セッションハイジャック</b>。CSRFはIDを盗まず，正規セッションを踏み台にして意図しない操作をさせる点が異なる。'}}},
+mux:{ch:19,gen(){
+  const k=pick(['FDM','TDM','CDM']);const W=340,H=170;let s=AR(30,150,330,150)+AR(30,150,30,10);const col=['fillw','fillr','good'];
+  if(k==='FDM'){s+=T(318,163,'周波数',{fs:11,c:'mut'})+T(42,14,'時間',{fs:11,c:'mut',a:'start'});[0,1,2].forEach(i=>s+=R(50+i*95,20,75,128,col[i],3)+T(87+i*95,84,'CH'+(i+1),{w:700}));s+=T(135,163,'ガードバンド',{fs:10,c:'mut'})}
+  if(k==='TDM'){s+=T(318,163,'時間',{fs:11,c:'mut'})+T(42,14,'周波数',{fs:11,c:'mut',a:'start'});for(let i=0;i<6;i++)s+=R(40+i*48,30,44,118,col[i%3],3)+T(62+i*48,89,'CH'+(i%3+1),{fs:11.5,w:700})}
+  if(k==='CDM'){s+=T(318,163,'周波数',{fs:11,c:'mut'})+T(42,14,'時間',{fs:11,c:'mut',a:'start'});[0,1,2].forEach(i=>s+=R(60+i*12,24+i*12,220,100,col[i],3));[0,1,2].forEach(i=>s+=T(190,78+i*22,`CH${i+1}：符号${i+1}`,{fs:12,w:700}))}
+  const names={FDM:'周波数分割多重（FDM）',TDM:'時分割多重（TDM）',CDM:'符号分割多重（CDM）'};
+  const ex={FDM:'各チャネルを<b>周波数軸上で分け</b>，重ならないよう間にガードバンドを置いている',TDM:'各チャネルを<b>時間位置をずらして</b>順番に配置している（タイムスロット）',CDM:'全チャネルが同じ時間・同じ周波数を共有し，<b>異なる符号</b>で区別している（スペクトル拡散を利用）'};
+  return {q:'次の図が表す多重化方式はどれ？',fig:S(W,H,s),c:[names[k],...Object.values(names).filter(x=>x!==names[k]),'直交周波数分割多重（OFDM）'].slice(0,4),e:ex[k]+' → <b>'+names[k]+'</b>。'}}},
+ofdm_spec:{ch:19,gen(){
+  const ofdm=Math.random()<.5;const W=340,yb=140;let s=AR(15,yb,330,yb)+T(310,yb+14,'周波数',{fs:11,c:'mut'});
+  const sinc=x=>Math.abs(x)<1e-6?1:Math.sin(Math.PI*x)/(Math.PI*x);
+  if(ofdm){for(let n=0;n<5;n++){const fc=70+n*45;s+=P(wavePath(t=>Math.max(-.22,sinc((t-fc)/45)),fc-110,fc+110,yb,100,fc-110,fc+110,220),n%2?'wv2':'wv')}}
+  else{for(let n=0;n<4;n++){const fc=55+n*75;s+=P(wavePath(t=>Math.max(0,sinc((t-fc)/26)),fc-26,fc+26,yb,100,fc-26,fc+26,80),n%2?'wv2':'wv')}s+=T(130,yb-12,'ガードバンド',{fs:10,c:'mut'})}
+  return {q:'次のスペクトルで表される方式はどれ？',fig:S(W,160,s),c:ofdm?['直交周波数分割多重（OFDM）','周波数分割多重（FDM）','時分割多重（TDM）','単側波帯変調（SSB）']:['周波数分割多重（FDM）','直交周波数分割多重（OFDM）','時分割多重（TDM）','単側波帯変調（SSB）'],e:ofdm?'各サブキャリアのスペクトルが<b>重なり合っている</b>が，ピークの位置で他のサブキャリアが0になる（直交）ためデータを取り出せる → <b>OFDM</b>。搬送波間隔を狭くでき周波数利用効率が高い。':'各チャネルのスペクトルが重ならないよう<b>ガードバンド</b>で離して配置 → <b>FDM</b>。OFDMより周波数利用効率は低い。'}}},
+multipath:{ch:19,gen(){
+  const W=340;let s=BX(10,110,70,30,'送信機','bx2',{fs:12})+BX(260,110,70,30,'受信機','bx2',{fs:12})+R(140,10,60,40,'bx2',2)+T(170,30,'建物',{fs:12});
+  s+=AR(80,125,260,125,{l:'直接波',dy:12})+P('M80,115 L170,52','ln')+AR(170,52,260,115,{l:'遅延波',dx:22,dy:-6});
+  return {q:'送信された電波が建物などに反射し，複数の経路を通って受信機に届くこと（図）を何という？',fig:S(W,150,s),c:['マルチパス','ガードインターバル','スペクトル拡散','多元接続'],e:'<b>マルチパス</b>。複数経路の電波は振幅・位相・到来時間が異なり，合成されると強度が変動する（マルチパスフェージング）。その結果シンボル間干渉や周波数選択性フェージングが起こる。'}}},
+ss_chain:{ch:19,gen(){
+  const items=['送信データ','1次変調（PSKなど）','2次変調（拡散）','伝送路','逆拡散','復調（PSKなど）','受信データ'];const k=pick([1,2,4,5]);const ans=items[k];
+  return {q:'スペクトル拡散通信方式の流れで，<b>？</b>に入るものはどれ？',fig:chainV(items.map((x,i)=>i===k?'?':x),{h:30}),c:[ans,...othersFrom(items.slice(1,6).filter(x=>x!=='伝送路'),ans,3)],e:`？は<b>${ans}</b>。<br>PSKなどで1次変調した信号に，2次変調としてクロック周波数の高い<b>拡散符号</b>を乗算して広帯域に拡散する。受信側では同じ拡散符号を乗算（逆拡散）して元に戻してから復調する。`}}},
+gi:{ch:20,gen(){
+  const W=340;let s='';const x0=90,x1=330,y=60,h=50,tg=55;
+  s+=R(x0,y,x1-x0,h,'bx')+R(x1-tg,y,tg,h,'hl',0)+R(x0-tg+5,y,tg,h,'blank',0)+T(x0-tg/2+5,y+h/2,'？',{c:'bl',w:800,fs:16});
+  s+=P(wavePath(t=>Math.sin(2*Math.PI*3*t),x0-tg+5,x1,y+h/2,18,-tg/(x1-x0)*1,1,300),'wv');
+  s+=P(`M${x1-tg/2},${y} C${x1-tg/2},${y-40} ${x0-tg/2+5},${y-40} ${x0-tg/2+5},${y-2}`,'ln dash')+`<line x1="${x0-tg/2+5}" y1="${y-4}" x2="${x0-tg/2+5}" y2="${y-1}" class="ln" marker-end="url(#M#)"/>`+T(200,y-46,'後半部分をコピー',{fs:11.5});
+  s+=T(x0-tg/2+5,y+h+14,'Tg',{fs:12})+T((x0+x1)/2,y+h+14,'有効シンボル長 T＝1/f₀',{fs:11.5});
+  return {q:'OFDMで，シンボルの後半部分のコピーを先頭に挿入した部分（<b>？</b>）を何という？',fig:S(W,140,s),c:['ガードインターバル','ガードバンド','フレーム同期ビット','タイムスロット'],e:'<b>ガードインターバル</b>（長さTg）。遅延波の遅延時間τが <b>τ＜Tg</b> なら，ISIのない区間で1シンボル分を切り出せ，サブキャリア間の直交性も保たれる。ガードバンドはFDMの周波数間隔なので混同に注意。'}}},
+ofdm_chain:{ch:20,gen(){
+  const mod=Math.random()<.5;
+  const items=mod?['データビット列','直並列変換＋マッピング','逆離散フーリエ変換（IDFT）','並直列変換','OFDM信号']:['OFDM信号','標本化','直並列変換','離散フーリエ変換（DFT）','並直列変換','データ'];
+  const cand=mod?[1,2,3]:[2,3,4];const k=pick(cand);const ans=items[k];
+  const pool=['逆離散フーリエ変換（IDFT）','離散フーリエ変換（DFT）','直並列変換','並直列変換','直並列変換＋マッピング','同期検波'];
+  return {q:`OFDM${mod?'変調器':'復調器'}の構成で，<b>？</b>に入るものはどれ？`,fig:chainV(items.map((x,i)=>i===k?'?':x),{w:240}),c:[ans,...othersFrom(pool.filter(x=>!(items.includes(x)&&x!==ans)),ans,3)],e:mod?'変調器：データを変調方式に応じたビット数に分割し複素平面上の点にマッピング → 直並列変換 → <b>IDFT</b>でOFDMシンボルの標本値に → 並直列変換 → 連続信号に変換してOFDM信号。':'復調器：OFDM信号を周期1/(Nf₀)で標本化 → 直並列変換 → <b>DFT</b>でデータシンボルを取り出す → 並直列変換。IDFT・DFTはFFTで高速計算できる。'}}},
+ofdma:{ch:20,gen(){
+  const multi=Math.random()<.5;const W=320,cw=34,chh=22,nx=7,ny=6;const cols=['#60a5fa','#f59e0b','#34d399','#f472b6'];
+  let s=AR(40,150,310,150)+AR(40,150,40,6)+T(296,163,'時間',{fs:11,c:'mut'})+T(48,8,'サブキャリア',{fs:11,c:'mut',a:'start'});
+  for(let x=0;x<nx;x++)for(let y=0;y<ny;y++){const u=multi?((x+Math.floor(y/2)*(1+x%2))%4):x%4;s+=`<rect x="${44+x*cw}" y="${16+y*chh}" width="${cw-3}" height="${chh-3}" rx="3" fill="${cols[u]}" opacity=".8"/>`}
+  for(let u=0;u<4;u++)s+=`<rect x="${50+u*68}" y="168" width="12" height="12" rx="2" fill="${cols[u]}"/>`+T(66+u*68,174,'ユーザ'+(u+1),{fs:10.5,a:'start'});
+  return {q:'次の図は時間とサブキャリアの割り当てを色（ユーザ）で示したものである。この方式はどれ？',fig:S(W,186,s),c:multi?['OFDMA','OFDM','TDMA','FDMA']:['OFDM','OFDMA','CDMA','FDMA'],e:multi?'同じ時刻でもサブキャリアごとに異なるユーザが割り当てられ，複数ユーザが同時に通信している → <b>OFDMA</b>（4G・5G，IEEE802.11ax）。':'ある時刻には<b>全サブキャリアを1ユーザが使用</b>し，時間で切り替えている → <b>OFDM</b>。OFDMAではサブキャリアを複数ユーザに分けて同時に割り当てる。'}}},
+qpsk_demod:{ch:18,gen(){
+  const keys=['LPF','π/2移相器','識別器','並直列変換'];const k=pick(keys);const W=360;
+  const b=(x,y,w,h,l,fs=11)=>BX(x,y,w,h,l===k?'?':l,'bx',{fs});
+  let s=BX(4,82,56,34,'QPSK\n信号','bx2',{fs:10.5})+LN(60,99,80,99)+LN(80,30,80,170)+AR(80,30,104,30)+AR(80,170,104,170);
+  s+=`<circle cx="116" cy="30" r="12" class="bx"/>`+T(116,30,'×',{fs:14})+`<circle cx="116" cy="170" r="12" class="bx"/>`+T(116,170,'×',{fs:14});
+  s+=BX(86,82,62,34,'搬送波\n再生','bx',{fs:10.5})+AR(116,82,116,43)+AR(148,99,166,99)+b(166,82,60,34,'π/2移相器',9.5)+P('M196,116 L196,135 L116,135','ln')+AR(116,135,116,157);
+  s+=T(140,48,'cos',{fs:9.5,c:'mut'})+T(140,152,'−sin',{fs:9.5,c:'mut'});
+  s+=AR(128,30,160,30)+b(160,15,44,30,'LPF')+AR(128,170,160,170)+b(160,155,44,30,'LPF');
+  s+=AR(204,30,220,30)+b(220,15,52,30,'識別器',10.5)+AR(204,170,220,170)+b(220,155,52,30,'識別器',10.5);
+  s+=AR(272,30,290,85)+AR(272,170,290,113)+b(290,82,62,34,'並直列変換',9.5)+T(321,132,'2bit出力',{fs:10,c:'mut'});
+  const ex={'LPF':'同期検波で生じる<b>搬送波の2倍の周波数成分を除去</b>する低域通過フィルタ','π/2移相器':'再生した cos 波から <b>−sin 波を作る</b>（直交成分の同期検波に使う）','識別器':'LPF出力の<b>正負を判定</b>して1／−1（符号0／1）にする','並直列変換':'I相・Q相の2系列を<b>1本のビット列にまとめる</b>'};
+  return {q:'QPSK復調器のブロック図で，<b>？</b>に入るものはどれ？',fig:S(W,196,s),c:[k,...keys.filter(x=>x!==k)],e:`？は<b>${k}</b>：${ex[k]}。<br>受信信号に cos と −sin を掛けて同相・直交成分を同期検波 → LPF → 識別器 → 並直列変換で元の2bitに戻す。`}}}
+};
+function i_c(k,i){return k===i?'bl':''}
+/* ================= 計算問題ジェネレータ =================
+   返り値: {p:問題文, ans:正解, k:'num'|'str'|'vec', unit, tol(絶対誤差), ph:入力例, e:解説} */
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+const modpow=(b,e,m)=>{let r=1n,x=BigInt(b)%BigInt(m),E=BigInt(e),M=BigInt(m);while(E>0n){if(E&1n)r=r*x%M;x=x*x%M;E>>=1n}return Number(r)};
+const modinv=(e,m)=>{for(let d=1;d<m;d++)if(e*d%m===1)return d;return null};
+const fmt=(v,d=4)=>{const r=Math.round(v*10**d)/10**d;return String(r)};
+const bin=(v,n)=>v.toString(2).padStart(n,'0');
+const sup=x=>`<sup>${x}</sup>`;
+const vec=a=>a.join(' ');
+function powChain(b,e,m){ // 繰り返し二乗法の途中経過
+  let lines=[],x=b%m,E=e,r=1,k=1;
+  const sq=[];let t=x,p=1;while(p<=e){sq.push([p,t]);t=t*t%m;p*=2}
+  lines.push(sq.map(([p,v])=>`${b}^${p} ≡ ${v}`).join('，  '));
+  const used=sq.filter(([p])=>e&p);
+  lines.push(`${e} = ${used.map(u=>u[0]).join(' + ')} より  ${b}^${e} ≡ ${used.map(u=>u[1]).join(' × ')} ≡ ${modpow(b,e,m)}  (mod ${m})`);
+  return lines.join('\n');
+}
+const PRIMES=[5,7,11,13,17,19];
+function rsaSet(){let p,q,n,phi,e,d;do{p=pick(PRIMES);q=pick(PRIMES);n=p*q;phi=(p-1)*(q-1);const es=[3,5,7,11,13].filter(x=>x<phi&&gcd(x,phi)===1);e=es.length?pick(es):0;d=e?modinv(e,phi):0}while(p===q||!e||!d||d===e);return {p,q,n,phi,e,d}}
+const DHS=[[11,2],[13,2],[13,6],[17,3],[19,2],[23,5],[29,2],[31,3]];
+const SBOX=[["63","7C","77","7B","F2"],["CA","82","C9","7D","FA"],["B7","FD","93","26","36"],["04","C7","23","C3","18"],["09","83","2C","1A","1B"]];
+const HAD4=[[1,1,1,1],[1,-1,1,-1],[1,1,-1,-1],[1,-1,-1,1]];
+const sgn=v=>v>0?'+'+v:String(v);
+
+const CALC = [
+{id:'keys',ch:14,name:'共通鍵の必要数',gen(){const n=ri(4,60),a=n*(n-1)/2;return {p:`${n}人が参加するネットワークで，全員が共通鍵暗号方式で互いに通信する。通信相手ごとに異なる鍵を作る場合，必要な鍵の数はいくつ？`,ans:a,k:'num',unit:'個',e:`n人の中から2人を選ぶ組み合わせの数だけ鍵が必要。<div class="calcbox">n(n−1)/2 = ${n}×${n-1}/2 = ${a}</div>公開鍵暗号方式なら各人が鍵ペアを1組持てばよいので，鍵の配送問題が起こらない。`}}},
+{id:'xor',ch:14,name:'ストリーム暗号（XOR）',gen(){const L=ri(5,8);const M=ri(1,2**L-1),K=ri(1,2**L-1),C=M^K;const enc=Math.random()<.6;
+  const tbl=`  平文 M  : ${bin(M,L)}\n  乱数 K  : ${bin(K,L)}\n  ─────────────\n  M⊕K    : ${bin(C,L)}`;
+  return enc?{p:`ストリーム暗号で，平文 M＝<span class="mono">${bin(M,L)}</span>，擬似乱数＝<span class="mono">${bin(K,L)}</span> のとき，暗号文 C を2進数で答えよ。`,ans:bin(C,L),k:'str',ph:'例: 10110',e:`各ビットごとに排他的論理和（同じなら0，異なれば1）をとる。<div class="calcbox">${tbl}</div>よって C＝<b>${bin(C,L)}</b>`}
+   :{p:`ストリーム暗号で，暗号文 C＝<span class="mono">${bin(C,L)}</span>，擬似乱数＝<span class="mono">${bin(K,L)}</span> のとき，平文 M を2進数で答えよ。`,ans:bin(M,L),k:'str',ph:'例: 10110',e:`XORは同じ値を2回適用すると元に戻る（C⊕K＝M⊕K⊕K＝M）。<div class="calcbox">  暗号文 C: ${bin(C,L)}\n  乱数 K  : ${bin(K,L)}\n  ─────────────\n  C⊕K    : ${bin(M,L)}</div>よって M＝<b>${bin(M,L)}</b>`}}},
+{id:'rsa_phi',ch:14,name:'RSA：(p−1)(q−1)',gen(){const r=rsaSet();return {p:`RSAで2つの素数を p＝${r.p}，q＝${r.q} とした。n と (p−1)(q−1) を求めるとき，(p−1)(q−1) の値はいくつ？`,ans:r.phi,k:'num',e:`<div class="calcbox">n = p×q = ${r.p}×${r.q} = ${r.n}\n(p−1)(q−1) = ${r.p-1}×${r.q-1} = ${r.phi}</div>次に (p−1)(q−1)＝${r.phi} と互いに素な e を選ぶ（例：e＝${r.e}）。`}}},
+{id:'rsa_d',ch:14,name:'RSA：秘密鍵 d',gen(){const r=rsaSet();const k=(r.e*r.d-1)/r.phi;return {p:`RSAで p＝${r.p}，q＝${r.q}，e＝${r.e} とした。ed mod (p−1)(q−1)＝1 となる正の整数 d（秘密鍵，(p−1)(q−1)未満）を求めよ。`,ans:r.d,k:'num',e:`<div class="calcbox">(p−1)(q−1) = ${r.p-1}×${r.q-1} = ${r.phi}\n${r.e}×d mod ${r.phi} = 1 となる d を探す\nd = ${r.d} のとき ${r.e}×${r.d} = ${r.e*r.d} = ${r.phi}×${k} + 1  ✔</div>よって d＝<b>${r.d}</b>。公開鍵は (e,n)＝(${r.e},${r.n})，秘密鍵は d＝${r.d}。`}}},
+{id:'rsa_c',ch:14,name:'RSA：暗号化',gen(){const r=rsaSet();const M=ri(2,r.n-1);const C=modpow(M,r.e,r.n);return {p:`RSAの公開鍵が e＝${r.e}，n＝${r.n} のとき，平文 M＝${M} の暗号文 C＝M${sup('e')} mod n を求めよ。`,ans:C,k:'num',e:`<div class="calcbox">C = ${M}^${r.e} mod ${r.n}\n${powChain(M,r.e,r.n)}</div>よって C＝<b>${C}</b>。（大きな累乗は2乗をくり返して途中で mod をとると楽）`}}},
+{id:'rsa_m',ch:14,name:'RSA：復号',gen(){const r=rsaSet();const M=ri(2,r.n-1);const C=modpow(M,r.e,r.n);return {p:`RSAで n＝${r.n}，秘密鍵 d＝${r.d} のとき，暗号文 C＝${C} を復号した平文 D＝C${sup('d')} mod n を求めよ。`,ans:M,k:'num',e:`<div class="calcbox">D = ${C}^${r.d} mod ${r.n}\n${powChain(C,r.d,r.n)}</div>よって D＝<b>${M}</b>（元の平文に戻る）。（参考：e＝${r.e}，(p,q)＝(${r.p},${r.q})）`}}},
+{id:'dh_pub',ch:14,name:'DH：公開値',gen(){const [p,g]=pick(DHS);const a=ri(3,p-2);const m=modpow(g,a,p);return {p:`Diffie-Hellman鍵共有で，素数 p＝${p}，原始根 g＝${g}，ユーザAの秘密の乱数 a＝${a} のとき，Aの公開値 m＝g${sup('a')} mod p を求めよ。`,ans:m,k:'num',e:`<div class="calcbox">m = ${g}^${a} mod ${p}\n${powChain(g,a,p)}</div>m＝<b>${m}</b> は公開してよい（mからaを求めるのは離散対数問題で困難）。`}}},
+{id:'dh_key',ch:14,name:'DH：共有鍵',gen(){const [p,g]=pick(DHS);const a=ri(2,p-2),b=ri(2,p-2);const m=modpow(g,a,p),n=modpow(g,b,p),K=modpow(n,a,p);return {p:`Diffie-Hellman鍵共有で p＝${p}，g＝${g}，Aの秘密 a＝${a}，Bの秘密 b＝${b} とする。共有される鍵 K を求めよ。`,ans:K,k:'num',e:`<div class="calcbox">A の公開値 m = ${g}^${a} mod ${p} = ${m}\nB の公開値 n = ${g}^${b} mod ${p} = ${n}\nA: K = n^a mod p = ${n}^${a} mod ${p} = ${K}\nB: K = m^b mod p = ${m}^${b} mod ${p} = ${modpow(m,b,p)}</div>どちらも g${sup('ab')} mod p ＝ <b>${K}</b> になる。`}}},
+{id:'modpow',ch:14,name:'べき乗剰余（原始根）',gen(){const [p,g]=pick(DHS.filter(x=>x[0]<=13).concat([[5,2],[7,3],[7,5]]));const k=ri(2,p-1);const v=modpow(g,k,p);const seq=Array.from({length:p-1},(_,i)=>`${g}^${i+1} mod ${p} = ${modpow(g,i+1,p)}`).join('\n');return {p:`g＝${g} は p＝${p} の原始根である。${g}${sup(k)} mod ${p} の値を求めよ。`,ans:v,k:'num',e:`<div class="calcbox">${seq}</div>${g}${sup(k)} mod ${p}＝<b>${v}</b>。1〜${p-1}がすべて現れるので g＝${g} は原始根。`}}},
+{id:'sbox',ch:14,name:'AES SubBytes',gen(){const r=ri(0,4),c=ri(0,4);const ans=SBOX[r][c];let t='<table class="tbl"><tr><th>上位＼下位</th>'+[0,1,2,3,4].map(x=>`<th>${x}</th>`).join('')+'</tr>'+SBOX.map((row,i)=>`<tr><th>${i}</th>`+row.map(v=>`<td class="mono">${v}</td>`).join('')+'</tr>').join('')+'</table>';
+  return {p:`AESのSubBytesで用いる換字表（Sボックス）の一部を下に示す。入力 <span class="mono">0x${r}${c}</span> は何に置き換えられるか。16進数2桁で答えよ。<div class="fig">${t}</div>`,ans,k:'str',ph:'例: 7C',e:`上位4ビット＝${r}（行），下位4ビット＝${c}（列）を表で引く → <b>0x${ans}</b>。<br>（資料の例：0x21 ⇒ 0xFD）`}}},
+{id:'shiftrows',ch:14,name:'AES ShiftRows',gen(){const r=ri(1,3);const row=sample([...Array(16)].map((_,i)=>i+1),4);const out=row.slice(r).concat(row.slice(0,r));return {p:`AESのShiftRowsで，4×4の状態配列の第${r+1}行（上から${r+1}行目）が [${row.join(', ')}] のとき，処理後の並びを答えよ（スペース区切り）。`,ans:vec(out),k:'vec',ph:'例: 6 7 8 5',e:`第1行は0，第2行は1，第3行は2，第4行は3バイト左にローテーションする。第${r+1}行は${r}つ左へ。<div class="calcbox">[${row.join(', ')}] → [${out.join(', ')}]</div>`}}},
+{id:'hashhex',ch:15,name:'ハッシュ値の16進桁数',gen(){const al=pick([['MD5',128],['SHA-1',160],['SHA-224',224],['SHA-256',256],['SHA-384',384],['SHA-512',512]]);return {p:`${al[0]}で求めたハッシュ値を16進数で表すと何文字（何桁）になる？`,ans:al[1]/4,k:'num',unit:'文字',e:`${al[0]}の出力は${al[1]}ビット。16進数1文字は4ビットを表すので <div class="calcbox">${al[1]} ÷ 4 = ${al[1]/4} 文字</div>（例：SHA-256 は64文字。入力の長さに関係なく常に同じ長さ）`}}},
+{id:'sqlrows',ch:16,name:'SQLインジェクションの抽出行数',gen(){const n=ri(4,9);const v=ri(0,2);const names=['ueto','saito','goriki','shina','hamasaki','tanaka','suzuki','kato','ito'].slice(0,n);const tgt=pick(names);
+  const qs=[[`SELECT * FROM user WHERE id = '${tgt}'`,1,`条件 id='${tgt}' に一致する1行だけが取り出される。`],[`SELECT * FROM user WHERE id = 'aiueo' or 'A'='A'`,n,`'A'='A' は常に真なので，検索条件は全行で真 → 全${n}行が取り出される（SQLインジェクション成立）。`],[`SELECT * FROM user WHERE id = 'aiueo'' or ''A''=''A'`,0,`エスケープ処理により aiueo' or 'A'='A 全体が1つの文字列になり，そのidを持つ行はないので0行。`]][v];
+  return {p:`テーブル user に ${n} 行（id：${names.join('，')}）が登録されている。次のSQLを実行すると何行取り出される？<div class="calcbox">${qs[0]}</div>`,ans:qs[1],k:'num',unit:'行',e:qs[2]}}},
+{id:'brute',ch:16,name:'総当たりの組み合わせ数',gen(){const cs=pick([['数字（0〜9）',10],['英小文字（a〜z）',26]]);const L=cs[1]===10?ri(3,6):ri(2,4);const a=cs[1]**L;return {p:`パスワードが${cs[0]}だけの${L}文字である場合，ブルートフォース攻撃（総当たり）で試す組み合わせは最大何通り？`,ans:a,k:'num',unit:'通り',e:`1文字あたり${cs[1]}通り，それが${L}文字なので<div class="calcbox">${cs[1]}^${L} = ${a.toLocaleString()} 通り</div>文字数（長さ）や文字の種類を増やすと組み合わせが爆発的に増え，総当たりに時間がかかる。`}}},
+{id:'am_bw',ch:17,name:'AMの占有帯域幅',gen(){const fs=pick([3,4,5,7.5,10,15]);const fc=ri(53,160)*10;return {p:`搬送波周波数 ${fc} kHz を，最高周波数 ${fs} kHz の信号波で振幅変調（AM）した。被変調波の占有周波数帯域幅は何kHz？`,ans:2*fs,k:'num',unit:'kHz',e:`AM波は f<sub>c</sub>−f<sub>s</sub> 〜 f<sub>c</sub>＋f<sub>s</sub> に広がる（上側波帯＋下側波帯）。<div class="calcbox">B = 2f_m = 2 × ${fs} = ${2*fs} kHz</div>（${fc-fs}〜${fc+fs} kHz）。搬送波周波数には依存しない。`}}},
+{id:'am_side',ch:17,name:'AMの側波帯周波数',gen(){const fs=pick([1,2,3,4,5]);const fc=ri(53,160)*10;const up=Math.random()<.5;return {p:`搬送波 ${fc} kHz を単一周波数 ${fs} kHz の信号波で振幅変調した。${up?'上側波':'下側波'}の周波数は何kHz？`,ans:up?fc+fs:fc-fs,k:'num',unit:'kHz',e:`v(t)＝A<sub>c</sub>cos2πf<sub>c</sub>t＋(mA<sub>c</sub>/2){cos2π(f<sub>c</sub>＋f<sub>s</sub>)t＋cos2π(f<sub>c</sub>−f<sub>s</sub>)t}<div class="calcbox">上側波 f_c+f_s = ${fc+fs} kHz\n下側波 f_c−f_s = ${fc-fs} kHz</div>よって <b>${up?fc+fs:fc-fs} kHz</b>`}}},
+{id:'am_m',ch:17,name:'変調度',gen(){const Ac=pick([2,4,5,8,10]);const m=pick([0.2,0.25,0.4,0.5,0.6,0.75,0.8]);const As=Math.round(Ac*m*100)/100;return {p:`AMで搬送波の振幅 A<sub>c</sub>＝${Ac} V，信号波の振幅 A<sub>s</sub>＝${As} V のとき，変調度 m は何％？`,ans:m*100,k:'num',unit:'%',tol:0.6,e:`<div class="calcbox">m = A_s / A_c = ${As} / ${Ac} = ${m}  → ${m*100} %</div>`}}},
+{id:'ssb_bw',ch:17,name:'SSBの帯域幅',gen(){const fs=pick([3,4,5,8,10]);return {p:`最高周波数 ${fs} kHz の信号波をSSB（単側波帯）で伝送するとき，占有周波数帯域幅は何kHz？（AMの場合と比較して考えよ）`,ans:fs,k:'num',unit:'kHz',e:`AMは上下の側波帯で 2f<sub>m</sub>＝${2*fs} kHz。SSBはBPFで片方の側波帯だけを送るので半分の <b>f<sub>m</sub>＝${fs} kHz</b>。`}}},
+{id:'carson',ch:17,name:'カールソン則（FM帯域幅）',gen(){const df=pick([5,10,25,40,50,75]);const fm=pick([3,5,10,15]);return {p:`FMで最大周波数偏移 Δf＝${df} kHz，信号の最高周波数 f<sub>m</sub>＝${fm} kHz のとき，カールソン則による占有周波数帯域幅 B は何kHz？`,ans:2*(df+fm),k:'num',unit:'kHz',e:`<div class="calcbox">B = 2(Δf + f_m) = 2 × (${df} + ${fm}) = ${2*(df+fm)} kHz</div>AM（2f<sub>m</sub>＝${2*fm} kHz）より広い。`}}},
+{id:'lambda',ch:17,name:'波長',gen(){const f=pick([[1e6,'1000 kHz'],[600e3,'600 kHz'],[80e6,'80 MHz'],[100e6,'100 MHz'],[300e6,'300 MHz'],[800e6,'800 MHz'],[2e9,'2 GHz'],[2.4e9,'2.4 GHz'],[5e9,'5 GHz']]);const lam=3e8/f[0];const cm=lam<1;const ans=cm?lam*100:lam;return {p:`周波数 ${f[1]} の電波の波長は何${cm?'cm':'m'}？（光速 3×10<sup>8</sup> m/s）`,ans:Math.round(ans*1000)/1000,k:'num',unit:cm?'cm':'m',tol:Math.max(0.01,ans*0.005),e:`<div class="calcbox">λ = c / f = 3×10^8 / ${f[0].toExponential().replace('e+',' ×10^')} = ${fmt(lam,4)} m${cm?` = ${fmt(lam*100,3)} cm`:''}</div>`}}},
+{id:'antenna',ch:17,name:'半波長アンテナの長さ',gen(){const f=pick([[20e3,'20 kHz'],[1e6,'1000 kHz'],[100e6,'100 MHz'],[150e6,'150 MHz'],[800e6,'800 MHz'],[2e9,'2 GHz'],[2.4e9,'2.4 GHz']]);const lam=3e8/f[0];const h=lam/2;const cm=h<1;const ans=cm?h*100:h;return {p:`周波数 ${f[1]} の電波を半波長アンテナで送受信する。アンテナの長さ（理論値）は何${cm?'cm':'m'}？（光速 3×10<sup>8</sup> m/s）`,ans:Math.round(ans*1000)/1000,k:'num',unit:cm?'cm':'m',tol:Math.max(0.01,ans*0.005),e:`<div class="calcbox">λ = 3×10^8 / ${f[0].toExponential().replace('e+',' ×10^')} = ${fmt(lam,4)} m\n半波長 λ/2 = ${fmt(h,4)} m${cm?` = ${fmt(h*100,3)} cm`:''}</div>${f[0]===20e3?'音声（20kHz）をそのまま送るとアンテナが7500mにもなる → 変調で周波数を上げる必要がある。':'周波数が高いほどアンテナは短くなる。'}`}}},
+{id:'nyq_fs',ch:17,name:'標本化定理（fs）',gen(){const fm=pick([3.4,4,5,8,10,15,20]);return {p:`最高周波数 ${fm} kHz のアナログ信号を標本化して元の信号を復元するには，サンプリング周波数 f<sub>s</sub> を何kHzより大きくする必要がある？`,ans:2*fm,k:'num',unit:'kHz',e:`標本化定理：f<sub>s</sub>＞2f<sub>m</sub><div class="calcbox">2 × ${fm} = ${fmt(2*fm)} kHz</div>（例：電話 f<sub>m</sub>＝3.4kHz → f<sub>s</sub>＝8kHz，CD f<sub>m</sub>＝20kHz → f<sub>s</sub>＝44.1kHz）`}}},
+{id:'nyq_fm',ch:17,name:'標本化定理（fm）',gen(){const fs=pick([8,16,32,44.1,48,96]);return {p:`サンプリング周波数 ${fs} kHz で標本化するとき，元の信号を復元できる信号の最高周波数は何kHz未満？`,ans:fs/2,k:'num',unit:'kHz',e:`f<sub>s</sub>＞2f<sub>m</sub> より f<sub>m</sub>＜f<sub>s</sub>/2<div class="calcbox">${fs} / 2 = ${fmt(fs/2)} kHz</div>`}}},
+{id:'ts',ch:17,name:'サンプリング周期',gen(){const fs=pick([8,16,40,44.1,48,50]);const ts=1000/fs;return {p:`サンプリング周波数 ${fs} kHz のときのサンプリング周期 T<sub>s</sub> は何μs？（小数第2位まで）`,ans:Math.round(ts*100)/100,k:'num',unit:'μs',tol:0.011,e:`<div class="calcbox">T_s = 1 / f_s = 1 / (${fs}×10^3) s = ${fmt(ts,3)} μs</div>（電話音声 8kHz → 125μs）`}}},
+{id:'qlevels',ch:17,name:'量子化レベル数',gen(){const n=ri(2,16);return {p:`量子化ビット数 n＝${n} ビットのとき，量子化レベル数 L はいくつ？`,ans:2**n,k:'num',unit:'段階',e:`<div class="calcbox">L = 2^n = 2^${n} = ${2**n}</div>ビット数を増やすほど量子化雑音は減るがデータ量は増える。`}}},
+{id:'qbits',ch:17,name:'必要な量子化ビット数',gen(){const L=ri(5,1000);const n=Math.ceil(Math.log2(L));return {p:`振幅を少なくとも ${L} 段階で量子化したい。必要な量子化ビット数（最小）は何ビット？`,ans:n,k:'num',unit:'bit',e:`2<sup>n</sup>≧${L} となる最小の n を求める。<div class="calcbox">2^${n-1} = ${2**(n-1)} ＜ ${L} ≦ 2^${n} = ${2**n}</div>よって <b>${n} bit</b>`}}},
+{id:'pcm_rate',ch:17,name:'PCMのビットレート',gen(){const c=pick([[8,8,1,'電話音声'],[44.1,16,2,'CD音源'],[16,16,1,'音声'],[48,16,2,'音声'],[8,7,1,'音声'],[32,8,2,'音声']]);const r=c[0]*c[1]*c[2];return {p:`${c[3]}をサンプリング周波数 ${c[0]} kHz，量子化ビット数 ${c[1]} bit，${c[2]===2?'2チャネル（ステレオ）':'1チャネル'}でPCM符号化する。ビットレートは何kbps？`,ans:Math.round(r*10)/10,k:'num',unit:'kbps',tol:0.06,e:`<div class="calcbox">${c[0]} kHz × ${c[1]} bit × ${c[2]} ch = ${fmt(r,2)} kbps</div>（1秒間に f<sub>s</sub> 回，1回あたり n ビット）`}}},
+{id:'pcm_size',ch:17,name:'PCMのデータ量',gen(){const fs=pick([8,16]),n=pick([8,16]),t=pick([5,10,30,60]);const B=fs*1000*n*t/8/1000;return {p:`サンプリング周波数 ${fs} kHz，量子化ビット数 ${n} bit（1チャネル）で ${t} 秒間録音したPCMデータは何kbyte？（1kbyte＝1000byte，1byte＝8bit）`,ans:B,k:'num',unit:'kbyte',e:`<div class="calcbox">ビット数 = ${fs}×10^3 × ${n} × ${t} = ${(fs*1000*n*t).toLocaleString()} bit\nバイト数 = ÷8 = ${(fs*1000*n*t/8).toLocaleString()} byte = ${fmt(B)} kbyte</div>`}}},
+{id:'gray',ch:17,name:'自然2進→交番2進',gen(){const n=pick([3,4]);const v=ri(1,2**n-1);const b=bin(v,n),g=bin(v^(v>>1),n);let st=`MSB: ${b[0]}（そのまま）`;for(let i=1;i<n;i++)st+=`\n${i+1}ビット目: ${b[i-1]} XOR ${b[i]} = ${g[i]}`;return {p:`自然2進符号 <span class="mono">${b}</span>（10進で${v}）を交番2進符号（グレイコード）に変換せよ。`,ans:g,k:'str',ph:'例: 110',e:`最上位ビットはそのまま，それ以降は自然2進の隣接ビットどうしのXOR。<div class="calcbox">${st}</div>よって <b>${g}</b>`}}},
+{id:'gray_inv',ch:17,name:'交番2進→自然2進',gen(){const n=pick([3,4]);const v=ri(1,2**n-1);const b=bin(v,n),g=bin(v^(v>>1),n);let st=`MSB: ${g[0]}（そのまま）`;for(let i=1;i<n;i++)st+=`\n${i+1}ビット目: (自然2進の${i}ビット目)${b[i-1]} XOR (グレイ)${g[i]} = ${b[i]}`;return {p:`交番2進符号（グレイコード） <span class="mono">${g}</span> を自然2進符号に戻せ。`,ans:b,k:'str',ph:'例: 101',e:`逆変換：MSBはそのまま，以降は「求めた自然2進の1つ上のビット」と「グレイの同じ位置のビット」のXOR。<div class="calcbox">${st}</div>よって <b>${b}</b>（10進で${v}）`}}},
+{id:'quant_code',ch:17,name:'量子化と符号化',gen(){const xs=Array.from({length:4},()=>{let x;do{x=Math.round(Math.random()*72)/10}while(Math.abs(x%1-.5)<0.05);return x});const q=xs.map(x=>Math.min(7,Math.round(x)));const codes=q.map(v=>bin(v,3));return {p:`標本値 ${xs.join('，')} を3ビットで量子化（0〜7の最も近い整数に丸める）し，自然2進数で符号化した結果を答えよ（3ビットずつスペース区切り）。`,ans:codes.join(' '),k:'str',ph:'例: 011 110 110 001',e:`<div class="calcbox">標本値 : ${xs.join('  ')}\n量子化 : ${q.join('  ')}\n符号化 : ${codes.join(' ')}</div>3ビット量子化はL＝2<sup>3</sup>＝8段階（0〜7）。丸めの誤差が量子化雑音。`}}},
+{id:'bps',ch:18,name:'1シンボルあたりのビット数',gen(){const m=pick([['BPSK',2],['QPSK',4],['8PSK',8],['16QAM',16],['64QAM',64],['256QAM',256],['1024QAM',1024]]);return {p:`${m[0]}（M＝${m[1]}値）では，1シンボルで何ビット伝送できる？`,ans:Math.log2(m[1]),k:'num',unit:'bit',e:`M＝2<sup>n</sup> 値の変調では1シンボルで n ビット。<div class="calcbox">n = log2(${m[1]}) = ${Math.log2(m[1])}</div>`}}},
+{id:'bitrate',ch:18,name:'ビットレート',gen(){const m=pick([['BPSK',1],['QPSK',2],['8PSK',3],['16QAM',4],['64QAM',6],['256QAM',8]]);const s=pick([1,2,5,10,20,25]);return {p:`シンボルレート ${s} Msymbol/s で ${m[0]} を用いたときの伝送速度は何Mbps？`,ans:s*m[1],k:'num',unit:'Mbps',e:`${m[0]}は1シンボル${m[1]}ビット。<div class="calcbox">${s} Msymbol/s × ${m[1]} bit = ${s*m[1]} Mbps</div>`}}},
+{id:'symrate',ch:18,name:'シンボルレート',gen(){const m=pick([['QPSK',2],['8PSK',3],['16QAM',4],['64QAM',6]]);const s=pick([1,2,4,5,10,12]);const b=s*m[1];return {p:`${m[0]}で ${b} Mbps のデータを伝送するのに必要なシンボルレートは何Msymbol/s？`,ans:s,k:'num',unit:'Msymbol/s',e:`<div class="calcbox">シンボルレート = ${b} Mbps ÷ ${m[1]} bit/symbol = ${s} Msymbol/s</div>`}}},
+{id:'psk_dist',ch:18,name:'PSKの信号点間距離',gen(){const M=pick([4,8,16]);const A=pick([1,2,3,5,10]);const d=2*A*Math.sin(Math.PI/M);return {p:`最大振幅（円の半径）A＝${A} の${M}PSKで，隣接する信号点間の距離 d<sub>p</sub> を求めよ（小数第2位まで）。`,ans:Math.round(d*100)/100,k:'num',tol:0.011,e:`隣接点の中心角は 2π/${M}。弦の長さは<div class="calcbox">d_p = 2A sin(π/${M}) = 2×${A}×sin(${(180/M).toFixed(2)}°) = ${fmt(d,4)}</div>（16PSKなら 2A sin(π/16)≈0.39A）`}}},
+{id:'qam_dist',ch:18,name:'16QAMの信号点間距離',gen(){const A=pick([1,2,3,5,10]);const d=Math.SQRT2*A/3;return {p:`最大振幅（原点から最も遠い信号点までの距離）A＝${A} の16QAMで，隣接する信号点間の距離 d<sub>q</sub> を求めよ（小数第2位まで）。`,ans:Math.round(d*100)/100,k:'num',tol:0.011,e:`角の点は (A/√2, A/√2)。各軸のレベルは ±1，±1/3（×A/√2）なので，隣のレベルとの差は 2/3 × A/√2。<div class="calcbox">d_q = (2/3)(A/√2) = √2A/3 = ${fmt(d,4)}  （≈0.47A）</div>16PSKの 0.39A より長いので16QAMの方が誤り率が低い。`}}},
+{id:'qam_iq',ch:18,name:'16QAMのI・Q値',gen(){const c=Object.keys(QAMLV);const a=pick(c),b=pick(c);return {p:`資料の16QAM（2bitずつI相・Q相に分け，10⇒+1，11⇒+1/3，01⇒−1/3，00⇒−1）で，4ビット <span class="mono">${a+b}</span> を送るときの (I, Q) の値を答えよ（例：1/3 -1）。`,ans:vec([QAMLV[a],QAMLV[b]]),k:'vec',ph:'例: 1/3 -1',e:`上位2bit <code>${a}</code> → I＝${fr(QAMLV[a])}，下位2bit <code>${b}</code> → Q＝${fr(QAMLV[b])}。`}}},
+{id:'tdm_rate',ch:19,name:'TDMの伝送速度',gen(){const ch=pick([24,12,30,32,48]),b=pick([8,7]);const f=ch*b+1;const r=f/125;return {p:`${b}bitで量子化した音声（8kHzで標本化）を ${ch}チャネル時分割多重する。1フレームにフレーム同期ビットを1bit付けるとき，伝送速度は何Mbps？（小数第3位まで）`,ans:Math.round(r*1000)/1000,k:'num',unit:'Mbps',tol:0.0015,e:`<div class="calcbox">1フレーム = ${b} × ${ch} + 1 = ${f} bit\nフレーム周期 = 1/8000 = 125 μs\n伝送速度 = ${f} bit / 125 μs = ${fmt(r,4)} Mbps</div>（24ch・8bitなら 193bit/125μs＝1.544Mbps）`}}},
+{id:'tdm_frame',ch:19,name:'TDMのフレーム長',gen(){const ch=pick([12,24,30,48]),b=pick([7,8]);return {p:`${b}bit量子化の音声 ${ch}チャネルをTDMで多重化する。1フレームにフレーム同期ビットを1bit加えると，1フレームは何bit？`,ans:ch*b+1,k:'num',unit:'bit',e:`<div class="calcbox">${b} × ${ch} + 1 = ${ch*b+1} bit</div>`}}},
+{id:'ch_rate',ch:19,name:'1チャネルの伝送速度',gen(){const fs=pick([8,16]),b=pick([7,8,16]);return {p:`サンプリング周波数 ${fs} kHz，量子化ビット数 ${b} bit の音声1チャネルをPCM符号化したときの伝送速度は何kbps？`,ans:fs*b,k:'num',unit:'kbps',e:`<div class="calcbox">${b} bit / (1/${fs}kHz) = ${b} × ${fs} = ${fs*b} kbps</div>（8bit/125μs＝64kbps。パルス幅を1/2にして128kbpsで送れば2ch伝送可能）`}}},
+{id:'cdm_sum',ch:19,name:'CDMの合成信号',gen(){const d=[0,1,2,3].map(()=>pick([1,-1]));const s=[0,1,2,3].map(j=>d.reduce((a,v,i)=>a+v*HAD4[i][j],0));const lines=d.map((v,i)=>`CH${i+1}: ${sgn(v)} × (${HAD4[i].join(', ')}) = (${HAD4[i].map(x=>x*v).join(', ')})`).join('\n');return {p:`4次のアダマール行列の各行 <span class="mono">m1=(1,1,1,1)，m2=(1,−1,1,−1)，m3=(1,1,−1,−1)，m4=(1,−1,−1,1)</span> を拡散符号とし，CH1〜CH4のデータ ${d.map(sgn).join('，')} をCDMで多重化した。合成信号（4チップ）を答えよ（スペース区切り）。`,ans:vec(s),k:'vec',ph:'例: 2 2 -2 2',e:`各チャネルのデータを符号に掛けて，チップごとに足し合わせる。<div class="calcbox">${lines}\n合成: (${s.join(', ')})</div>`}}},
+{id:'cdm_corr',ch:19,name:'CDMの逆拡散',gen(){const d=[0,1,2,3].map(()=>pick([1,-1]));const s=[0,1,2,3].map(j=>d.reduce((a,v,i)=>a+v*HAD4[i][j],0));const k=ri(0,3);const c=s.reduce((a,v,j)=>a+v*HAD4[k][j],0);return {p:`アダマール行列（m1=(1,1,1,1)，m2=(1,−1,1,−1)，m3=(1,1,−1,−1)，m4=(1,−1,−1,1)）でCDMした合成信号が <span class="mono">(${s.join(', ')})</span> である。CH${k+1}の符号 m${k+1} で逆拡散したときの相関値（積の和）を求めよ。`,ans:c,k:'num',e:`<div class="calcbox">(${s.join(', ')}) ・ (${HAD4[k].join(', ')})\n= ${s.map((v,j)=>`(${v})×(${HAD4[k][j]})`).join(' + ')}\n= ${c}</div>${c}÷4＝${c/4} → CH${k+1}のデータは <b>${c>0?'+1':'−1'}</b>。他の符号とは相互相関が0なので希望信号だけが取り出せる。`}}},
+{id:'xcorr',ch:19,name:'相互相関',gen(){const N=pick([4,8]);const a=Array.from({length:N},()=>pick([1,-1])),b=Array.from({length:N},()=>pick([1,-1]));const c=a.reduce((s,v,i)=>s+v*b[i],0);return {p:`符号長${N}の2つの符号 m1＝(${a.join(', ')})，m2＝(${b.join(', ')}) の相互相関 Σ m1(t)×m2(t) を求めよ。`,ans:c,k:'num',e:`<div class="calcbox">${a.map((v,i)=>`(${v})(${b[i]})`).join(' + ')}\n= ${a.map((v,i)=>v*b[i]).join(' + ').replace(/\+ -/g,'− ')} = ${c}</div>${c===0?'0なので2つの符号は直交している。':'0でないので直交していない（CDMの符号には相互相関0のものを使う）。'}`}}},
+{id:'spread',ch:19,name:'スペクトル拡散（拡散）',gen(){const code=pick([[1,-1,-1,1],[1,1,-1,-1],[1,-1,1,-1],[-1,1,1,-1]]);const d=[pick([1,-1]),pick([1,-1])];const out=d.flatMap(v=>code.map(c=>v*c));return {p:`送信データ ${d.map(sgn).join('，')}（2ビット）に，1ビットあたり4チップの拡散符号 (${code.join(', ')}) を乗算して拡散した。拡散後の8チップを答えよ（スペース区切り）。`,ans:vec(out),k:'vec',ph:'例: 1 -1 -1 1 -1 1 1 -1',e:`<div class="calcbox">${d.map(v=>`${sgn(v)} × (${code.join(', ')}) = (${code.map(c=>c*v).join(', ')})`).join('\n')}</div>受信側で同じ符号を掛ける（逆拡散）と m<sup>2</sup>＝1 なので元のデータに戻る。`}}},
+{id:'h8',ch:19,name:'アダマール行列H8',gen(){const H2=[[1,1],[1,-1]];const up=H=>H.map(r=>r.concat(r)).concat(H.map(r=>r.concat(r.map(x=>-x))));const H4=up(H2),H8=up(H4);const k=ri(1,8);return {p:`アダマール行列は H<sub>2n</sub>＝[[H<sub>n</sub>, H<sub>n</sub>], [H<sub>n</sub>, −H<sub>n</sub>]] で作られる。H<sub>8</sub> の第${k}行を答えよ（スペース区切り）。<div class="calcbox">H4 =\n${H4.map(r=>r.map(x=>x>0?' 1':'-1').join(' ')).join('\n')}</div>`,ans:vec(H8[k-1]),k:'vec',ph:'例: 1 1 -1 -1 1 1 -1 -1',e:`第${k}行は${k<=4?`上半分なので H4 の第${k}行を2回並べる`:`下半分なので H4 の第${k-4}行と，その符号反転を並べる`}。<div class="calcbox">${H8.map((r,i)=>(i===k-1?'▶':' ')+r.map(x=>x>0?' 1':'-1').join(' ')).join('\n')}</div>`}}},
+{id:'ofdm_f0',ch:19,name:'OFDMの搬送波間隔',gen(){const T=pick([[3.2,'312.5'],[12.8,'78.125'],[66.7,null],[250,'4'],[1008,null],[100,'10']]);const f=1000/T[0];return {p:`OFDMで有効シンボル長 T＝${T[0]} μs のとき，隣接するサブキャリアの周波数間隔 f<sub>0</sub> は何kHz？${T[1]?'':'（小数第2位まで）'}`,ans:Math.round(f*1000)/1000,k:'num',unit:'kHz',tol:T[1]?0.001:0.011,e:`直交条件より f<sub>0</sub>＝1/T<div class="calcbox">f_0 = 1 / (${T[0]}×10^-6) Hz = ${fmt(f,3)} kHz</div>`}}},
+{id:'isdbt',ch:20,name:'地デジのサブキャリア数',gen(){const v=Math.random()<.5;return v?{p:'地上デジタルテレビ放送では，1チャネル（6MHz）を13セグメントに分割し，各セグメントに432本のサブキャリアを割り当て，さらに1本を加える。1チャネル全体のサブキャリア数は何本？',ans:5617,k:'num',unit:'本',e:'<div class="calcbox">432 × 13 + 1 = 5617 本</div>'}:{p:'地上デジタルテレビ放送の1チャネルのサブキャリアは全部で5617本で，13セグメントに分割されている（最後に1本追加）。1セグメントあたりのサブキャリアは何本？',ans:432,k:'num',unit:'本',e:'<div class="calcbox">(5617 − 1) ÷ 13 = 432 本</div>'}}},
+{id:'ofdm_ts',ch:20,name:'OFDMの標本化周期',gen(){const c=pick([[64,312.5],[128,15],[256,15],[1024,15],[2048,15],[512,78.125]]);const t=1e9/(c[0]*c[1]*1000);return {p:`サブキャリア数 N＝${c[0]}，搬送波間隔 f<sub>0</sub>＝${c[1]} kHz のOFDM信号を復調するときの標本化周期 1/(Nf<sub>0</sub>) は何ns？（小数第2位まで）`,ans:Math.round(t*100)/100,k:'num',unit:'ns',tol:0.011,e:`<div class="calcbox">N f_0 = ${c[0]} × ${c[1]}×10^3 = ${fmt(c[0]*c[1]/1000,4)} MHz\n1/(N f_0) = ${fmt(t,3)} ns</div>1シンボル長 T＝1/f<sub>0</sub> を N 等分した間隔で標本化し，N個の標本にDFTを適用する。`}}},
+{id:'gi_total',ch:20,name:'ガードインターバル付きシンボル長',gen(){const T=pick([3.2,12.8,64,128,252,1008]);const r=pick([[4,'1/4'],[8,'1/8'],[16,'1/16']]);const tg=T/r[0];return {p:`有効シンボル長 T＝${T} μs のOFDMに，長さ T の ${r[1]} のガードインターバルを付ける。GIを含めた1シンボルの長さは何μs？`,ans:Math.round((T+tg)*1000)/1000,k:'num',unit:'μs',tol:0.001,e:`<div class="calcbox">Tg = ${T} × ${r[1]} = ${fmt(tg,3)} μs\nT + Tg = ${fmt(T+tg,3)} μs</div>遅延時間τが Tg＝${fmt(tg,3)} μs より短ければシンボル間干渉を防げる。`}}},
+{id:'ofdm_bits',ch:20,name:'1OFDMシンボルのビット数',gen(){const K=pick([48,52,234,242,432]);const m=pick([['QPSK',2],['16QAM',4],['64QAM',6],['256QAM',8],['1024QAM',10]]);return {p:`${K}本のサブキャリアすべてを ${m[0]} で変調すると，1 OFDMシンボルで何ビット送れる？`,ans:K*m[1],k:'num',unit:'bit',e:`${m[0]}は1サブキャリア（1シンボル）あたり log2(${2**m[1]})＝${m[1]} bit。<div class="calcbox">${K} × ${m[1]} = ${K*m[1]} bit</div>`}}}
+];
+/* ================= 保存 ================= */
+const KEY='icx-study-v1';
+let DB={wrong:{},known:{},hist:[],stat:{n:0,ok:0},chs:CHS.slice(),exam:{n:30,time:0,types:['term','calc','sel']}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s)DB=Object.assign(DB,s)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}}
+
+const TYPE={term:{n:'暗記',c:'t-term',full:'単語暗記',icon:'語'},calc:{n:'計算',c:'t-calc',full:'計算問題',icon:'計'},sel:{n:'選択',c:'t-sel',full:'単語&図表選択',icon:'図'}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)}
+
+/* ================= 判定 ================= */
+const nz=s=>String(s??'').normalize('NFKC').toLowerCase().replace(/<[^>]+>/g,'').replace(/[\s・･\-‐－―ー_、，,。．.「」『』"'’()（）]/g,'');
+function termForms(t){const f=[t.t];const m=t.t.match(/^(.*?)（(.*?)）(.*)$/);if(m){f.push(m[1]+m[3],m[2])}return f.concat(t.alt)}
+function termKeys(t){return new Set(termForms(t).map(nz).filter(Boolean))}
+function mainForm(t){const m=t.t.match(/^(.*?)（(.*?)）(.*)$/);return m?m[1]+m[3]:t.t}
+function mask(t,d=t.d){let s=d;termForms(t).filter(x=>x&&x.length>=2).sort((a,b)=>b.length-a.length).forEach(f=>{s=s.split(f).join('〇〇')});return s}
+function parseNum(s){s=String(s??'').normalize('NFKC').replace(/[−–—ー]/g,'-').replace(/[,\s]/g,'').replace(/[^0-9.\-+/]/g,'');if(!s)return NaN;if(s.includes('/')){const [a,b]=s.split('/');return parseFloat(a)/parseFloat(b)}return parseFloat(s)}
+function checkCalc(c,v){
+  if(c.k==='num'){const x=parseNum(v);if(isNaN(x))return false;const tol=c.tol??Math.max(1e-9,Math.abs(c.ans)*1e-6);return Math.abs(x-c.ans)<=tol+1e-12}
+  if(c.k==='str'){const f=s=>String(s).normalize('NFKC').toUpperCase().replace(/^0X/,'').replace(/[\s,、]/g,'');return f(v)===f(c.ans)}
+  if(c.k==='vec'){const tk=s=>String(s).normalize('NFKC').replace(/[−–—]/g,'-').replace(/[()\[\]（）]/g,' ').trim().split(/[\s,、]+/).filter(Boolean).map(parseNum);const a=tk(v),b=tk(c.ans);return a.length===b.length&&a.every((x,i)=>Math.abs(x-b[i])<0.01)}
+  return false}
+function vecShow(s){return String(s).split(' ').map(x=>{const n=+x;if(Math.abs(Math.abs(n)-1/3)<1e-6)return (n<0?'-':'')+'1/3';return x}).join(' ')}
+
+/* ================= 問題オブジェクト生成 ================= */
+function mcFrom(o){const c=uniq(o.c);const order=shuffle(c.map((_,i)=>i));return Object.assign(o,{kind:'mc',choices:order.map(i=>c[i]),correct:order.indexOf(0)})}
+function qTerm(t){const mf=mainForm(t);return {id:'t:'+t.id,type:'term',ch:t.ch,kind:'input',
+  prompt:`次の説明に当てはまる用語を答えよ。<div class="def">${mask(t)}</div>`,
+  check:v=>termKeys(t).has(nz(v)),ph:'用語を入力',override:true,
+  ansHTML:`${t.t}${t.alt.length?`<div class="small">別解：${t.alt.join('，')}</div>`:''}`,
+  hint:`「${[...mf][0]}」で始まる${[...mf].length}文字`,
+  explain:`<b>${t.t}</b>：${t.d}`}}
+function qTermMC(t,dir){
+  let pool=TERMS.filter(x=>x.ch===t.ch&&x.id!==t.id&&(!t.g||x.g!==t.g));if(pool.length<3)pool=TERMS.filter(x=>x.id!==t.id);
+  const ds=sample(pool,3);
+  if(dir===0)return mcFrom({id:`tm:${t.id}:0`,type:'sel',ch:t.ch,prompt:`次の説明に当てはまる用語はどれ？<div class="def">${mask(t)}</div>`,c:[t.t,...ds.map(x=>x.t)],explain:`<b>${t.t}</b>：${t.d}<div class="small" style="margin-top:6px">${ds.map(x=>`・${x.t}：${x.d}`).join('<br>')}</div>`});
+  return mcFrom({id:`tm:${t.id}:1`,type:'sel',ch:t.ch,prompt:`「<b>${t.t}</b>」の説明として正しいものはどれ？`,c:[mask(t),...ds.map(x=>mask(x))],explain:`<b>${t.t}</b>：${t.d}<div class="small" style="margin-top:6px">他の選択肢は ${ds.map(x=>x.t).join('，')} の説明。</div>`})}
+function qMCQ(m){return mcFrom({id:'m:'+m.id,type:'sel',ch:m.ch,prompt:m.q,c:m.c.slice(),explain:m.e})}
+function qFig(name){const f=FIG[name],g=f.gen();return mcFrom({id:'f:'+name,type:'sel',ch:f.ch,prompt:g.q,fig:g.fig,c:g.c,figChoices:!!g.figChoices,explain:g.e})}
+function qCalc(c){const g=c.gen();return {id:'c:'+c.id,type:'calc',ch:c.ch,kind:'input',prompt:g.p,unit:g.unit||'',ph:g.ph||'数値を入力',calc:g,check:v=>checkCalc(g,v),ansHTML:`${g.k==='vec'?vecShow(g.ans):g.k==='num'?(+g.ans).toLocaleString('ja-JP',{maximumFractionDigits:6}):esc(g.ans)} ${g.unit||''}`,explain:g.e,label:c.name}}
+function fromId(id){const p=id.split(':');
+  if(p[0]==='t')return qTerm(TERMS[+p[1]]);
+  if(p[0]==='tm')return qTermMC(TERMS[+p[1]],+p[2]);
+  if(p[0]==='m')return qMCQ(MCQ[+p[1]]);
+  if(p[0]==='f')return qFig(p[1]);
+  if(p[0]==='c')return qCalc(CALC.find(c=>c.id===p[1]));}
+function idsFor(type,chs){const has=x=>chs.includes(x.ch);
+  if(type==='term')return TERMS.filter(has).map(t=>'t:'+t.id);
+  if(type==='calc')return CALC.filter(has).map(c=>'c:'+c.id);
+  return {fig:Object.keys(FIG).filter(k=>chs.includes(FIG[k].ch)).map(k=>'f:'+k),mcq:MCQ.filter(has).map(m=>'m:'+m.id),tm:TERMS.filter(has).flatMap(t=>['tm:'+t.id+':0','tm:'+t.id+':1'])}}
+function randId(type,chs){
+  if(type==='sel'){const s=idsFor('sel',chs);const r=Math.random();const grp=(r<.4&&s.fig.length)?s.fig:(r<.78&&s.mcq.length)?s.mcq:s.tm;return pick(grp.length?grp:s.tm)}
+  return pick(idsFor(type,chs))}
+
+/* ================= 画面遷移 ================= */
+let ST={};let timerH=null;
+function go(v,arg){clearInterval(timerH);timerH=null;window.scrollTo(0,0);$('#homeBtn').hidden=v==='home';VIEWS[v](arg)}
+const app=()=>$('#app');
+const chipsHTML=(sel)=>`<div class="chips" id="chs">${CHS.map(c=>`<span class="chip ${sel.includes(c)?'on':''}" data-c="${c}">資料${c} ${CH[c]}</span>`).join('')}</div><div class="row" style="margin-top:8px"><button class="btn ghost" style="padding:6px 12px;font-size:13px" onclick="allCh(true)">すべて選択</button><button class="btn ghost" style="padding:6px 12px;font-size:13px" onclick="allCh(false)">すべて解除</button></div>`;
+function bindChips(){document.querySelectorAll('#chs .chip').forEach(el=>el.onclick=()=>el.classList.toggle('on'))}
+function allCh(on){document.querySelectorAll('#chs .chip').forEach(el=>el.classList.toggle('on',on))}
+function readChips(){return [...document.querySelectorAll('#chs .chip.on')].map(e=>+e.dataset.c)}
+
+const VIEWS={};
+VIEWS.home=()=>{
+  const known=Object.keys(DB.known).length,weak=Object.keys(DB.wrong).length,acc=DB.stat.n?Math.round(DB.stat.ok/DB.stat.n*100)+'%':'—';
+  const best=DB.hist.length?Math.max(...DB.hist.map(h=>h.pct))+'%':'—';
+  app().innerHTML=`
+  <div class="hero"><h1>情報通信 試験対策</h1><p>資料14〜20（セキュリティ・暗号／認証・PKI／Web攻撃／アナログ・デジタル変調／多重化・OFDM）</p>
+   <div class="stats"><div><b>${acc}</b>学習の正答率</div><div><b>${best}</b>模試ベスト</div><div><b>${known}/${TERMS.length}</b>覚えた用語</div><div><b>${weak}</b>苦手問題</div></div></div>
+  <h2>模擬試験</h2>
+  <button class="mode" onclick="go('examSetup')"><div class="ic t-mix">試</div><div><b>模擬試験を受ける</b><span>暗記・計算・単語&図表選択の3種類をミックス。答えは採点後にまとめて表示し，全問の解説を見直せます。</span></div></button>
+  <h2>分野別に学習（1問ごとに解説）</h2>
+  <div class="grid g2">
+   ${['term','calc','sel'].map(t=>`<button class="mode" onclick="go('studySetup','${t}')"><div class="ic ${TYPE[t].c}">${TYPE[t].icon}</div><div><b>${TYPE[t].full}</b><span>${{term:`説明文から用語を入力（${TERMS.length}語）`,calc:`数値が毎回変わる${CALC.length}パターン・途中式つき`,sel:`4択${MCQ.length}問＋図表${Object.keys(FIG).length}パターン＋用語4択`}[t]}</span></div></button>`).join('')}
+   <button class="mode" onclick="go('studySetup','mix')"><div class="ic t-mix">混</div><div><b>ミックス</b><span>3種類をランダムに出題</span></div></button>
+  </div>
+  <h2>復習</h2>
+  <div class="grid g2">
+   <button class="mode" onclick="go('cards')"><div class="ic t-term">札</div><div><b>単語カード</b><span>めくって覚える。「覚えた」は記録されます</span></div></button>
+   <button class="mode" onclick="go('weak')"><div class="ic" style="background:var(--ng-s);color:var(--ng)">苦</div><div><b>苦手復習（${weak}問）</b><span>間違えた問題だけを出題。正解すると減ります</span></div></button>
+   <button class="mode" onclick="go('history')"><div class="ic" style="background:var(--soft)">履</div><div><b>成績履歴</b><span>模擬試験の結果（${DB.hist.length}回）</span></div></button>
+  </div>
+  <p class="small" style="margin-top:28px">学習記録はこの端末のブラウザに保存されます。</p>`};
+
+/* ---------- 学習モード ---------- */
+VIEWS.studySetup=(type)=>{
+  const tn=type==='mix'?'ミックス':TYPE[type].full;
+  app().innerHTML=`<h1>${tn}</h1><p class="lead">出題範囲を選んで開始。1問ごとに正誤と解説が表示されます。</p>
+  <div class="card"><div class="field"><label>出題範囲</label>${chipsHTML(DB.chs)}</div>
+  <div style="margin-top:18px"><button class="btn wide" id="go">開始する</button></div></div>`;
+  bindChips();$('#go').onclick=()=>{const chs=readChips();if(!chs.length)return toast('範囲を1つ以上選んでください');DB.chs=chs;save();startStudy({type,chs})}};
+function startStudy(o){ST={mode:'study',type:o.type,chs:o.chs,queue:o.queue||null,qi:0,n:0,ok:0,recent:[],label:o.label};nextStudy()}
+function nextStudy(){
+  let id;
+  if(ST.queue){if(!ST.queue.length){return finishWeak()}id=ST.queue[ST.qi%ST.queue.length]}
+  else{let tries=0;do{const t=ST.type==='mix'?pick(['term','calc','sel']):ST.type;id=randId(t,ST.chs);tries++}while(ST.recent.includes(id)&&tries<25);ST.recent.push(id);if(ST.recent.length>12)ST.recent.shift()}
+  ST.q=fromId(id);ST.answered=false;renderStudy()}
+function renderStudy(){
+  const q=ST.q;
+  app().innerHTML=`<div class="qtop"><span class="badge ${TYPE[q.type].c}">${TYPE[q.type].full}</span><span class="badge gray">資料${q.ch} ${CH[q.ch]}</span>
+   <span class="timer">${ST.n?`${ST.ok}/${ST.n} 正解`:'学習中'}</span></div>
+   ${ST.queue?`<div class="small" style="margin-bottom:8px">苦手復習：残り ${ST.queue.length} 問</div>`:''}
+   <div class="card ${TYPE[q.type].c}">${qBody(q,null,false)}<div id="fbwrap"></div></div>
+   <div class="qnav"><button class="btn ghost" onclick="go('home')">終了</button><button class="btn" id="nextBtn" ${ST.answered?'':'disabled'} onclick="${ST.queue?'advWeak()':'nextStudy()'}">次の問題 →</button></div>`;
+  bindQ(q,false);
+}
+function qBody(q,ans,locked){
+  let h=`<div class="prompt">${q.prompt}</div>`;if(q.fig)h+=`<div class="fig">${q.fig}</div>`;
+  if(q.kind==='mc'){h+=`<div class="choices ${q.figChoices?'figs':''}">${q.choices.map((c,i)=>`<button class="choice ${q.figChoices?'figc':''} ${ans===i?'sel':''}" data-i="${i}" ${locked?'disabled':''}><span class="k">${'ABCD'[i]}</span><span>${c}</span></button>`).join('')}</div>`}
+  else{h+=`<div class="inp"><input id="inp" type="text" inputmode="${q.type==='calc'&&q.calc.k==='num'?'decimal':'text'}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${esc(q.ph)}" value="${esc(ans??'')}" ${locked?'disabled':''}>${q.unit?`<span class="unit">${q.unit}</span>`:''}</div>`;
+    if(q.type==='calc'&&q.calc.k!=='num')h+=`<div class="hint">${q.calc.k==='vec'?'数値をスペース区切りで入力（分数は 1/3 のように）':'英数字で入力（スペースは無視）'}</div>`}
+  return h}
+function bindQ(q,exam){
+  if(q.kind==='mc')document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>exam?examPick(+b.dataset.i):studyAnswer(+b.dataset.i));
+  else{const inp=$('#inp');
+    if(exam){inp.oninput=()=>{EX.ans[EX.i]=inp.value;paintPalette()};inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();examMove(1)}}}
+    else{const w=document.createElement('div');w.className='row';w.style.marginTop='10px';
+      w.innerHTML=`<button class="btn" id="ansBtn">解答する</button>${q.hint?'<button class="btn ghost" id="hintBtn">ヒント</button>':''}<button class="btn ghost" id="giveBtn">わからない</button>`;
+      inp.parentNode.after(w);$('#ansBtn').onclick=()=>studyAnswer(inp.value);$('#giveBtn').onclick=()=>studyAnswer(null);
+      if(q.hint)$('#hintBtn').onclick=e=>{e.target.outerHTML=`<span class="hint" style="margin:0">ヒント：${q.hint}</span>`};
+      inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();if(!ST.answered)studyAnswer(inp.value);else $('#nextBtn').click()}};
+      setTimeout(()=>inp.focus({preventScroll:true}),50)}}}
+function isRight(q,a){if(a==null||a==='')return false;return q.kind==='mc'?a===q.correct:q.check(a)}
+function fbHTML(q,a,ok,canOverride){
+  const your=q.kind==='mc'?(a==null?'未回答':'ABCD'[a]):(a==null||a===''?'未回答':esc(a));
+  return `<div class="fb ${ok?'okk':'ngg'}"><div class="verdict">${ok?'◯ 正解':'✕ 不正解'}</div>
+   ${q.kind==='mc'?(ok?'':`<div class="ans">正解：${'ABCD'[q.correct]}${q.figChoices?'':' '+q.choices[q.correct]}</div>`):`<div class="ans">正解：${q.ansHTML}</div>${ok?'':`<div class="small">あなたの解答：${your}</div>`}`}
+   ${canOverride&&!ok&&q.override&&a?`<button class="btn ghost" style="margin-top:8px;padding:6px 12px;font-size:13px" id="ovBtn">表記ゆれなので正解にする</button>`:''}
+   <div class="exp"><div class="h">解説</div>${q.explain}</div></div>`}
+function studyAnswer(a){
+  if(ST.answered)return;ST.answered=true;const q=ST.q;const ok=isRight(q,a);
+  ST.n++;if(ok)ST.ok++;DB.stat.n++;if(ok)DB.stat.ok++;
+  if(ok){if(DB.wrong[q.id]){DB.wrong[q.id]--;if(DB.wrong[q.id]<=0)delete DB.wrong[q.id]}}else DB.wrong[q.id]=(DB.wrong[q.id]||0)+1;
+  ST.lastOk=ok;save();
+  if(q.kind==='mc'){document.querySelectorAll('.choice').forEach(b=>{const i=+b.dataset.i;b.disabled=true;if(i===q.correct)b.classList.add('right');else if(i===a)b.classList.add('wrong')})}
+  else{$('#inp').disabled=true;const r=$('#ansBtn')?.parentNode;if(r)r.remove()}
+  $('#fbwrap').innerHTML=fbHTML(q,a,ok,true);
+  const ov=$('#ovBtn');if(ov)ov.onclick=()=>{ST.ok++;DB.stat.ok++;if(DB.wrong[q.id]){DB.wrong[q.id]--;if(DB.wrong[q.id]<=0)delete DB.wrong[q.id]}ST.lastOk=true;save();$('#fbwrap').innerHTML=fbHTML(q,a,true,false);document.querySelector('.timer').textContent=`${ST.ok}/${ST.n} 正解`};
+  document.querySelector('.timer').textContent=`${ST.ok}/${ST.n} 正解`;
+  const nb=$('#nextBtn');nb.disabled=false;
+  setTimeout(()=>$('#fbwrap').scrollIntoView({behavior:'smooth',block:'nearest'}),60)}
+
+/* ---------- 苦手復習 ---------- */
+VIEWS.weak=()=>{
+  const ids=Object.keys(DB.wrong);const cnt={term:0,calc:0,sel:0};ids.forEach(id=>{try{cnt[fromId(id).type]++}catch(e){}});
+  app().innerHTML=`<h1>苦手復習</h1><p class="lead">学習・模擬試験で間違えた問題がたまります。復習で正解すると苦手リストから減ります（計算問題は数値が変わって出題）。</p>
+  ${ids.length?`<div class="card"><div class="row">${['term','calc','sel'].map(t=>`<span class="badge ${TYPE[t].c}">${TYPE[t].full} ${cnt[t]}問</span>`).join('')}</div>
+   <div style="margin-top:16px" class="row"><button class="btn" onclick="startWeak()">${ids.length}問を復習する</button><button class="btn ghost" onclick="if(confirm('苦手リストを空にしますか？')){DB.wrong={};save();go('weak')}">リストを空にする</button></div></div>`
+   :`<div class="card empty">苦手問題はまだありません 🎉<br>学習モードや模擬試験で間違えた問題がここに追加されます。</div>`}`};
+function startWeak(){const q=shuffle(Object.keys(DB.wrong).filter(id=>{try{fromId(id);return true}catch(e){delete DB.wrong[id];return false}}));startStudy({type:'mix',chs:CHS,queue:q})}
+function advWeak(){const id=ST.q.id;const i=ST.queue.indexOf(id);if(ST.lastOk){if(i>=0)ST.queue.splice(i,1)}else{if(i>=0){ST.queue.splice(i,1);ST.queue.push(id)}}ST.qi=0;nextStudy()}
+function finishWeak(){app().innerHTML=`<div class="card empty"><b style="font-size:20px;color:var(--ink)">苦手復習 完了！</b><br>${ST.ok}/${ST.n} 正解でした。<div style="margin-top:16px"><button class="btn" onclick="go('home')">ホームへ</button></div></div>`}
+
+/* ---------- 模擬試験 ---------- */
+let EX=null;
+VIEWS.examSetup=()=>{
+  const e=DB.exam;
+  app().innerHTML=`<h1>模擬試験</h1><p class="lead">本番形式。解答中は正誤を表示せず，最後に採点して全問の解説を確認できます。</p>
+  <div class="card">
+   <div class="field"><label>出題範囲</label>${chipsHTML(DB.chs)}</div>
+   <div class="field"><label>問題の種類（選んだ種類で均等に配分）</label><div class="chips" id="tps">${['term','calc','sel'].map(t=>`<span class="chip ${e.types.includes(t)?'on':''}" data-t="${t}">${TYPE[t].full}</span>`).join('')}</div></div>
+   <div class="field"><label>問題数</label><div class="seg" id="nq">${[15,30,45,60].map(n=>`<button class="${e.n===n?'on':''}" data-v="${n}">${n}問</button>`).join('')}</div></div>
+   <div class="field"><label>制限時間</label><div class="seg" id="tm">${[0,15,30,45,60,90].map(n=>`<button class="${e.time===n?'on':''}" data-v="${n}">${n?n+'分':'なし'}</button>`).join('')}</div></div>
+   <div style="margin-top:20px"><button class="btn wide" id="go">試験開始</button></div></div>`;
+  bindChips();document.querySelectorAll('#tps .chip').forEach(el=>el.onclick=()=>el.classList.toggle('on'));
+  ['nq','tm'].forEach(id=>document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on')}));
+  $('#go').onclick=()=>{const chs=readChips(),types=[...document.querySelectorAll('#tps .chip.on')].map(e=>e.dataset.t);
+    if(!chs.length)return toast('範囲を1つ以上選んでください');if(!types.length)return toast('種類を1つ以上選んでください');
+    const n=+$('#nq .on').dataset.v,time=+$('#tm .on').dataset.v;DB.chs=chs;DB.exam={n,time,types};save();startExam(chs,types,n,time)}};
+function startExam(chs,types,n,time){
+  const order=['term','sel','calc'].filter(t=>types.includes(t));const per=Math.floor(n/order.length);const counts=order.map((t,i)=>per+(i<n-per*order.length?1:0));
+  const qs=[];order.forEach((t,ti)=>{const used=new Set();let guard=0;
+    const pool=t==='sel'?(()=>{const s=idsFor('sel',chs);return {fig:shuffle(s.fig),mcq:shuffle(s.mcq),tm:shuffle(s.tm)}})():null;
+    while(qs.filter(q=>q.type===t).length<counts[ti]&&guard++<500){
+      let id;if(t==='sel'){const r=Math.random();id=(r<.35&&pool.fig.length)?pool.fig.pop():(r<.8&&pool.mcq.length)?pool.mcq.pop():pool.tm.length?pool.tm.pop():randId('sel',chs)}else id=randId(t,chs);
+      const key=t==='sel'&&id.startsWith('tm:')?'t:'+id.split(':')[1]:id;
+      if(used.has(key)&&guard<400)continue;used.add(key);qs.push(fromId(id))}});
+  EX={qs,ans:qs.map(()=>null),flag:qs.map(()=>false),i:0,time:time*60,left:time*60,start:Date.now(),chs,types,done:false};
+  renderExam();if(time){timerH=setInterval(tickExam,1000)}}
+function tickExam(){if(!EX||EX.done)return;EX.left=EX.time-Math.floor((Date.now()-EX.start)/1000);const t=$('#timer');if(t){t.textContent=fmtT(EX.left);t.classList.toggle('low',EX.left<=60)}if(EX.left<=0){clearInterval(timerH);toast('時間切れ！採点します');submitExam()}}
+const fmtT=s=>`${Math.floor(Math.max(0,s)/60)}:${String(Math.max(0,s)%60).padStart(2,'0')}`;
+function renderExam(){
+  const q=EX.qs[EX.i],N=EX.qs.length;
+  app().innerHTML=`<div class="qtop"><span class="qnum">第${EX.i+1}問 / ${N}</span><span class="badge ${TYPE[q.type].c}">${TYPE[q.type].n}</span><span class="badge gray">資料${q.ch}</span>
+   <span class="timer" id="timer">${EX.time?fmtT(EX.left):'時間無制限'}</span></div>
+   <div class="bar"><i style="width:${(EX.ans.filter(a=>a!=null&&a!=='').length/N*100).toFixed(1)}%"></i></div>
+   <div class="card ${TYPE[q.type].c}">${qBody(q,EX.ans[EX.i],false)}</div>
+   <div class="qnav"><button class="btn ghost" onclick="examMove(-1)" ${EX.i?'':'disabled'}>← 前へ</button>
+    <button class="btn ghost" onclick="EX.flag[EX.i]=!EX.flag[EX.i];renderExam()" style="flex:.8">${EX.flag[EX.i]?'★ 見直し':'☆ 見直し'}</button>
+    ${EX.i<N-1?`<button class="btn" onclick="examMove(1)">次へ →</button>`:`<button class="btn ok" onclick="confirmSubmit()">採点する</button>`}</div>
+   <div class="palette" id="pal"></div>
+   <div style="margin-top:14px" class="row end"><button class="btn ghost" style="font-size:13px;padding:8px 12px" onclick="confirmSubmit()">ここで終了して採点</button></div>`;
+  bindQ(q,true);paintPalette();}
+function paintPalette(){const p=$('#pal');if(!p)return;p.innerHTML=EX.qs.map((q,i)=>`<button class="${EX.ans[i]!=null&&EX.ans[i]!==''?'done':''} ${i===EX.i?'cur':''} ${EX.flag[i]?'flag':''}" onclick="EX.i=${i};renderExam()">${i+1}</button>`).join('');const b=document.querySelector('.bar i');if(b)b.style.width=(EX.ans.filter(a=>a!=null&&a!=='').length/EX.qs.length*100).toFixed(1)+'%'}
+function examPick(i){EX.ans[EX.i]=i;document.querySelectorAll('.choice').forEach(b=>b.classList.toggle('sel',+b.dataset.i===i));paintPalette()}
+function examMove(d){const ni=EX.i+d;if(ni<0||ni>=EX.qs.length)return;EX.i=ni;renderExam();window.scrollTo(0,0)}
+function confirmSubmit(){const un=EX.ans.filter(a=>a==null||a==='').length;if(un&&!confirm(`未回答が${un}問あります。採点しますか？`))return;submitExam()}
+function submitExam(){
+  clearInterval(timerH);EX.done=true;EX.res=EX.qs.map((q,i)=>isRight(q,EX.ans[i]));
+  EX.res.forEach((ok,i)=>{const id=EX.qs[i].id;if(!ok)DB.wrong[id]=(DB.wrong[id]||0)+1});
+  EX.used=Math.floor((Date.now()-EX.start)/1000);
+  const pct=Math.round(EX.res.filter(Boolean).length/EX.qs.length*100);
+  DB.hist.unshift({d:Date.now(),pct,ok:EX.res.filter(Boolean).length,n:EX.qs.length,chs:EX.chs,types:EX.types,sec:EX.used});DB.hist=DB.hist.slice(0,50);EX.hi=0;save();go('result')}
+VIEWS.result=()=>{
+  if(!EX||!EX.done)return go('home');
+  const N=EX.qs.length,ok=EX.res.filter(Boolean).length,pct=Math.round(ok/N*100);
+  DB.hist[EX.hi]&&(DB.hist[EX.hi].pct=pct,DB.hist[EX.hi].ok=ok);save();
+  const r=46,C=2*Math.PI*r;const col=pct>=80?'var(--ok)':pct>=60?'var(--c-calc)':'var(--ng)';
+  const agg=(key)=>{const m={};EX.qs.forEach((q,i)=>{const k=q[key];m[k]=m[k]||{n:0,ok:0};m[k].n++;if(EX.res[i])m[k].ok++});return m};
+  const bt=agg('type'),bc=agg('ch');
+  const bar=(lab,v,cls='')=>`<div class="tbar ${cls}"><span>${lab}</span><div class="tr"><i style="width:${v.ok/v.n*100}%"></i></div><span>${v.ok}/${v.n}</span></div>`;
+  app().innerHTML=`<h1>採点結果</h1>
+  <div class="card score"><svg class="ring" viewBox="0 0 110 110"><circle cx="55" cy="55" r="${r}" fill="none" stroke="var(--soft)" stroke-width="10"/><circle cx="55" cy="55" r="${r}" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 55 55)"/><text x="55" y="52" text-anchor="middle" font-size="26" fill="var(--ink)">${pct}</text><text x="55" y="74" text-anchor="middle" font-size="11" fill="var(--muted)">点 / 100</text></svg>
+   <div><div style="font-size:20px;font-weight:800">${ok} / ${N} 問正解</div><div class="small">所要時間 ${fmtT(EX.used)}${EX.time?`（制限 ${EX.time/60}分）`:''}</div><div class="small">${pct>=80?'合格ライン突破！この調子。':pct>=60?'あと一歩。間違えた問題の解説を確認しよう。':'苦手分野を学習モードで重点的に。'}</div></div></div>
+  <div class="grid g2" style="margin-top:12px"><div class="card"><div class="small" style="font-weight:800;margin-bottom:4px">種類別</div>${Object.keys(bt).map(t=>bar(TYPE[t].full,bt[t],TYPE[t].c)).join('')}</div>
+   <div class="card"><div class="small" style="font-weight:800;margin-bottom:4px">資料別</div>${Object.keys(bc).sort().map(c=>bar('資料'+c,bc[c])).join('')}</div></div>
+  <div class="row" style="margin-top:14px"><button class="btn" onclick="retryWrong()" ${ok===N?'disabled':''}>間違えた${N-ok}問を復習</button><button class="btn ghost" onclick="go('examSetup')">もう一度受ける</button><button class="btn ghost" onclick="go('home')">ホーム</button></div>
+  <h2>全問の解答と解説</h2><div class="row" style="margin-bottom:6px"><button class="btn ghost" style="padding:6px 12px;font-size:13px" onclick="document.querySelectorAll('details.rv').forEach(d=>d.open=true)">すべて開く</button><button class="btn ghost" style="padding:6px 12px;font-size:13px" onclick="document.querySelectorAll('details.rv').forEach(d=>d.open=!d.querySelector('.mk.o'))">不正解だけ開く</button></div>
+  <div id="rvlist">${EX.qs.map((q,i)=>rvItem(q,i)).join('')}</div>`;
+  document.querySelectorAll('[data-ov]').forEach(b=>b.onclick=()=>{const i=+b.dataset.ov;EX.res[i]=true;const id=EX.qs[i].id;if(DB.wrong[id]){DB.wrong[id]--;if(DB.wrong[id]<=0)delete DB.wrong[id]}save();VIEWS.result();setTimeout(()=>document.querySelectorAll('details.rv')[i]?.setAttribute('open',''),0)});
+  document.querySelectorAll('details.rv').forEach((d,i)=>{if(!EX.res[i])d.open=false});};
+function rvItem(q,i){
+  const ok=EX.res[i],a=EX.ans[i];const sm=q.prompt.replace(/<div[\s\S]*$/,'').replace(/<[^>]+>/g,'');
+  let body=`<div class="prompt" style="font-size:15px">${q.prompt}</div>${q.fig?`<div class="fig">${q.fig}</div>`:''}`;
+  if(q.kind==='mc')body+=`<div class="choices ${q.figChoices?'figs':''}">${q.choices.map((c,j)=>`<div class="choice ${q.figChoices?'figc':''} ${j===q.correct?'right':j===a?'wrong':''}"><span class="k">${'ABCD'[j]}</span><span>${c}</span></div>`).join('')}</div>`;
+  body+=fbHTML(q,a,ok,false).replace('<div class="exp">',`${!ok&&q.override&&a?`<button class="btn ghost" style="margin-top:8px;padding:6px 12px;font-size:13px" data-ov="${i}">表記ゆれなので正解にする</button>`:''}<div class="exp">`);
+  return `<details class="rv"><summary><span class="mk ${ok?'o':'x'}">${ok?'◯':'✕'}</span><span class="badge ${TYPE[q.type].c}">${TYPE[q.type].n}</span><span class="sm">${i+1}. ${esc(sm||q.label||'')}</span></summary><div class="body">${body}</div></details>`}
+function retryWrong(){const ids=EX.qs.filter((q,i)=>!EX.res[i]).map(q=>q.id);startStudy({type:'mix',chs:CHS,queue:uniq(ids)})}
+
+/* ---------- 履歴 ---------- */
+VIEWS.history=()=>{
+  app().innerHTML=`<h1>成績履歴</h1>${DB.hist.length?`<div class="card">${DB.hist.map(h=>{const d=new Date(h.d);return `<div class="hist"><div><b>${h.pct}点</b>　<span class="small">${h.ok}/${h.n}問・${fmtT(h.sec||0)}</span><div class="small">資料${h.chs.join(',')}／${h.types.map(t=>TYPE[t].n).join('・')}</div></div><span class="small">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`}).join('')}</div>
+  <div class="row" style="margin-top:14px"><button class="btn ghost" onclick="if(confirm('履歴をすべて削除しますか？')){DB.hist=[];save();go('history')}">履歴を削除</button><button class="btn ghost" onclick="if(confirm('すべての学習記録（履歴・苦手・覚えた用語・正答率）をリセットしますか？')){DB.hist=[];DB.wrong={};DB.known={};DB.stat={n:0,ok:0};save();go('home')}">全記録をリセット</button></div>`:`<div class="card empty">まだ模擬試験の記録がありません。</div>`}`};
+
+/* ---------- 単語カード ---------- */
+let CD=null;
+VIEWS.cards=()=>{
+  CD=CD||{ch:0,only:false,rev:false};
+  app().innerHTML=`<h1>単語カード</h1><p class="lead">カードをタップで裏返し。「覚えた」をつけた用語は「未習得のみ」で除外できます。</p>
+  <div class="card"><div class="field" style="margin-top:-10px"><label>範囲</label><div class="chips" id="cch"><span class="chip ${CD.ch===0?'on':''}" data-c="0">すべて</span>${CHS.map(c=>`<span class="chip ${CD.ch===c?'on':''}" data-c="${c}">資料${c}</span>`).join('')}</div></div>
+  <div class="field"><label>表示</label><div class="chips"><span class="chip ${CD.only?'on':''}" id="only">未習得のみ</span><span class="chip ${CD.rev?'on':''}" id="rev">説明 → 用語</span></div></div>
+  <div style="margin-top:16px"><button class="btn wide" id="go">はじめる</button></div></div>`;
+  document.querySelectorAll('#cch .chip').forEach(el=>el.onclick=()=>{document.querySelectorAll('#cch .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on')});
+  $('#only').onclick=e=>e.target.classList.toggle('on');$('#rev').onclick=e=>e.target.classList.toggle('on');
+  $('#go').onclick=()=>{CD.ch=+$('#cch .on').dataset.c;CD.only=$('#only').classList.contains('on');CD.rev=$('#rev').classList.contains('on');
+    let list=TERMS.filter(t=>!CD.ch||t.ch===CD.ch);if(CD.only)list=list.filter(t=>!DB.known[t.id]);if(!list.length)return toast('対象の用語がありません（すべて覚えた！）');
+    CD.list=shuffle(list);CD.i=0;renderCard()}};
+function renderCard(){
+  if(CD.i>=CD.list.length){app().innerHTML=`<div class="card empty"><b style="font-size:20px;color:var(--ink)">1周しました！</b><br>覚えた用語：${Object.keys(DB.known).length}/${TERMS.length}<div class="row" style="justify-content:center;margin-top:16px"><button class="btn" onclick="CD.list=shuffle(CD.list);CD.i=0;renderCard()">もう1周</button><button class="btn ghost" onclick="go('cards')">設定へ</button></div></div>`;return}
+  const t=CD.list[CD.i];const known=!!DB.known[t.id];
+  const front=CD.rev?`<div style="font-size:16px;line-height:1.8">${mask(t)}</div>`:`<div class="term">${t.t}</div>`;
+  const back=CD.rev?`<div class="term" style="font-size:22px;font-weight:800;margin-bottom:8px">${t.t}</div><div>${t.d}</div>`:`<div style="font-weight:800;margin-bottom:6px">${t.t}</div><div>${t.d}</div>${t.alt.length?`<div class="small" style="margin-top:8px">別名：${t.alt.join('，')}</div>`:''}`;
+  app().innerHTML=`<div class="qtop"><span class="qnum">${CD.i+1} / ${CD.list.length}</span><span class="badge gray">資料${t.ch} ${CH[t.ch]}</span>${known?'<span class="badge t-term">覚えた</span>':''}<button class="iconbtn" style="margin-left:auto" onclick="go('cards')">設定</button></div>
+  <div class="bar"><i style="width:${CD.i/CD.list.length*100}%"></i></div>
+  <div class="flash" id="fl"><div class="inner"><div class="side front">${front}<span class="tap">タップで裏返す</span></div><div class="side back">${back}</div></div></div>
+  <div class="qnav"><button class="btn ghost" onclick="cardMark(false)">まだ</button><button class="btn" style="background:var(--c-term)" onclick="cardMark(true)">覚えた ✓</button></div>
+  <div class="row" style="justify-content:space-between;margin-top:10px"><button class="btn ghost" style="padding:6px 12px;font-size:13px" onclick="if(CD.i>0){CD.i--;renderCard()}" ${CD.i?'':'disabled'}>← 前のカード</button><span class="small">スペース：裏返す</span></div>`;
+  const fl=$('#fl');fl.onclick=()=>fl.classList.toggle('flip');
+  const fit=()=>{const s=fl.querySelectorAll('.side');const h=Math.max(240,...[...s].map(x=>x.scrollHeight));fl.querySelector('.inner').style.minHeight=h+'px'};fit();}
+function cardMark(k){const t=CD.list[CD.i];if(k)DB.known[t.id]=1;else delete DB.known[t.id];save();CD.i++;renderCard()}
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const fl=$('#fl');if(fl&&e.key===' '){e.preventDefault();fl.classList.toggle('flip')}
+  if(ST.mode==='study'&&$('#nextBtn')&&!$('#nextBtn').disabled&&e.key==='Enter'){$('#nextBtn').click()}
+  if(ST.mode==='study'&&!ST.answered&&ST.q&&ST.q.kind==='mc'&&'1234abcdABCD'.includes(e.key)&&$('.choice')){const i='1234'.includes(e.key)?+e.key-1:'abcd'.indexOf(e.key.toLowerCase());if(i>=0&&i<ST.q.choices.length)studyAnswer(i)}});
+
+go('home');
+
+</script>
+</body>
+</html>
